@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    onclick 事件https://www.fooish.com/jquery/events.html
+ -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
+    <link rel="stylesheet" href="css/cloversky.css">
+    <script src="./js/all.js"></script>
+    <style>
+    /* form#myForm{
+        padding:0 50px;
+        width:70vw;
+    }
+
+    table.TB_SHOPCART {
+        width:100%;
+        border-collapse:collapse;
+        
+    }
+    table.TB_SHOPCART caption {
+        padding:10px;
+        background-color:#f3f6f9;
+        letter-spacing: 1rem;
+        margin: 40px 0;
+    }
+
+    table.TB_SHOPCART thead th {
+        font-size: 0.7rem;
+        padding:5px 0px;
+        color:rgb(24, 23, 23);
+        border-bottom:1px solid #d4cbca;
+         
+    }
+    table.TB_SHOPCART tbody td {
+        font-size: 0.7rem;
+        padding:5px 15px;
+        color:#555;
+        text-align:center;
+        background-color:#fff;
+        white-space: pre;
+        
+    }
+
+    table.TB_SHOPCART tfoot td {
+        padding:5px 0px;
+        text-align:center;
+        background-color:#d6d6a5;
+    }
+
+    table.TB_SHOPCART tbody  tr{
+        border-bottom: 1px solid #dedbdb;  
+    }
+
+
+
+    #fname0{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    #fname0 img{
+        width: 80px;
+        height:80px;
+    }
+    #fname4 img{
+        width: 50px;
+        height:50px;
+    }
+
+@media screen and (max-width: 992px){   
+    form#myForm{
+        padding:unset;
+    }
+    .TB_SHOPCART thead {
+        display: none;
+    } 
+    table.TB_SHOPCART tbody tr{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+
+    #myForm table.TB_SHOPCART tbody tr td:last-child {
+         position: absolute;
+        top:0;
+        right:0;
+        border-bottom:none;
+    }
+
+    #myForm table.TB_SHOPCART tbody tr td#fname1 {
+        position: absolute;
+        top: 80px;
+        left: 100px;
+    }
+
+    #myForm  table.TB_SHOPCART tbody tr td#fname2 {
+        justify-content: flex-end;
+        display: flex;
+    }
+
+    #myForm table.TB_SHOPCART tbody tr td#fname3 {
+        text-align: right;
+    }
+        
+    table.TB_SHOPCART tbody td p{
+        font-size: 0.7rem;
+        padding:5px 0px;
+        color:#555;
+        text-align:left;
+        background-color:#fff;
+        width:60vw;
+        margin: 0 20px;
+    }
+
+}
+    #output{
+        font-size: 12px;
+    } */
+    
+ </style>
+</head>
+
+<body>
+    <div class="headerPage"></div>
+    <div id="second_mains" class="shop_process">
+        <div class="top_page">
+            <div class="process2">
+                <div>
+                    <p>STEP1</p>
+                    <p>填寫配送資訊</p>
+                </div>
+                <div>
+                    <p>STEP2</p>
+                    <p>確認資訊</p>
+                </div>
+                <div>
+                    <p>STEP3</p>
+                    <p>完成訂單</p>
+                </div>
+            </div>
+
+            <div class="process">
+                <a href="./project_shopcart_step1.html">
+                    <span>1 步驟一</span>
+                </a>
+                <a href="./project_shopcart_step2.html">
+                    <span>2 填寫訂購資料</span>
+                </a>
+                <a href="./project_shopcart_step3.html">
+                    <span>3 完成訂購</span>
+                </a>
+            </div>
+        </div>
+    
+        <div class="process3">
+            <div></div>
+            <span></span>
+            <div></div>
+            <span></span>
+            <div></div>
+        </div>
+
+        
+        </table>
+
+        <form id="myForm">
+            <table class="TB_SHOPCART">
+                <caption>訂購明細</caption>
+                <thead>
+                    <tr>
+                        <th>商品</th>
+                        <th>価格</th>
+                        <th>数量</th>
+                        <th>小計</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>商d0</td></tr> -->
+                </tbody>
+            </table>
+        </form>
+
+
+        <table class="TB_SHOPCART"  id="customers">
+                <caption>配送資料</caption>
+                <thead>
+                    <tr><th scope='row'>訂單編號</th></tr>
+                    <tr><th scope='row'>訂購人</th></tr>
+                    <tr><th scope='row'>数量</th></tr>
+                    <tr><th scope='row'>電話</th></tr>
+                    <tr><th scope='row'>mail</th></tr>
+                    <tr><th scope='row'>address</th></tr>  
+                </thead>
+                <tbody></tbody>
+            </table>
+    </div>
+    
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/format.js"></script>
+    <script>
+    $(document).ready(function () {
+        $(".headerPage").load("project_header.html"); 
+        $(".process span:nth-child(3)").css("background-color","grey")
+        process_color();
+
+
+        // $(".process span:nth-child(2)").css("background-color","grey")
+
+        $.ajax({
+            type: 'get',
+            url: allurl + '/reirasys_api/order_no.php', 
+            dataType: 'json',
+
+            success: function (data) {
+                console.log(data)   
+                console.log(data.list) 
+
+                $.each(data, function (i, val) {
+                    console.log(i) //key
+                    console.log(val) //value
+console.log(!val)
+                    if (i !="list"){
+                        var valx = (!val) ? " " :  val
+                        $("#customers tbody").append(
+                            // "<tr><td>" + (val) + "</td><tr>"
+                        //   "<tr><th scope='row'>" + i + "</th>"+
+
+                            // "<tr><td>" +  i  + "</td>" +   
+                            "<tr><td>" +  valx  + "</td><tr>"
+                        )
+                    } else{
+                        $.each(data.list, function (i, val) {
+                            console.log(i) //key
+                            console.log(val) //value
+                            // console.log(data[i].name)
+                            $("#myForm .TB_SHOPCART tbody")
+                                .append("<tr><td name='fname0' id='fname0'><img src='./images/cloversky/" + val.item_no + "_1.jpg'  alt=''><p>"+ val.name +"</p></td>"+
+                                        "<td name='fname1' id='fname1'>" + number_format(val.price) + "</td>"+
+                                        "<td name='fname2' id='fname2'>"+ val.amount + "</td>" +
+                                        "<td name='fname3' id='fname3'>" + number_format(val.amount *  val.price)  + "</td >"+
+                                        "</tr>"
+                                )
+                        })
+                    }
+                })
+            }
+        })
+
+    });
+
+    </script>
+</body>
+
+</html>

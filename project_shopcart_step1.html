@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    onclick 事件https://www.fooish.com/jquery/events.html
+    判斷require 都填了
+    前端pattern
+    後端false api
+
+
+    .TB_COLLAPSE=> .TB_SHOPCART
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="css/cloversky.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css">
+    <style>
+   
+</style>
+</head>
+
+<body>
+    <div class="headerPage"></div>
+    <div id="second_mains" class="shop_process">
+        <div class="top_page">
+            <!-- <div class="process">
+                <a href="#">
+                    <span>1</span>
+                </a>
+                <a href="./project_shopcart_step2.html">
+                    <span>2</span>
+                </a>
+            </div> -->
+            <div class="process2">
+                <a href="./project_shopcart_step1.html">
+                    <div>
+                        <p>STEP1</p>
+                        <p>填寫配送資訊</p>
+                    </div>  
+                </a>
+
+                <a href="./project_shopcart_step.html">
+                    <div>
+                        <p>STEP2</p>
+                        <p>確認資訊</p>
+                    </div>
+                </a>
+                <!-- <div>
+                    <p>STEP2</p>
+                    <p>確認資訊</p>
+                </div> -->
+
+
+
+                <div>
+                    <p>STEP3</p>
+                    <p>完成訂單</p>
+                </div>
+            </div>
+
+            <div class="process3">
+                <div></div>
+                <span></span>
+                <div></div>
+                <span></span>
+                <div></div>
+            </div>
+        </div>
+
+        <div class="col2_item">
+            <form id="form_checkout1" action="#">
+                <label class="user2">
+                <i class="far fa-user"></i>
+                <input type="text" placeholder="名前" name="recip_name"  id="recip_name" required>
+                </label>
+
+                <label class="user2">
+                <i class="fas fa-unlock-alt "></i>
+                <input type="text" placeholder="住所" name="recip_street"   id="recip_street" required>
+                </label>
+
+                <label class="user2 recip_city">
+                <i class="far fa-address-book"></i>
+                <input type="text" placeholder="city" name="recip_city"   id="recip_city" required>
+                <input type="mobile" placeholder="state" name="recip_state"   id="recip_state" required>
+                </label>
+
+                <label class="user2">
+                <i class="fas fa-mobile-alt"></i>
+                <input type="mobile" placeholder="電話番号" name="recip_mobile"   id="recip_mobile" required>
+                </label>
+
+                <label class="user2">
+                <i class="far fa-envelope"></i>
+                <input type="mail" placeholder="mail" name="recip_mail"   id="recip_mail" required>
+                </label>
+
+                <label class="user2">
+                <i class="far fa-envelope"></i>
+                <input type="text" placeholder="備註" name="recip_ps"   id="recip_ps" >
+                </label>  
+                
+                <button id="login_btn">儲存連絡人資訊</button>
+            </form>
+        </div>
+<!-- TB_COLLAPSE -->
+        <table class="TB_SHOPCART">
+            <caption>配送資訊</caption>
+            <thead>
+                <tr>
+                    <th>商品</th>
+                    <th>価格</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <!-- <button id="btnShow" type='submit'>Try</button> -->
+        </table>
+        <div class="bill-item">
+            <span id = "label">合計金額</span>
+            <span id = "car_total"><strong></strong></span>
+        </div>
+        <button id="btn_Show" type="button">下一步</button>
+    </div>
+    
+    
+<script src="./js/jquery.min.js"></script>
+<script src="./js/format.js"></script>
+<script>
+$(document).ready(function () {
+    $(".headerPage").load("project_header.html"); 
+
+    $(".process span").click(function(){  
+        var index = $(".process span").index(this);
+        $(".process span").eq(index).addClass("select");
+    });
+
+    process_color();
+
+    $('#form_checkout1 input:required')
+        .keyup(checkForm)
+        .keyup();   
+        //預設就先執行keyup  .keyup(function(){}).keyup();       
+
+    // 1  判是否空值=   2、符合格式================================
+    function checkForm() {
+        var isValidForm = true; //預設可送  disabled !true not true 
+        var thisform =$(this.form).find('input:required') ;
+        // thisform.filter("[type!='text']").css("background-color","#d6e1d4")
+        thisform.each(function() {
+            // console.log(this.name)
+            if ((!this.value.trim()))  { //!""
+                // console.log("空白不可送單"+this.name+ "--" + this.value)
+                isValidForm = false;  //不可送單    
+            } 
+        }); 
+
+        if (isValidForm){
+            if (!checkValid()){
+                isValidForm = false;  
+            }       
+        }
+        
+        $('#btn_Show').prop('disabled', !isValidForm);
+    }
+
+    function checkValid() {
+        var allowSubmit = true;
+        // $(this.form).find('input:required[type=mobile]').each(function() {
+        $('#form_checkout1 input:required').filter("[type!='text']").each(function(){
+        // $('#form_checkout1 input:required').each(function(){
+            var this_type = $(this).attr('type');
+            var this_name = $(this).attr('name');;
+            var this_val = $(this).val();
+            
+            // switch (this_type) {               
+            //     case "mobile":
+            //         if (!validateMobile(this_val))  {
+            //             allowSubmit = false;
+            //             console.log(this_name+"請輸入正確手機格式")
+            //         }
+            //         break;
+            //     case "mail":
+            //         if (!validateMail(this_val))  {
+            //             allowSubmit = false;
+            //             console.log("請輸入mail格式")
+            //         }
+            //         break;
+            //     default:
+            //         break;
+            // }
+
+            // if (this_type != "text"){
+                if (!(validateAll(this_type,this_val)))   {
+                    allowSubmit = false;
+                    console.log(this_name + "請輸入正確" + this_type)
+                }else{
+                    console.log(this_name + "~~輸入正確~~~"+ this_type)
+                }
+            // }
+
+        });
+    
+        return allowSubmit;
+    }
+
+
+    function validateAll(type,val) {  
+        console.log(type,val)
+        var regmm;
+        switch (type) {               
+            case "mobile":
+                regmm='((?=(09))[0-9]{10})$';
+                break;
+            case "mail":
+                regmm='[a-zA-Z0-9]+\@gmail.com';
+                break;
+            default:
+                break;
+        }
+
+        var regmob = new RegExp(regmm);
+
+        if(regmob.test(val)){
+            return true;
+        } else {
+            return false;
+        }   
+    }
+
+
+        //******  購物明細****** 
+        var data = JSON.parse(localStorage.getItem("cart"));
+        console.log(data)
+        var total = 0;
+        $.each(data, function (i, val) {
+            console.log(i)
+            console.log(val.name)
+            console.log(data[i].name) 
+            console.log("amout:"+data[i].amount + "price:"+data[i].price + "xx"+data[i].amount *  data[i].price) 
+            total += data[i].amount *  data[i].price;
+            $(".TB_SHOPCART tbody")
+                .append("<tr><td name='fname0' id='fname0'><img src='./images/cloversky/" + data[i].item_no + "_1.jpg'  alt=''><p>"+ (data[i].name)+"</p></td>"+
+                        "<td name='fname1' id='fname1'>" + number_format(data[i].price) + "</td>"+
+                        "<td name='fname2' id='fname2'>"+data[i].amount + "</td>" +
+                        "<td name='fname3' id='fname3'>" + number_format(data[i].amount *  data[i].price)  + "</td >"+
+                        "</tr>"
+                        )
+        })
+        console.log("total--"+total)
+
+        
+        $("#car_total").text(total);
+
+        var tr_len = $('table.TB_SHOPCART tbody tr').length
+        console.log("tr_len" + tr_len);
+        
+        var ss_total=0;
+        $('.TB_SHOPCART td[id^=fname]').each(function () {
+                //   formVals +=  this.id + '=' + ($(this).text()) + ";";
+                ss_total += $(this).text() ;    
+                console.log(this)       
+        });
+        console.log(ss_total)
+
+        $("#btn_Show").on("click", function(e) {
+            e.preventDefault();
+
+            console.log(formTrim($('#form_checkout1').serializeArray()))
+            var alldatas = formTrim($('#form_checkout1').serializeArray())
+            console.log($('#form_checkout1').serialize())
+            // login
+            var categoryList = login_status();
+            
+            categoryList.then(function(data) {
+                console.log('呼び出し先', data);
+                if (data.success=="N"){
+                    alert("請先登入");
+                    window.location.href = "project_cloversky_login.html";
+                }else{              
+                    $.ajax({
+                        url: allurl + '/reirasys_api/registered_Checkout1.php',
+                        type: 'post',
+                        dataType: 'json',
+                        data:$('#form_checkout1').serialize(),
+                        success: function (response) {
+                            console.log(response)
+                            // alert(result.success); // result是json物件
+                            window.location.href = "project_shopcart_step2.html";
+                        }
+                    });
+                }
+            }).fail(function() { 
+                console.log('err');
+            });
+
+        });
+
+    });
+
+    </script>
+</body>
+</html>

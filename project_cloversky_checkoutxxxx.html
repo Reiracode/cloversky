@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    onclick 事件https://www.fooish.com/jquery/events.html
+ -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
+    <link rel="stylesheet" href="css/cloversky.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet"> -->
+<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script> -->
+
+    <script src="./js/all.js"></script>
+    <!-- <script src="./js/jquery.min.js"></script> -->
+
+
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style>
+    form#myForm{
+        padding:0 50px;
+        width:70vw;
+    }
+    table.TB_COLLAPSE {
+        width:100%;
+        border-collapse:collapse;
+        
+    }
+    table.TB_COLLAPSE caption {
+        padding:10px;
+        /* font-size:24px; */
+        background-color:#f3f6f9;
+        letter-spacing: 1rem;
+        margin: 40px 0;
+    }
+
+    table.TB_COLLAPSE thead th {
+        font-size: 0.7rem;
+        padding:5px 0px;
+        color:rgb(24, 23, 23);
+        border-bottom:1px solid #d4cbca;
+        /* background-color:#915957; */
+    }
+    table.TB_COLLAPSE tbody td {
+        font-size: 0.7rem;
+        padding:5px 15px;
+        color:#555;
+        text-align:center;
+        background-color:#fff;
+        /* border-bottom:1px solid #d4cbca; */
+    }
+    .carlist_amount{
+        width: 60px;
+    }
+
+    table.TB_COLLAPSE tfoot td {
+        padding:5px 0px;
+        text-align:center;
+        background-color:#d6d6a5;
+    }
+
+    table.TB_COLLAPSE tbody  tr{
+        /* line-height: 70px; */
+        border-bottom: 1px solid #dedbdb;
+        
+    }
+    #fname0{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+    }
+
+     #fname0 img{
+        width: 80px;
+        height:80px;
+        /* margin: 0 20px; */
+    }
+    #fname4 img{
+        width: 50px;
+        height:50px;
+    }
+
+    .checkout_total{
+        position: absolute;
+        right: 0;
+        width: 30vw;
+        top: 0;
+        background-color: gold;
+    }
+@media screen and (max-width: 992px){   
+    form#myForm{
+        padding:unset;
+    }
+    .TB_COLLAPSE thead {
+        display: none;
+    } 
+    table.TB_COLLAPSE tbody tr{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+     /* table.TB_COLLAPSE tbody tr td:first-child {
+        position: absolute;
+        top:0;
+        left:0;
+    } */
+    table.TB_COLLAPSE tbody tr td:last-child {
+        position: absolute;
+        top:0;
+        right:0;
+        border-bottom:none;
+    }
+
+    table.TB_COLLAPSE tbody tr td#fname1 {
+        position: absolute;
+        top: 80px;
+        /* font-size: 0.5rem; */
+        left: 100px;
+    }
+
+    table.TB_COLLAPSE tbody tr td#fname2 {
+        justify-content: flex-end;
+        display: flex;
+    }
+
+    table.TB_COLLAPSE tbody tr td#fname3 {
+        text-align: right;
+    }
+        
+    table.TB_COLLAPSE tbody td p{
+        font-size: 0.7rem;
+        padding:5px 0px;
+        color:#555;
+        text-align:left;
+        background-color:#fff;
+        width:60vw;
+        margin: 0 20px;
+        /* border-bottom:1px solid #d4cbca; */
+    }
+
+}
+    #output{
+        font-size: 12px;
+    }
+    
+ </style>
+</head>
+
+<body>
+    <div class="headerPage"></div>
+    <div id="second_mains">
+        <div class="top_page">
+            <div class="query_string"></div>
+        </div>
+
+        <!-- <form id="myForm" method="post"> -->
+        <form id="myForm">
+            <table class="TB_COLLAPSE">
+                <caption>商品明細</caption>
+                <thead>
+                    <tr>
+                        <th>商品</th>
+                        <th>価格</th>
+                        <th>数量</th>
+                        <th>小計</th>
+                        <th>delete</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <!-- <button id="btnShow" type='submit'>Try</button> -->
+            </table>
+            <button id="btn_Show" type="button">結帳</button>
+            <!-- <div class="submit-button"><input type="submit" id="submit" value="Submit" /></div> -->
+        </form>
+
+    <div class="checkout_total">
+        <button id="log_out" type="button">登出</button>
+        <div id="output"></div>
+
+        <div class="order_Total">
+            <span class="total1"></span>
+            <span class="deliver_fee">送料</span>
+            <span class="tqx">送料</span>        
+        </div>
+        
+        <h3>購物車</h3>
+        <a class="btn btn-info text-white" id="clear">清空購物車</a>
+        <ul id="cart"></ul>
+        總價: <span id="total"></span> 元
+    </div>
+    </div>
+    
+
+
+    
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/format.js"></script>
+    <script>
+        $(document).ready(function () {
+            // const domainName = window.location.href
+            // const loc = domainName.indexOf(':', 6)
+            // const allurl = domainName.slice(0, loc) + ":8080"
+            console.log("allurl" + allurl)
+            
+            $(".headerPage").load("project_header.html"); 
+            
+            
+
+
+            var param = location.search
+            console.log(param)
+            var shopitem = $(".shopitem");
+            $(".query_string").text(param)
+
+            var data = JSON.parse(localStorage.getItem("cart"));
+            console.log(data)
+            // console.log(data[1].price)
+
+            $.each(data, function (i, val) {
+                console.log(i)
+                console.log(val.name)
+                console.log(data[i].name)
+                
+                $(".TB_COLLAPSE tbody").append("<tr><td name='fname0' id='fname0'><img src='./images/cloversky/" + data[i].id + "_1.jpg'  alt=''><p>"+ (data[i].name)+"</p></td>"+
+                                                "<td name='fname1' id='fname1'>" + number_format(data[i].price) + "</td>"+
+                                                // "<td name='fname2' id='fname2'><input type='number' class='carlist_amount' value='" + data[i].amount+"'>" + data[i].amount + "</td>" +
+                                                "<td name='fname2' id='fname2'>"+
+                                                    "<div class='qnt-box'>" +
+                                                        "<button class='add_minus_btn shop_cart_btn minus_cal'><i class='fas fa-minus'></i></button>" +
+                                                        "<input type='number' class='carlist_amount' min='1' value='" + data[i].amount + "' disabled='disabled'>" + 
+                                                        "<button class='add_minus_btn shop_cart_btn add_cal'><i class='fas fa-plus'></i></button>" +
+                                                        "</td>" +
+                                                    "</div>" +
+                                                
+                                                "<td name='fname3' id='fname3'>" + number_format(data[i].amount *  data[i].price)  + "</td >"+
+                                                // "<td name='fname4' id='fname4'><img src='./images/cloversky/" + data[i].id + "_1.jpg'  alt=''></td >"+
+                                                // "<td><button class='btn_remove'>"+"remove"+"<button></td></tr>"
+                                                "<td><button class='btn_remove'><i class='fas fa-times'></i></i><button></td></tr>"
+                                                
+                                                )
+            })
+            
+            function setCart() {
+                if (localStorage.getItem("cart")) {
+                    cart = JSON.parse(localStorage.getItem("cart"));
+                }
+
+                var cartList = "", s_price = 0, total = 0;
+                for (let $i = 0; $i < cart.length; $i++) {
+                    s_price = cart[$i]["price"] * cart[$i]["amount"];
+                    total += s_price;
+                    cartList += `<li> ${cart[$i]["name"]} , 單價: ${cart[$i]["price"]}, 數量: ${
+                        cart[$i]["amount"]
+                        }, 總價: ${s_price}</li>`;
+                }
+
+                $("#cart")
+                    .empty()
+                    .append(cartList);
+                $("#total").text(total);
+                $(".total1").text(total);
+                $(".shopart_amount").text(cart.length);
+                //  $(".headerPage").load(".shopart_amount");
+                $(".headerPage").load("project_header.html");
+
+                // <dl>
+                //     <dt>小計</dt>
+                //     <dd class="total1">8400</dd>
+            }
+
+// 變更數量
+            // $("#fname2 input").change(function (e) { 
+            $('.carlist_amount').on('input', function (e) {
+            // function changeMount() {
+                e.preventDefault();
+                console.log(e)
+                var e_content = $(this).val();
+                console.log(e_content)
+                console.log($(this))
+                
+                var row_index = $(this).closest("tr").index();
+                console.log("row_index"+row_index)            
+                console.log(cart[row_index])
+                console.log(e_content * cart[row_index].price) 
+                var new_price = e_content * cart[row_index].price
+                $(this).parent().next().text(new_price)
+                 //第 2 個節點
+
+                var amount_old = JSON.parse(localStorage.getItem("cart"))
+                amount_old[row_index].amount = e_content ;
+                console.log(amount_old)
+
+                localStorage.setItem("cart", JSON.stringify(amount_old));  
+                setCart();
+            })
+            // }
+
+
+            $(".btn_remove").click(function(e){  
+                e.preventDefault();
+                // 取得刪除的row index
+                var row_index = $(this).closest("tr").index();
+                // console.log(localStorage.getItem("cart"))
+
+                var old =JSON.parse(localStorage.getItem("cart"))
+                // console.log(old[2])  
+                old.splice(row_index, 1);
+                console.log(old)
+
+                localStorage.setItem("cart", JSON.stringify(old));
+                $(this).closest('tr').remove();
+
+                setCart();       
+            })
+
+// 變更數量 加金額
+            $(".add_minus_btn").click(function (e) {
+                e.preventDefault();
+
+                var row_index = $(this).closest("tr").index();
+                console.log(row_index);
+
+// btn按下之後變化的值=目前輸入的值 
+// <1 時 = 1 (1)button disabled (2)不處理-1
+// 先取得畫面上的值 x-1 < 1(1-1=0) min(1)
+                // var new_amt = parseInt($(".carlist_amount:eq("+ row_index +")").val())
+                // console.log("new_amt" + new_amt)
+
+// err 選出整個html 結構 再取val() 
+// https://stackoverflow.com/questions/29845871/typeerror-val-is-not-a-function
+//取得DOMElement 
+// var Subject = myInputBoxes.eq(i).val();
+// Alternatively you can retain the DOMElement and use the value property:
+// var Subject = myInputBoxes[i].value;
+// $(cx[1].val() is not a function
+                // error 寫法
+                // var cx = $(".carlist_amount")
+                // console.log(   $(cx[1].val())  )
+                // right
+                var $a = $(".carlist_amount");
+                var a = $a[0];
+                console.log(a.value)
+
+                var new_amt = parseInt($a.eq(row_index).val());
+                console.log(new_amt)
+
+                var $a_btn = $(".minus_cal");             
+                $a_btn.eq(row_index).attr("disabled", false);
+
+                if ($(this).hasClass("add_cal")) {             
+                    $a.eq(row_index).val(new_amt + 1);
+                } else {
+                    // console.log("---"+ new_amt)
+                    if (new_amt > 1) {
+                        $a_btn.eq(row_index).attr("disabled", false);
+                        $a.eq(row_index).val(new_amt - 1);
+                    } else {
+                        $a_btn.eq(row_index).attr("disabled", "true");
+                    }
+                } 
+
+       
+                var new_price = data[row_index].price * $(".carlist_amount:eq(" + row_index + ")").val();
+                console.log("new_price"+new_price)
+
+                // $(this).parent().next().text(new_price)
+                $(this).closest("td").next().text(new_price)
+
+// 寫入local storage
+
+                var amount_old = JSON.parse(localStorage.getItem("cart"))
+                amount_old[row_index].amount = $a.eq(row_index).val();;
+                console.log(amount_old)
+
+                localStorage.setItem("cart", JSON.stringify(amount_old));
+                setCart();
+            
+            })
+
+            var tr_len = $('table.TB_COLLAPSE tbody tr').length
+            console.log("tr_len" + tr_len);
+                // $('table.TB_COLLAPSE tr')
+        
+
+            var ss_total=0;
+            $('.TB_COLLAPSE td[id^=fname]').each(function () {
+                    //   formVals +=  this.id + '=' + ($(this).text()) + ";";
+                    // ss_total += $(this).text() ;    
+                    console.log(this)       
+            });
+            // console.log("ss_total" + ss_total);
+
+            // }
+            var cart = [];
+            if (localStorage.getItem("cart")) {
+                cart = JSON.parse(localStorage.getItem("cart"));
+            }
+            setCart();
+
+            
+
+
+            $("#clear").click(function () {
+                cart = [];
+                localStorage.removeItem("cart");
+                setCart();
+            });
+            // $(document).on('click', '.remove', function (e) {
+                // $(this).parents('tr').remove();
+
+                // console.log("rows" + $('table.TB_COLLAPSE tr').length)
+                // var all = $('.TB_COLLAPSE').serialize();
+                // console.log("all"+ all)
+            // });
+
+
+            // $('form').on("submit", function(event) {
+            // // method post + type="submit
+            //     event.preventDefault();
+            //     alert("sumbit")
+            //     console.log( $(this).serialize() );
+            // });
+
+            
+            // $('table .TB_COLLAPSE').on('submit', function (e) {
+            //     e.preventDefault();
+            //     var formData = $(this).serializeObject();
+            //     console.log(formData);
+            //     // $('.datahere').html(JSON.stringify(formData));
+            // });
+
+// JSON.parse 將 JSON 字串轉換為物件。
+// JSON.stringify 將陣列轉換為 JSON 字串
+            $("#btn_Show").on("click", function(e) {
+                e.preventDefault();
+                // var data = JSON.stringify(localStorage.getItem("cart"));
+                
+                var sstring = localStorage.getItem("cart")
+                console.log(sstring)
+
+                var data = JSON.parse(localStorage.getItem("cart"));             
+                console.log(data)
+
+                // var fields = $(this).serialize();
+                // localStorage.setItem("eloqua-fields", JSON.stringify(fields));
+                
+
+                $.ajax({
+                    //  url: 'http://127.0.0.1:8080/reirasys_api/add_to_shopcart.php',             
+                    url: allurl +'/reirasys_api/add_to_shopcart.php',
+                    type: 'post',
+                    // contentType: 'application/json',
+                    // headers: {
+                    // 'Content-Type': 'application/x-www-form-urlencoded'
+                    // },
+                    // dataType: 'json',
+                    // 直接用localstorage 傳
+                    data: { data: localStorage.getItem("cart") },
+                    // data: {data: postData},
+                    // data: JSON.stringify(postData),
+                    // data: sstring,
+                    // data: data,
+                    // data: { id: "111", user: "frank" },
+                    success: function (data) {
+                        console.log(data)
+                        localStorage.removeItem("cart");
+                        // alert(data)
+                        $('#output').html(data);
+                    },
+                    // success: function (result) {
+                    //     console.log(result); // result是json物件
+                    // }
+                });
+
+
+               
+
+
+                // $.ajax({
+                //     url: allurl + '/reirasys_api/add_to_shopcart.php',
+                //     type: 'post',
+                //     dataType: 'json',
+                //     contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // 不能用 'application/json; charset=utf-8'
+                //     data: data, // 不用JSON.stringify()
+                //     success: function (result) {
+                //         alert(result.success); // result是json物件
+                //     },
+                // });
+
+                
+                // let params = $("#myForm td").serialize();
+                // console.log(params);
+                // var data = $.param($('td').map(function () {
+                //     return {
+                //         name: $(this).attr('name'),
+                //         value: $(this).text().trim()
+                //     };
+                // }));
+
+                // console.log(data);
+                
+                // ==========================================
+                // jquery selector (1) td:not(:has   (2)id fname 開頭的td[id^=fname]
+                // ==========================================
+                // let formVals ="";
+                // $('.TB_COLLAPSE td:not(:has(button))').each(function () { 
+                // $('.TB_COLLAPSE td[id^=fname]').each(function () { 
+                //     formVals +=  this.id + '=' + ($(this).text()) + ";";
+                //     formVals +=  ($(this).text()) + ";";
+                // });
+                // console.log(formVals)  
+                //result==> fname0 = 000000006583; 000000006583; fname1 = 1150; 1150; fname2 = 11; 11; fname3 = 12650; 12650; fname0 = 000000006273; 000000006273; fname1 = 1150; 1150; fname2 = 9; 9; fname3 = 10350; 10350;
+
+ // let newstr = "";
+                // var array = formVals.split(';');
+                // console.log(array)
+                // console.log(array.length) //分割した個数
+                // const result = array.filter(array => array.length > 0);
+                // console.log(result)
+                // console.log(result.length)  
+                // var newarray = [];
+                // var newString="";
+                // var newItems = "";
+                
+
+                
+            });
+
+ 
+            var categoryList = login_status();
+            categoryList.then(function(data) {
+                console.log('呼び出し先', data);
+                if (data.success){
+                    console.log("login out")
+                    $("button#log_out").text("login");
+                }else{
+                    console.log("login success sucess")
+                    $("button#log_out").text("logout");
+                }
+            }).fail(function() { 
+                console.log('err');
+            });
+
+            $("button#log_out").click(function (e) {      
+                $.ajax({
+                    type: 'get',
+                    url: allurl + '/reirasys_api/logout.php', 
+                    dataType: 'json',
+
+                    success: function (response) {
+                        console.log(response)            
+                        console.log(response.success)
+                        if (response.success=="N") {
+                            alert("已登出")
+                            window.location.href = "project_cloversky_login.html";
+                        }  
+                        // window.location.href = "project_shopcart.html"; 
+                    }// 成功後要執行的函數
+                })
+            });
+
+
+
+            // function number_format(n) {
+            //     n += "";
+            //     var arr = n.split(".");
+            //     var re = /(\d{1,3})(?=(\d{3})+$)/g;
+            //     return arr[0].replace(re,"$1,") + (arr.length == 2 ? "."+arr[1] : "");
+            // }
+
+        });
+
+    </script>
+</body>
+
+</html>

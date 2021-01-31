@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    onclick 事件https://www.fooish.com/jquery/events.html
+ -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
+    <link rel="stylesheet" href="css/cloversky.css">
+    <script src="./js/all.js"></script>
+    <style>
+/*    */
+    
+ </style>
+</head>
+
+<body>
+    <div class="headerPage"></div>
+    <div id="second_mains" class="shop_process">
+        <div class="top_page">
+            <div class="process">
+                <a href="./project_shopcart_step1.html">
+                    <span>1 步驟一</span>
+                </a>
+                <a href="./project_shopcart_step2.html">
+                    <span>2 填寫訂購資料</span>
+                </a>
+                <a href="./project_shopcart_step3.html">
+                    <span>3 完成訂購</span>
+                </a>
+            </div>
+        </div>
+   
+
+        <div class="process3">
+            <div></div>
+            <span></span>
+            <div></div>
+            <span></span>
+            <div></div>
+        </div>
+     
+
+        <div id="customers"></div>
+        <!-- <form id="myForm" method="post"> -->
+        <form id="myForm">
+            <table class="TB_SHOPCART">
+                <caption>付款方式</caption>
+                <thead>
+                    <tr>
+                        <th>商品</th>
+                        <th>価格</th>
+                        <th>数量</th>
+                        <th>小計</th>
+                      
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <!-- <button id="btnShow" type='submit'>Try</button> -->
+            </table>
+            <button id="btn_Show" type="button">送出訂單</button>
+            <!-- <div class="submit-button"><input type="submit" id="submit" value="Submit" /></div> -->
+        </form>
+
+ 
+    </div>
+     
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/format.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".headerPage").load("project_header.html"); 
+            $(".process span:nth-child(2)").css("background-color","grey")
+            process_color();
+
+            $.ajax({
+                type: 'get',
+                url: allurl + '/reirasys_api/user_info.php', 
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)   
+                    console.log(data.list) 
+                    console.log(data["recip_ifno"])
+
+                    $.each(data["recip_ifno"], function (i, val) {
+                        console.log(i) //key
+                        console.log(val) //value
+
+                        if (i != "list"){
+                            $("#customers").append(
+                                "<tr><td>" + (val) + "</td><tr>"
+                            )
+                        } else{
+                            $.each(data.list, function (i, val) {
+                                console.log(i) //key
+                                console.log(val) //value
+                                $(".TB_SHOPCART tbody")
+                                    .append("<tr><td name='fname0' id='fname0'><img src='./images/cloversky/" + val.item_no + "_1.jpg'  alt=''><p>"+ val.name +"</p></td>"+
+                                            "<td name='fname1' id='fname1'>" + number_format(val.price) + "</td>"+
+                                            "<td name='fname2' id='fname2'>"+ val.amount + "</td>" +
+                                            "<td name='fname3' id='fname3'>" + number_format(val.amount *  val.price)  + "</td >"+
+                                            "</tr>"
+                                            )
+                            })
+                        }
+                    })
+                }
+            })
+
+            var data = JSON.parse(localStorage.getItem("cart"));
+            console.log(data)
+            // console.log(data[1].price)
+
+            $.each(data, function (i, val) {
+                console.log(i)
+                console.log(val.name)
+                console.log(data[i].name)
+                
+                $(".TB_SHOPCART tbody")
+                    .append("<tr><td name='fname0' id='fname0'><img src='./images/cloversky/" + data[i].item_no + "_1.jpg'  alt=''><p>"+ (data[i].name)+"</p></td>"+
+                            "<td name='fname1' id='fname1'>" + number_format(data[i].price) + "</td>"+
+                            "<td name='fname2' id='fname2'>"+data[i].amount + "</td>" +
+                            "<td name='fname3' id='fname3'>" + number_format(data[i].amount *  data[i].price)  + "</td >"+
+                            "</tr>"
+                            )
+            })
+            
+             
+
+            var tr_len = $('table.TB_SHOPCART tbody tr').length
+            console.log("tr_len" + tr_len);
+                // $('table.TB_SHOPCART tr')
+        
+
+            var ss_total=0;
+            $('.TB_SHOPCART td[id^=fname]').each(function () {
+                    //   formVals +=  this.id + '=' + ($(this).text()) + ";";
+                    // ss_total += $(this).text() ;    
+                    console.log(this)       
+            });
+            // console.log("ss_total" + ss_total);
+
+             
+           
+            $("#btn_Show").on("click", function(e) {
+
+                var loginStatus = login_status();
+                loginStatus.then(function(data) {
+                    console.log('loginStatus:', data);
+                    console.log(data.success)
+                    if (data.success=="N"){
+                        alert("請登入會員");
+                        window.location.href = "project_cloversky_login.html";
+                        // $("button#log_out").text("login");
+                    }else{
+                    //送出訂單
+                        $.ajax({
+                            url: allurl +'/reirasys_api/add_to_shopcart.php',
+                            type: 'post',
+                            // contentType: 'application/json',
+                            // headers: {
+                            // 'Content-Type': 'application/x-www-form-urlencoded'
+                            // },
+                            dataType: 'json',
+                            // 直接用localstorage 傳
+                            data: { data: localStorage.getItem("cart") },
+                            // data: {data: postData},
+                            // data: JSON.stringify(postData),
+                            // data: { id: "111", user: "frank" },
+                            success: function (data) {
+                                console.log(data)
+                                localStorage.removeItem("cart");
+                                document.location.href= "project_shopcart_step3.html";
+                                // alert(data)
+                                $('#output').html(data);
+                            },
+                            // success: function (result) {
+                            //     console.log(result); // result是json物件
+                            // }
+                        });
+
+   
+
+                        // $.ajax({
+                        //     url: allurl +'/reirasys_api/form_fetch_api.php',
+                        //     type: 'post',
+                        //     contentType: "application/json",
+                        //     data: (localStorage.getItem("cart")),
+                        //     success: function (data) {
+                        //         console.log(data)
+                        //     }
+                        // });
+// console.log(localStorage.getItem("cart"));
+//                         fetch(allurl +'/reirasys_api/form_fetch_shopcar_api.php',
+//                         {
+//                             method: 'POST', 
+//                             body: (localStorage.getItem("cart")),
+//                             headers: {      
+//                                 'Content-Type': 'application/x-www-form-urlencoded' 
+//                             },
+//                         }).then(res => res.text())
+//                             .then(text => console.log(text))
+//                             .then(response => {
+//                                 console.log(response)
+//                             });
+                    
+
+                }
+                }).fail(function() { 
+                    console.log('err');
+                });
+                
+
+                // var fields = $(this).serialize();
+                // localStorage.setItem("eloqua-fields", JSON.stringify(fields));
+                
+
+               
+            });
+
+ 
+           
+
+             
+        });
+
+    </script>
+</body>
+
+</html>

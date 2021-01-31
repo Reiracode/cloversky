@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rhome</title>
+    <link rel="stylesheet" href="css/cloversky.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet"> -->
+    
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet"> --> 
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- 開場animation -->
+    <!-- <div id="preloader">
+        <div id="load_icon">
+            <div id="load_icon_div">
+                <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                    y="0px" viewBox="0 0 600 400" style="enable-background:new 0 0 600 400;" xml:space="preserve">
+                
+                    <path class="logo0"
+                        d="m312.5,117.4375c0,1 -0.60321,2.061264 0,5c1.531281,7.460236 8.105988,10.452133 18,9c20.659302,-3.032135 36.405975,-16.607307 48,-29c7.26236,-7.762627 12,-14 13,-16c0,0 -1,1 -2,2l0,0" />
+                
+                    <path class="logo1"
+                        d="m134.5,110.4375c0,0 1.402176,1.057922 0,18c-7.023933,84.868515 -18.381805,98.262314 -25,113c-3.664078,8.159317 -6.296997,12.613831 -9,15c-1.676331,1.479828 -3.236649,1.943726 -5,1c-3.178925,-1.701309 -8.629318,-18.847427 -11,-30c-2.734795,-12.865494 -3,-35 -3,-55c0,-16 -0.220192,-34.045731 3,-49c2.808563,-13.042702 6.179451,-22.465919 11,-30c3.450989,-5.393578 8.763046,-9.380554 15,-13c3.867996,-2.244682 8.977341,-4.095444 13,-5c4.974792,-1.11866 12.06456,-1.800911 17,-1c6.242889,1.013084 10,5 14,8c4,3 7.494461,6.739754 11,14c2.341522,4.849464 3.45314,12.010269 3,22c-0.500519,11.034012 -5.149643,24.395859 -12,38c-6.248093,12.408112 -13.928726,23.061401 -26,37c-6.959091,8.035614 -14.702507,13.563492 -20,16c-5.745941,2.642761 -9,3 -12,3c-1,0 -2,-1 -2,-2c0,0 0,-1 1,-1c1,0 2.65593,2.389023 6,5c4.595985,3.58844 11.463234,9.896072 21,15c11.461777,6.134155 24.815857,11.04805 39,13c15.881546,2.185547 29.360306,3.310394 43,0c7.400909,-1.796234 15.228851,-6.729614 20,-11c4.215088,-3.772675 5.498291,-9.937958 6,-16c0.412399,-4.982956 3.684952,-16.997437 -1,-27c-0.599854,-1.280701 -2,-2 -3,-2c-1,0 -3,0 -5,1c-2,1 -4.881516,3.190277 -8,5c-1.93399,1.122345 -2.693436,2.458801 -4,3c-0.923874,0.38269 -1.173096,0.852737 -2,2c-1.307449,1.813995 -2.486252,2.823746 -3,5c-0.459503,1.946503 -1,4 -1,6c0,3 -1.159134,6.171631 0,10c1.04483,3.450851 7,11 9,13c4,4 10.025208,7.881332 15,9c4.022659,0.904556 10.176971,1.654816 15,0c6.345108,-2.177063 10.660645,-6.384644 19,-16c6.552032,-7.554535 10,-16 10,-19c0,-2 0,-4 0,-6c0,-2 0,-4 0,-4c0,-1 0,-1 0,2c0,0 0,2 0,3c0,3 0,7 2,12c2,5 6,11 8,13c3,3 4.878571,5.493454 8,6c1.974182,0.320358 6.186005,0.307449 8,-1c4.589081,-3.307617 8,-13 10,-22c2,-9 3.762665,-15.050415 6,-25c0.904572,-4.022659 2,-7 2,-8c0,-1 0,-1 0,0c0,0 0.292908,0.292892 1,1c1.414215,1.414215 6.014587,0.704391 9,1c5.074219,0.502441 10.412079,0.968552 14,3c3.691956,2.090347 6.498749,5.946716 7,13c0.283569,3.989944 0,11 0,16c0,5 -0.838745,9.796265 3,13c1.716736,1.432755 7.102112,3.005325 12,2c7.460236,-1.531265 15.702484,-8.162888 23,-15c6.727997,-6.303497 10.100739,-11.282349 15,-20c5.276642,-9.389191 5,-13 5,-13c0,0 -1.877655,1.06601 -3,3c-1.809723,3.118484 -3.789856,5.07843 -5,8c-1.711426,4.131714 -4.115875,7.963837 -5,11c-1.152771,3.958679 -2,7 -2,10c0,2 -0.615417,3.211792 0,4c2.537415,3.249847 7,1 11,1c3,0 6,-1 8,-3c1,-1 1.633453,-2.022476 2,-5c0.503784,-4.092209 1.340149,-12.027252 2,-20c0.501709,-6.062042 1,-14 1,-18c0,-2 -1,-3 -2,-3c-2,0 -3,0 -3,1c0,0 0.190277,0.881516 2,4c2.24469,3.867996 5.226868,8.817978 10,15c5.257172,6.80896 14.357056,16.218552 23,20c10.44574,4.57019 23.077637,6.418518 36,5c18.328979,-2.012009 48.641357,-32.672485 53,-42c5.896545,-12.618668 5,-15 6,-17l0,0"
+                        id="svg_49" />
+                
+                    <path class="logo2" d="M195.57,313.39c117.94-29.56,177.87-41.23,179.79-35c0.33,1.07-1.06,2.68-4.17,4.82" />
+                </svg> 
+            </div>
+        </div>
+    </div> -->
+<div>
+<nav class="headerPage"></nav>
+<section class="bgimgx">
+    <div class="slider">
+        <div class="show_box">
+            <img src="./images/cloversky/top1.jpg" alt="">
+            <!-- <img src="./images/cloversky/test.svg" alt=""> -->
+        </div>
+
+        <div class="img_all">
+            <img class="active" src="./images/cloversky/top1.jpg" alt="">
+            <img src="./images/cloversky/top2.jpg" alt="">
+            <img src="./images/cloversky/top3.jpg" alt="">
+        </div>
+
+        <div class="img_mask" data-content="01"></div>
+
+        <div class="img_all_desc">   
+            <div class="title_bgi active">
+                <h2>Your living room is for life</h2>
+                <p>
+                    It’s the room where everything comes together. 
+                </p>
+            </div>
+            <div class="title_bgi">
+                
+                <p>Big or small, your living room gives you the space to socialise, relax, store and display your favourite things, work or even take a nap.</p>
+            </div>
+            <div class="title_bgi">
+
+                <h2>Turn on the light
+                in your home</h2>
+
+                <p>Let life be beautiful like summer flowers and death like autumn leaves.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="newarrivals">
+    <div class="section_header hideme">
+        <span></span>
+        <h2 class="title1">NEW ARRIVALS</h2>
+    </div>
+
+    <div class="newimgs"></div>
+    <div class="get_more">
+        <a href="./project_cloversky_allitems.html">read more</a>
+    </div>
+</section>
+
+<section class="flex_sec3">
+    <div class="section_header hideme">
+        <span></span>
+        <h2 class="title1">STORIES</h2>
+    </div>
+    
+    <div class="flex_sec3_main">
+        <div class="flex_alink3">
+            <a href="#">
+                <figure class="flex_list_img">
+                    <img src="./images/cloversky/flex_list_img01.jpeg" class="item-pic-3" alt="">	
+                    <figcaption>
+                        <span>2019.07.01</span>
+                        <p>-実験-　輪ジミはどのぐらいの時間で発生するのか　その２</p>
+                    </figcaption> 
+                </figure>
+            </a>
+        </div>
+
+        <div class="flex_alink3">
+            <a href="#">
+                <figure class="flex_list_img">
+                    <img src="./images/cloversky/flex_list_img01.jpeg" class="item-pic-3" alt="">      
+                    <figcaption>
+                        <span>2019.07.01</span>
+                        <p>-実験-　輪ジミはどのぐらいの時間で発生するのか　その２</p>
+                    </figcaption> 
+                </figure>
+            </a>
+        </div>
+
+        <div class="flex_alink3">
+            <a href="#">
+                <figure class="flex_list_img">
+                    <img src="./images/cloversky/flex_list_img03.jpeg" class="item-pic-3" alt="">
+                    <figcaption>
+                        <span>2019.07.01</span>
+                        <p>-実験-　輪ジミはどのぐらいの時間で発生するのか　その２</p>
+                    </figcaption> 
+                </figure>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="flex_sec3">
+    <div class="section_header hideme">
+        <span></span>
+        <h2 class="title1">ABOUT US</h2>
+    </div>
+
+    <div class="wrap_about">
+        <div id="triangle-topleft"></div>
+        <div id="triangle-up"></div>
+        <div id="triangle-right"></div>
+        <figure class="clip_head">
+            <img src="./images/cloversky/photo2.jpeg"  alt="">
+            <figcaption>
+                <h3>inara</h3>
+                <span>FASHION LOOKBOOK</span>
+            </figcaption> 
+        </figure>  
+    </div> 
+</section>
+
+<section class="flex_sec3">
+    <div class="section_header hideme">
+        <span></span>
+        <h2 class="title1">DESIGNER</h2>
+    </div>
+
+    <div class="col-2 col-2-bg">
+        <figure class="col-2-img">
+            <img src="./images/cloversky/reira_logo.jpeg" alt="">
+            <figcaption>
+                <h3>Reira</h3>
+                <p>プロダクトデザイナー。Design Studio S代表。エレクトロニクス製品から、文具、家具、食器、ホテルなど、生活に関わるデザインを軸に活動している。</p>
+            </figcaption>
+        </figure>
+        <figure class="col-2-img">
+            <img src="./images/cloversky/000000000122_1.jpg" alt="">
+            <figcaption>
+                <h3>文江 氏</h3>
+                <p>プロダクトデザイナー。Design Studio S代表。エレクトロニクス製品から、文具、家具、食器、ホテルなど、生活に関わるデザインを軸に活動している。</p>
+            </figcaption>
+        </figure>
+    </div>
+</section>
+
+<footer>
+    <div class="info_wrap">
+        <div class="footer_item">
+            <div class="customer">
+                <h2>CUSTOMER SUPPORT</h2>
+                <p>Tel:+27-211111-424-1037</p>
+                <p>Fax:+27-21-424-1036</p>
+                <p>Contact by Mail</p>
+            </div>
+        </div>
+        <div class="footer_item">
+            <div class="hour">
+                <h2>BUSINESS HOURS</h2>
+                <p>Mon-Fri.08:00-17:00</p>
+                <p>Saturday.08:00-12:00</p>
+            </div>
+        </div>
+        <div class="footer_item">
+            <h2>RESOURCES</h2>
+            <ul>
+                <li><a href="#">Reservatiob and Booking</a></li>
+                <li><a href="#">Booking Condition</a></li>
+                <li><a href="#">Visa and Passport</a></li>
+                <li><a href="#">About Siyabona Africa (Pty) Ltd</a></li>
+            </ul>
+        </div>
+        <div class="footer_item">
+            <ul class="block contact">
+                <h2>CONTACT</h2>
+                <li class="place"><i class="fas fa-map-marker"></i>732/21 Second Street, Manchester, King Street, Kingston United Kingdom</li>
+                <li><i class="fas fa-mobile"></i>345-677-554</li>
+                <li><i class="fas fa-phone"></i>323-678-567</li>
+                <li><i class="far fa-envelope"></i>info@altairtheme.com</li>
+                <li><i class="fas fa-globe"></i>themegoods.com</li>
+            </ul>
+        </div>
+    </div>
+    <p>2020 &copy;cloversky</p> 
+</footer>  
+
+</div>
+
+
+<script src="./js/jquery.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+<script src="./js/format.js"></script>
+
+<script>
+    // one page style
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+    let vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    
+    $(window).on('load', function () { 
+        $('#load_icon').delay(2200).fadeOut(800); 
+        $("#preloader").delay(3550).fadeOut("slow"); 
+        $(".headerPage").load("project_header.html");
+        $(".headerPage").css({ opacity: "0" });
+    });
+
+
+
+// $(function(){
+    
+    console.log("load")
+    $.ajax({
+        type: "GET",
+        url: allurl + '/reirasys_api/shopitems.php',
+        dataType: 'json',             
+        success: function (data) {               
+            // var datass = data.items;
+            myResponse = data.items;
+            myResponse.sort((ele1,elem2)=> Math.random() - Math.random())
+            for (p = 0; p< 8; p++){
+                //  console.log(myResponse[p].id)
+                $('.newimgs').append(`
+                    
+                        <figure class="list_img">
+                            <img src='./images/cloversky/${myResponse[p].id}_1.jpg' class="" alt="">
+                            <figcaption>
+                            <p>${myResponse[p].title}</p>
+                        <a href="./project_cloversky_searchitems.html?item_id=${myResponse[p].id}"></a>
+                            </figcaption>		
+                        </figure>   
+                    
+                `);
+            }
+        }
+    });
+
+$('.newimgs').on('touchstart', '.list_img', function (e) {
+    // var link = $(this); //preselect the link
+    // if (link.hasClass('hover')) {
+    //     return true;
+    // } else {
+    //     link.addClass('hover');
+    //     $('.newimgs').not(this).removeClass('hover');
+    //     return false; //extra, and to make sure the function has consistent return points
+    // }
+
+    $(this).addClass('hover').siblings().removeClass('hover');
+});
+
+
+    var h = $(window).height();
+    function visibleHideme() {
+        $('.hideme').each(function (index) {
+            var scroll = $(window).scrollTop(); 
+            var windowHeight = $(window).height();
+            var imgPos = $(this).offset().top;
+            var imgPtom= imgPos + $(this).innerHeight();
+            // $('.hideme:nth(1)').css('background-color','pink')
+            if ((scroll > imgPos - windowHeight + windowHeight / 5)
+                && (scroll < imgPtom - windowHeight + windowHeight*0.8)) {
+                $(this).find( "span" ).css('height', '120px');
+            // }else {
+            //     $(this).css('opacity', '0');
+            }
+        });
+    }
+    visibleHideme();
+
+    $(window).scroll(function () {     
+        if ($(window).height()*0.3  >= $(window).scrollTop()) {
+            $('.headerPage').css({ opacity: "0" });
+        } else {
+            $('.headerPage').css({ opacity: "1" });
+        }
+        visibleHideme();
+    })
+    
+    var param = location.search
+    console.log(param)  
+    // 將選取出來的元素快取到記憶體中
+    // 如果元素會重複使用到，而且選取出來的結果不會產生變化時，盡量將已經選取出來的元素儲存到變數中
+    // ，避免每次使用時都必須再選取一次、再重新解析一次文件。
+    // ps.最常用的應該是：$this = $(this);
+    // https://ithelp.ithome.com.tw/articles/10185668
+
+
+    // 在JS/jQuery中，怎麽觸發input的keypress/keydown/keyup事件
+    $("#search1_btn").on("click",function(e){
+        console.log($(this))
+        let curId = $(this).attr("id").replace("_button", "")
+        console.log(curId)
+        var e = $.Event("keyup");
+        e.keyCode = 13;
+        $("#" + curId).trigger(e);
+    })
+
+    $(".bgimgx").on("click",function(e){
+        $(".bgimgx").addClass('active');
+    })
+
+    // enter
+    $("#MakeShopSearch").keypress(e=>{
+        if (e.keyCode == 13 || e.which == 13) {
+            search_Item()
+        }    
+    })
+
+    // click search
+    $("#MakeShopSearch_btn").click((e)=>{
+        search_Item()       
+    })
+
+    function search_Item(){
+        var keystring = $("#MakeShopSearch").val();
+        console.log("keystring"+keystring)
+        // console.log(people)
+        if (!keystring) {
+            alert("null")
+            return false;
+        }
+        window.location.href = "project_cloversky_searchItem.html?search=" + keystring ;
+        // window.location.replace("./project_cloversky_searchItem.html");
+    }
+
+
+//js
+    var as = [...document.querySelectorAll('.img_all>img')]
+    const imgArr = [];
+    as.forEach(item =>  imgArr.push(item.getAttribute("src")))
+    console.log(imgArr)
+
+    //jq   
+    var arrLength = imgArr.length;
+    var lmgLast = arrLength - 1;
+    
+    var nowPic = 0;
+    var nextPic= 0 ;
+    function loop() {
+        var dir = $(this).data("dir");
+        var nexti = imgArr.splice(0, 1).toString();
+        imgArr.push(nexti);
+        // // console.log(imgArr)
+        nowPic = (nowPic+1) % arrLength;
+        nextPic = (nextPic+1) % arrLength;
+// console.log(nowPic)
+// console.log(nextPic)
+        // $(".img_all_desc div")
+        $('.title_bgi')
+            .eq(nowPic)
+            .addClass("active")
+            .siblings().removeClass("active")
+console.log(nowPic);
+
+ 
+        $(".img_all img")
+            .eq(nowPic)
+            .addClass("active")
+            .siblings().removeClass("active");
+
+        $(".show_box img").animate({opacity: 0.1 }, 800);
+        $(".show_box img").attr("src", imgArr[2]).animate({opacity: 1 }, 1000); 
+        // $(".show_box img").attr("src", imgArr[0]).animate({opacity: 1 }, 1000); 
+
+        
+    var title_span = document.querySelector('.img_mask');
+    title_span.dataset.content = 'Posso alterar usando o dataset';
+    title_span.setAttribute('data-content', "0"+ (nextPic+1));
+
+    }
+
+    function do_slide(){
+        setInterval(function(){
+            loop();
+        }, 5000);
+    }
+
+    do_slide();
+    // $(".circle_btn:last").click();
+
+
+
+
+</script> 
+</body>
+</html>

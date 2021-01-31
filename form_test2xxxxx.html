@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--關於送出表單的幾個方式   
+    submit
+    onsubmit
+    onclick
+    return
+
+    document.ready  and trigger function
+    
+    3' form post sealized value must have name
+
+    https://api.jquery.com/jQuery.post/
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <form action="#" onsubmit="return check()" id="sign_up0"> -->
+    <form id="sign_up" >
+        　<input type="text" id="name">
+        　<input type="email" id="email">
+        　<input type="password" id="pwd">
+        　<input type="submit" value="会員登録sign_up">
+    </form>
+
+    <form action="project_cloverskyA.html" id="sign_up0">
+        1+1=<input type="text" id="text1" />
+        <input type="submit" value="提交sign_up0" />
+    </form>
+
+    <form action="./form_test2_next.html" id="sign_up2"  method="POST">
+        <input type="text" name="textBox" id="keybox">
+        <button type="submit" name="send2" id="send2">sign_up2送信する</button>
+    </form>
+
+    <form action="#" id="say_form" method="post">
+        <input type="text" name="say" id="say">
+        <button name="say_btn" id="say_btn">say_btn</button>
+    </form>
+
+
+    <form action="./form_test2_next.html"  id="more_form" method="get" >
+        <input type="text" name="indexs" id="indexs">
+        <!-- <input type="submit" value="submit"> -->
+        <button id="more">Send my greeting</button>
+    </form>
+
+    <!-- <form  id="more_form1" method="get"> -->
+        <input type="text" name="nono" id="nono">
+        <!-- <input type="submit" value="submit"> -->
+        <button id="noform">NO</button>
+    <!-- </form> -->
+<!-- 1' method="post"   
+    ==>Form Data say:reira
+    
+2' no submit no post action#:   >>
+ /form_test2.html?say=jay&say_btn=#
+ query string parameters
+  -->
+
+<!-- <form name="all_view_top" 
+                        method="post" 
+                        onsubmit="return check()"
+                        action="project_cloversky_searchItem.html"
+                        style="margin: 0;padding: 0;">
+                        <input name='user' placeholder='user'><br>
+                        <input type="submit" name="search" value="search">
+                    </form> -->
+
+
+<!-- <form  class="login" onsubmit='return onSubmit(this)'>
+                    1+1=<input type="text" id="text1" />
+                    <input type="submit" value="提交" />
+                </form>
+                </div> -->
+
+<!-- <div class="form_sarch">
+                <input type="text" name="" id="MakeShopSearch">
+                <a href="javascript:;" id="MakeShopSearch_btn" 
+                >檢索</a>
+                </div> -->
+<!-- 
+                <div class="form_sarch">
+                <input type="text" id="MakeShopTopSearchInput" onkeydown="javascript:MakeShop_TopSearch(event, 'MakeShopTopSearchInput');">
+                <a href="javascript:void(0)" id="MakeShopTopSearchButton" onClick="javascript:MakeShop_TopSearch(event, 'MakeShopTopSearchInput');">検索</a>
+                </div> -->
+
+<!-- <div class="form_sarch">
+                <input type="text" name="" id="search1">
+                <a href="javascript:;" id="search1_btn">檢索search1_btn</a> -->
+<!-- <a href="#" onClick="showDiv(1);">1</a> -->
+<!-- <a href="javascript:void(0);"  onClick="test()" >點我</a> -->
+<!-- </div> -->
+    <!-- 避免預設的連結動作 ， onclick="return Test2(); 必須要加  -->
+    <a href="./project_cloverskyA.html" onclick="Test1();">點我</a>
+    <a href="./project_cloverskyA.html" onclick="return Test2();">點我</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    // not ready document
+        function Test1() {
+            event.preventDefault();
+            console.log("test1")
+        }
+        function Test2() {
+            console.log("test2")
+            return false 
+        }
+
+        $(function () {
+            $("#say_btn").on('click',function name(params) {
+                  let saystring= $("#say").val();
+                  console.log(saystring)
+
+                  check33(saystring)
+                // return false;
+            })
+
+            $("#sign_up0").on('submit',myFunc);
+            function myFunc(e){
+                e.preventDefault;
+                console.log(e)
+                var text1 = $("#text1").val();
+                console.log("text1" + text1);
+
+                if (text1.length == 0) {
+                    alert("text1名前入力してください。");
+                    return false;
+                };
+            }
+
+            $('#sign_up').submit(function () {
+                var name = $('#name').val();
+                if (name.length == 0) {
+                    alert("名前を入力してください。");
+                    return false;
+                }else{
+                    alert("OK");
+                    // send(name);
+                      location.href = "form_test2_next.html";
+                };
+            });
+
+            // <button>要素をクリックしたら発動
+            $('#send2').click(function () {
+                if ($('#keybox').val() == '') {
+                    alert('空欄です！');
+                    // 処理を中断
+                    return false;
+                }else{             
+                    var allt = $("#sign_up2").serialize();
+                    console.log("allt"+allt)
+                    $("#sign_up2").on('submit', myFunc2);
+                    // myFunc2();
+                    function myFunc2(e) {
+                        e.preventDefault;
+                        console.log(e)
+                        var keybox = $("#keybox").val();
+                        console.log("keybox" + keybox);
+                        // return false;
+                        // window.location.href="./form_test2_next.html"+keybox
+                        // if (keybox.length == 0) {
+                        //     alert("text1名前入力してください。");
+                        //     return false;
+                        // };
+                    }
+                }
+
+
+
+               
+            });
+
+
+            // noform get的作法
+            //click => window.location.href
+           
+            $("#noform").click(()=>{
+                var index = $("#nono").val();
+                var url = "form_test2_next.html?id="+index;
+                console.log("index" + index);
+                console.log("url" + url);
+                console.log(url)
+                window.location.href= url;
+                //   window.location.href = "form_test2_next.html?index=12";
+            });
+
+            window.checkxxx = function () {
+                var text1 = $("#text1").val();
+                console.log("text1" + text1);
+                var ajaxFlag = true;//用flag的方式，使得子函式$.ajax與主函式check()互動起來
+                $.ajax({
+                    type: "POST",
+                    url: "http://127.0.0.1:8080/reirasys_api/order_query.php?id=" + text1,
+                    // url: "https://bookshelf.goodideas-studio.com/api",
+                    // async: false,//設定同步方式，非非同步！
+                    cache: false,//嚴格禁止快取！
+                    dataType: 'json',
+                    data: {
+                        text1: text1
+                    },
+                    // success: function (result) {
+                    //     console.debug(result);
+                    // }
+                    success: function (data) {
+                        console.debug(data.length);
+                        if (data.length != "5") {
+                            alert("輸入錯誤時候不能提交！");
+                            ajaxFlag = false;
+                        }
+                          $("#Results").html(data);
+                    }
+                });
+                if (!ajaxFlag) {
+                    return false;
+                }
+            }
+
+        });
+    function send(temp) {
+        location.href = "form_test2_next.html?search=" + temp ;
+    }
+
+
+
+        function check33() {
+            
+            var text1 = $("#text1").val();
+            // var text1 = e;
+            console.log("check33" + text1);
+            var ajaxFlag = true;//用flag的方式，使得子函式$.ajax與主函式check()互動起來
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8080/reirasys_api/order_query.php?id=" + text1,
+                // url: "https://bookshelf.goodideas-studio.com/api",
+                // async: false,//設定同步方式，非非同步！
+                cache: false,//嚴格禁止快取！
+                dataType: 'json',
+                data: {
+                    text1: text1
+                },
+                success: function (result) {
+                    console.debug(result);
+                    window.location.href = "project_cloverskyA.html";
+                    
+                    // console.debug(result);
+                }
+                // success: function (data) {
+                //     console.debug(data.length);
+                //     if (data.length != "5") {
+                //         alert("輸入錯誤時候不能提交！");
+                //         ajaxFlag = false;
+                //     }
+                // }
+            });
+            if (!ajaxFlag) {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

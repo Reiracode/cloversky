@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 取得dom的 p text 資料
+     ul>li*5>p{'12121'}
+    -->
+
+   
+    
+
+<ul id="catelog">
+
+<li>
+    <a href="/shopdetail/000000000846/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000008463_9Sr3j5Y.jpg"
+                alt="Extension Round Table"></div>
+        <p>Extension Round Table<small>310,000円（税込）</small></p>
+    </a>
+</li>
+
+<li>
+    <a href="/shopdetail/000000000845/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000008453_JIApaK8.jpg"
+                alt="Extension / Drop Leaf Table"></div>
+        <p>Extension / Drop Leaf Table<small>200,000円（税込）</small></p>
+    </a>
+</li>
+
+<li>
+    <a href="/shopdetail/000000000831/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000008313_HkZcdUU.jpg"
+                alt="Extension Round Table"></div>
+        <p>Extension Round Table<small>320,000円（税込）</small></p>
+    </a>
+</li>
+
+<li>
+    <a href="/shopdetail/000000000837/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000008373_QKmaUfG.jpg"
+                alt="Extension Dining Table　"></div>
+        <p>Extension Dining Table　<small>185,000円（税込）</small></p>
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/shopdetail/000000000796/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000007963_EzbyzCG.jpg"
+                alt="#3601 Drop leaf Table by Arne Jacobsen"></div>
+        <p>#3601 Drop leaf Table by Arne Jacobsen<small>410,000円（税込）</small></p>
+    </a>
+</li>
+
+<li>
+    <a href="/shopdetail/000000000832/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000008323_q6W0jx7.jpg"
+                alt="Extension Dining Table"></div>
+        <p>Extension Dining Table<small>280,000円（税込）</small></p>
+    </a>
+</li>
+
+<li>
+    <a href="/shopdetail/000000000842/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000008423_YlYhUD4.jpg"
+                alt="Drop leaf Dining Table by Ole Wanscher"></div>
+        <p>Drop leaf Dining Table by Ole Wanscher<small>810,000円（税込）</small></p>
+    </a>
+</li>
+
+<li>
+    <a href="/shopdetail/000000000784/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000007843_7LrUFDn.jpg"
+                alt="#596 Coffee Table by Peter Hvidt & Orla M&#248;lgaard Nielsen"></div>
+        <p>#596 Coffee Table by Peter Hvidt & Orla M&#248;lgaard Nielsen<small>390,000円（税込）</small></p>
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/shopdetail/000000000336/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000003363_BnNyfKw.jpg"
+                alt="Coffee Table by Peter Hvidt and Orla M&#248;lgaard-Nielsen"></div>
+        <p>Coffee Table by Peter Hvidt and Orla M&#248;lgaard-Nielsen<small>650,000円（税込）</small></p>
+    </a>
+</li>
+
+<li>
+    <a href="/shopdetail/000000000701/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000007013_QNQoVqC.jpg"
+                alt="Small Table by Severin  Hansen Jr"></div>
+        <p>Small Table by Severin Hansen Jr<small>80,000円（税込）</small></p>
+    </a>
+</li>
+
+<li>
+    <a href="/shopdetail/000000000708/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000007083_0OAsPo3.jpg"
+                alt="Small Table by Johannes Andersen"></div>
+        <p>Small Table by Johannes Andersen<small>130,000円（税込）</small></p>
+    </a>
+</li>
+
+<li>
+    <a href="/shopdetail/000000000631/table/page1/recommend/">
+        <div class="imgwrap"><img
+                src="https://shop67-makeshop.akamaized.net/shopimages/clover2016/0000000006313_jxLKzdG.jpg"
+                alt="AT304 Extension Dining Table by Hans.J.Wegner"></div>
+        <p>AT304 Extension Dining Table by Hans.J.Wegner<small>2,000,000円（税込）</small></p>
+    </a>
+</li>
+</ul> 
+
+<script src="./js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // select all li 一個集合
+        var ul =  $('#catelog li');
+        console.log(ul);
+        console.log(ul.length);
+        // ul (12)[li, li, li,,,,,]
+        var str = ul.find('p').text();
+        console.log(str);
+
+        var strr = "";
+        $('#catelog li').each(function (index, element) {
+            console.log(index);
+            console.log($(element).text());
+            var ss = $(element).text();
+            strr += "('"+ $.trim(ss) +"')";
+        })
+        console.log("strr"+strr);
+
+        // 但不能用下方的寫法
+
+        $.each(ul, function (i, val) {
+            console.log(i)
+            // 不可以這樣寫val.text()
+            // console.log(val.text()) 
+            // console.log(ul)
+            // console.log();
+            //  val =>DOM
+            //   ul => [ li,li ... ]  len:12
+
+            // var findp = ul.find('p').text(); 
+            // console.log(findp);       
+        })
+
+       
+    })
+
+
+    
+</script>
+
+</body>
+
+</html>

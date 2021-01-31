@@ -1,0 +1,142 @@
+<body>
+    <div class="header-in">
+        <div class="left">
+            <!-- <h1 class="logo">
+                <a href="./project_cloverskyA.html">
+                    <div class="spotlight-container">
+                        <div class="spotlight-text spotlight_ani">Rehome</div>
+                    </div>  
+                </a>
+            </h1> -->
+              <a href="./project_cloverskyA.html" class="logo">
+                <img src="./css/logo.svg" alt="Rehome" class="logo">
+              </a>
+              
+        </div>
+
+        <div class="right">
+            <ul class="wrapper">
+                <li>
+                    <!-- <a href=""> -->
+                    <a class="modal_open">
+                        <img src="./images/cloversky/icon-search_black.svg" alt="">
+                        <span>檢索</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="project_shopcart.html">
+                        <img src="./images/cloversky/icon-cart_black.svg" alt="">
+                        <span>購物車</span>
+                        <div class="shopart_amount"></div>
+                    </a>
+                </li>
+            </ul>
+            <button class="nav-btn" id="triger_opennav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="overlay-scale overlay">
+        <ul class="nav-global">
+            <li><a href="#">家具<small>FURNITURE</small></a></li>
+            <li><a href="#">アート＆雑貨<small>FURNITURE</small></a></li>
+            <li><a href="#">サービス<small>FURNITURE</small></a></li>
+            <li><a href="#">会社概要<small>FURNITURE</small></a></li>
+            <li><a href="#">家具<small>FURNITURE</small></a></li>
+            <li><a href="http://localhost:8080/dashboard/F2E_project/form_test2_next2.html">single sofa<small>single</small></a></li>
+            <li><a href="#">サービス<small>FURNITURE</small></a></li>
+            <li><a href="#">会社概要<small>FURNITURE</small></a></li>
+        </ul>
+    </div>
+<!-- </div> -->
+
+<div class="modal_bg">
+    <div class="modal_box start" id="search">
+        <form action="./form_test2_next2.html" id="more_form" method="get">
+            <input type="text" name="id" id="id">
+            <!-- <button id="more"> -->
+            <span class="icon-search"></span>
+            <!-- </button> -->
+            <!-- <i class="fas fa-search"></i> -->
+        </form>
+
+        <button class="modal_close">
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</div>
+<!-- <script src="./js/jquery.min.js"></script> -->
+
+<script>
+    $(function () {
+        var url = location.href;
+        console.log(url)
+        // if (url="http://localhost:8080/dashboard/F2E_project/project_cloverskyA.html"){ 
+            // $(".spotlight-text").addClass("spotlight_ani");
+        //     console.log("true")
+        // }else {
+        //     console.log("false")
+        //     $(".spotlight-text").removeClass("spotlight_ani");
+        // }
+
+        var data = JSON.parse(localStorage.getItem("cart"));
+        // console.log(data.length)
+    
+        if (!data){
+            $('.shopart_amount').css("display", "none")
+        }else{
+            //    $('.shopart_amount').addClass("cart-run");
+
+            $('.shopart_amount').text(data.length)
+        
+        }
+        
+        // no animate
+        // modal search
+        $(".modal_open").on('click', function (e) {
+            $(".modal_bg").css('display', 'flex');
+        })
+
+        $('.modal_bg').click((e) => {
+            console.log($(e.target))
+            console.log($(e.target).closest('.start'))
+            console.log($(e.target).closest('.start').length)
+            console.log(!$(e.target).closest('.start').length)
+
+            if (!$(e.target).closest('.start').length) {
+                // console.log("filter")
+                $('.modal_bg').css('display', 'none');
+            }
+        });
+
+            $('.modal_close').click(() => {
+            $('.modal_bg').css('display', 'none');
+        })
+
+        $("#triger_opennav").click(function (event) {
+            console.log("triger_opennav");
+            event.preventDefault();
+            event.stopPropagation();
+
+            if ($(".nav-btn").hasClass("active")) {
+                console.log("nav-btnhas:Class")
+                $(".nav-btn").removeClass("active");
+                $(".overlay-scale").removeClass("open");
+                $("body").css("overflow", "scroll");
+            } else {
+                console.log("nav-btn NOT has:Class")
+                $(".nav-btn").addClass("active");
+                $('.overlay-scale').addClass("open");
+                $("body").css("overflow", "hidden");
+            }
+        })
+
+        
+    })
+</script>
+</body>  
+  <!-- </html> -->
