@@ -1,5 +1,18 @@
 /*Plugin CSS*/
+:root {
+    --background: #005;
+	/* --primary: #88D5BF;
+	--secondary: #5D6BF8;
+    --third: #e27fcb; */
+    --primary:#edbab694;
+    --secondary: #d2691e1f;
 
+    /* button login */
+    --third: #ea9999; 
+    
+    /* shoping cart title */
+    --four: #f3f6f9;
+}
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css";
 /*  flex時 align-items: center;   
     img:hover 會變大 超出img ==>不能用
@@ -66,7 +79,7 @@ body{
 .main_body{
     height: 100vh;
     /*width:  100vw;*/
-    padding: 85px 0 30px;
+    padding: 85px 0 0px;
     /* overflow: auto; */
     height: calc(var(--vh, 1vh) * 100);
 
@@ -1896,6 +1909,7 @@ width:60px;
 
 .breadcrumb  a{  
     font-size:14px ;
+    padding: 5px;
 }
 
 /* 
@@ -2293,7 +2307,8 @@ i {
 }
 
 .far,.fas,svg{
-	color: rgb(192, 133, 24);
+    /* color: rgb(192, 133, 24); */
+    color:#d0b584;
 }
 /* svg:not(:root).svg-inline--fa{
     color:red;
