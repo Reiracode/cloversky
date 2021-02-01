@@ -242,7 +242,8 @@ getLogin_status().done(function(data) {
 
     
     // window.addEventListener('hashchange',defal, false);
-// ******* *****?id=GE240** 搜尋keyword******* ******* ******* ******* ******* *******
+// ******* *****?id=GE240** 
+// 搜尋keyword******* ******* ******* ******* ******* *******
 function  defal() {
     var allserach =   myResponse
     var results = [];
@@ -255,10 +256,9 @@ function  defal() {
         // alert("spage"+spage)
         mainPagenation(allserach,spage);
     }else{
-       
         // var toSearch = "lo";
         var toSearch = current_page()[1][1];
-         alert("?id="+ toSearch)
+        alert("?id="+ toSearch)
         console.log(toSearch)
 
         for(var i=0; i<allserach.length; i++) {
@@ -278,7 +278,7 @@ function  defal() {
     } 
     
 }
- 
+
 // ******* *****?id=GE240** 搜尋keyword******* *****       
 //  all or url?id=2 #page-2
 //  一進網頁應先判斷是否有.html 後面的值  沒有就all  有就寫入
