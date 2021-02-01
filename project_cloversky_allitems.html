@@ -81,7 +81,7 @@ $(document).ready(function () {
     console.log(current_page())
     $(".headerPage").load("project_header.html");     
     // breadcrumb
- 
+
     var currentItem = $(".items").find("[href$='" + current_page()[0] + "']");
     //  console.log(currentItem)
     $(currentItem.parents("li").get().reverse()).each(function () {
@@ -255,9 +255,11 @@ function  defal() {
         // alert("spage"+spage)
         mainPagenation(allserach,spage);
     }else{
-        alert("?id=GE240")
+       
         // var toSearch = "lo";
         var toSearch = current_page()[1][1];
+         alert("?id="+ toSearch)
+        console.log(toSearch)
 
         for(var i=0; i<allserach.length; i++) {
             for(key in allserach[i]) {

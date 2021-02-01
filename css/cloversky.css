@@ -162,47 +162,6 @@ body{
     }
 /* load-icon_end */
 
-/************* font********* */
-.spotlight-container {
-    line-height: 10vh;
-    /* background: #3F3F40; */
-    /* background:#fff; */
-    /* background: #ce9f70; */
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-    display: inline-block;
-    position: relative;       
-    z-index: 10;            
-}
-.spotlight_ani{
-    animation: fill-color 1s 1;
-    animation-timing-function: ease-in-out;
-}
-
-.spotlight-text {
-    text-transform: uppercase;
-    background:#dada8f;
-    font-size: 18px;
-    /* font-family: 'Playfair Display'; */
-    font-family:  'Cabin Sketch', cursive;
-    -webkit-background-clip: text;
-    width: 100%;
-    /* animation-name: fill-color; */
-    animation: fill-color 1s ;
-    /* animation-duration: 4s; */
-    animation-timing-function: ease-in-out;
-    font-weight: 900;
-    letter-spacing: 8px;     
-}
-
-@keyframes fill-color {
-    0%  { width: 0;  }
-    25% { width: 25%; }
-    50% { width: 50%; }
-    75% { width: 75%; }   
-    100% { width: 100%;}                 
-} 
 /* navboar */
 /* nav */
 .headerPage{

@@ -17,22 +17,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&display=swap" rel="stylesheet">
 
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@100&display=swap" rel="stylesheet">
- -->
-
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@1,100&display=swap" rel="stylesheet"> -->
-
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-
-
-<link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
-<script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
 
 <!-- top2 -->
 <style>
@@ -67,15 +56,6 @@
 
 
         .obj_text_bg{
-            /* background:#ebd1d1;
-            background:linear-gradient(#ebd1d133, #f6e2e2fa); */
-            /* background:linear-gradient(#ebd1d1, #f6e2e2e6) */
-            /**/
-            /* width:100%;
-            height: 0%;
-            bottom: 0; */
-            /* animation: drawbg1 0.8s 4s ease-in-out forwards,
-                        spin 3s 7s linear both; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -83,44 +63,28 @@
             width:100%;
             height: 100%;
             z-index: 1;
-
-        
         }
+
         .obj_text_bg1{
-            /* background: linear-gradient(#f5c13421, #d9c394); */
-           /* background: linear-gradient(#f3e7c559, #d4cfc0fa); */
-            /* background: linear-gradient(#f0ebddfa, #f3e7c559);
-            animation: drawbg11 0.8s 5s ease-in-out forwards; */
             position:absolute; 
             right:0;
             width:50%;
             height: 100%;
-}
+        }
         
 
         @keyframes drawbg1{
             to{
                 height: 100%; 
             }
-            /* 0%{height: 0%;}
-            30%{  height: 20%;}  
-            70%{  height: 50%;}
-            100%{ height: 100%; } */
         }
         @keyframes drawbg11{
             to{
                 height: 0%; 
             }
         }
-        @keyframes spin {
-            /* to{
-                background:#ebd1d170;
-            } */
-        }
+
         @keyframes drawbg{
-            /* 30%{  opacity: 0.2;}  
-            70%{  opacity: 0.5;}
-            100%{ opacity: 0.8; } */
             to {
                 opacity: 0.65;
             }
@@ -132,16 +96,8 @@
             width:100%;
         }
 
-        /* path{
-            fill:none; 
-            
-            stroke:rgb(206, 200, 199);
-            stroke-linecap: round;
-            stroke-linejoin:round;
-        } */
 
         #myPath path{
-            /* stroke: rgb(164 150 127); */
             stroke:rgb(206, 200, 199);
             stroke-linecap: round;
             stroke-linejoin:round;
@@ -153,112 +109,83 @@
             fill: none;
         }
 
-        /* @keyframes draw {
-            to{
-                stroke-dashoffset: 0;
-                fill: #bdb4b5;
-            }
-        } */
 
 
-
-h1 {
-    /* color:white;
-    font-family: 'Poiret One', cursive;
-    font-weight: bold;
-    position: absolute;
-    top: calc(50% - 64px);
-    left: calc(50% - 160px);
-    font-size: 8rem;
-    line-height: 8rem;
-    z-index: 1;
-    -webkit-text-stroke-width: 5px;
-    -webkit-text-stroke-color:#b3a1a1;
-    -webkit-text-fill-color: white;
-    text-shadow:-8px -4px 5px #fffefc; */
-}
-/* #c4b2b29e */
-
-:root {
-    --background: #005;
-	/* --primary: #88D5BF;
-	--secondary: #5D6BF8;
-    --third: #e27fcb; */
-    --primary:#edbab694;
-    --secondary: #d2691e1f;
-    --third: #45588066;
-}
-
-
-#svg-container {
-/*   background-color: ; */
-  height: 100%;
-}
-
-#svg-1 {
-    display: block;
-    margin: auto;
-    height: 100%;
-    width:500px;
-    padding-top: 80px;
-    filter: drop-shadow(6px 6px #ffffff47);
-    /* filter: drop-shadow(0 0 0.75rem #ffffff47); */
-}
-
-.squiggle {
-    stroke-dasharray: 1280;
-    stroke-dashoffset: 1280;
-    /* animation: draw 2s linear infinite alternate; */
-    /* animation: draw 2s  linear  both; */
-    animation: draw 2s  ease-in-out forwards,
-            draw_work 1s 3s linear both;
-   
-}
- 
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
- 
-}
-
- @keyframes draw_work {
-  to {
-     /* stroke:##ea9999; */
-     /* stroke:#f5d1d8; */
-     /* stroke:url(#myGradient); */
-     /* stroke:#ffcfcffa; */
-     /* stroke:#e7e2fb; */
-     stroke:#ffffff;
-  }
- 
-}
-
-
-@media screen and (max-width: 767px){
-    .test{
-        /* height: 50%; */
-        position: absolute;
-        /* top:30%; */
-    }
-    .test img{
-        object-fit: fill;
-    }
-    svg{
-        position: absolute;
-        /* top: 30%; */
-        /* height: 50%; */
-        width: 100%;
+    :root {
+        --background: #005;
+        /* --primary: #88D5BF;
+        --secondary: #5D6BF8;
+        --third: #e27fcb; */
+        --primary:#edbab694;
+        --secondary: #d2691e1f;
+        --third: #45588066;
     }
 
-     #svg-1{
-         position: unset;
-         width:80vw;
-     }
-   
-}
 
- 
+    #svg-container {
+        /*   background-color: ; */
+        height: 100%;
+    }
+
+    #svg-1 {
+        display: block;
+        margin: auto;
+        height: 100%;
+        width:500px;
+        padding-top: 80px;
+        filter: drop-shadow(6px 6px #ffffff47);
+        /* filter: drop-shadow(0 0 0.75rem #ffffff47); */
+    }
+
+    .squiggle {
+        stroke-dasharray: 1280;
+        stroke-dashoffset: 1280;
+        /* animation: draw 2s linear infinite alternate; */
+        /* animation: draw 2s  linear  both; */
+        animation: draw 2s  ease-in-out forwards,
+                draw_work 1s 3s linear both;
+    }
+
+    @keyframes draw {
+        to {
+            stroke-dashoffset: 0;
+        }  
+    }
+
+    @keyframes draw_work {
+        to {
+            /* stroke:##ea9999; */
+            /* stroke:#f5d1d8; */
+            /* stroke:url(#myGradient); */
+            /* stroke:#ffcfcffa; */
+            /* stroke:#e7e2fb; */
+            stroke:#ffffff;
+        }
+    }
+
+
+    @media screen and (max-width: 767px){
+        .test{
+            /* height: 50%; */
+            position: absolute;
+            /* top:30%; */
+        }
+        .test img{
+            object-fit: fill;
+        }
+        svg{
+            position: absolute;
+            /* top: 30%; */
+            /* height: 50%; */
+            width: 100%;
+        }
+
+        #svg-1{
+            position: unset;
+            width:80vw;
+        }
+    }
+
 </style>
 </head>
 <body>
@@ -287,12 +214,8 @@ h1 {
             <div class="slider">
                 <div class="logox">   
                     <div class="test">
-                        <!-- <img src="./images/cloversky/top35.jpg" alt=""> -->
-                    <!-- <img src="./images/cloversky/myhome1.jpeg" alt=""> -->
-                    <img src="./images/cloversky/top2.jpg" alt="">
+                        <img src="./images/cloversky/top2.jpg" alt="">
                     </div>
-
-
                 
                     <div class="obj_text_bg">  
                         <div id="svg-container">
@@ -1624,32 +1547,16 @@ h1 {
     </div>
 
 
-<script src="./js/jquery.min.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-<script src="./js/format.js"></script>
- 
+    <script src="./js/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <script src="./js/format.js"></script>
 
+    <script>
+    const logo = document.querySelectorAll("#mypath path");
 
-<script>
-
-
-const logo = document.querySelectorAll("#mypath path");
-
-for (let i=0; i<logo.length; i++){
-  console.log(`Letter ${i} is ${logo[i].getTotalLength()}`)
-  
-}
-//     Splitting();
-// $( document ).ready( function()
-// {
-// 	$( '.buzz' ).each( function()
-// 	{
-// 		$( this ).attr( 'data-buzz' , $( this ).text() );
-// 	} );
-// } );
-
-
-
+    for (let i=0; i<logo.length; i++){
+        console.log(`Letter ${i} is ${logo[i].getTotalLength()}`)
+    }
 
     // one page style
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
@@ -1663,8 +1570,7 @@ for (let i=0; i<logo.length; i++){
         $(".headerPage").load("project_header.html");
         $(".headerPage").css({ opacity: "0" });
     });
-
-// $(function(){
+ 
     console.log("load")
     $.ajax({
         type: "GET",
@@ -1677,7 +1583,6 @@ for (let i=0; i<logo.length; i++){
             for (p = 0; p< 8; p++){
                 //  console.log(myResponse[p].id)
                 $('.newimgs').append(`
-                    
                         <figure class="list_img">
                             <img src='./images/cloversky/${myResponse[p].id}_1.jpg' class="" alt="">
                             <figcaption>
@@ -1691,18 +1596,18 @@ for (let i=0; i<logo.length; i++){
         }
     });
 
-$('.newimgs').on('touchstart', '.list_img', function (e) {
-    // var link = $(this); //preselect the link
-    // if (link.hasClass('hover')) {
-    //     return true;
-    // } else {
-    //     link.addClass('hover');
-    //     $('.newimgs').not(this).removeClass('hover');
-    //     return false; //extra, and to make sure the function has consistent return points
-    // }
+    $('.newimgs').on('touchstart', '.list_img', function (e) {
+        // var link = $(this); //preselect the link
+        // if (link.hasClass('hover')) {
+        //     return true;
+        // } else {
+        //     link.addClass('hover');
+        //     $('.newimgs').not(this).removeClass('hover');
+        //     return false; //extra, and to make sure the function has consistent return points
+        // }
 
-    $(this).addClass('hover').siblings().removeClass('hover');
-});
+        $(this).addClass('hover').siblings().removeClass('hover');
+    });
 
 
     var h = $(window).height();
@@ -1712,12 +1617,10 @@ $('.newimgs').on('touchstart', '.list_img', function (e) {
             var windowHeight = $(window).height();
             var imgPos = $(this).offset().top;
             var imgPtom= imgPos + $(this).innerHeight();
-            // $('.hideme:nth(1)').css('background-color','pink')
+
             if ((scroll > imgPos - windowHeight + windowHeight / 5)
                 && (scroll < imgPtom - windowHeight + windowHeight*0.8)) {
                 $(this).find( "span" ).css('height', '120px');
-            // }else {
-            //     $(this).css('opacity', '0');
             }
         });
     }
@@ -1776,11 +1679,10 @@ $('.newimgs').on('touchstart', '.list_img', function (e) {
             return false;
         }
         window.location.href = "project_cloversky_searchItem.html?search=" + keystring ;
-        // window.location.replace("./project_cloversky_searchItem.html");
     }
 
 
-//js
+    //js
     var as = [...document.querySelectorAll('.img_all img')]
     const imgArr = [];
     as.forEach(item =>  imgArr.push(item.getAttribute("src")))
@@ -1792,15 +1694,15 @@ $('.newimgs').on('touchstart', '.list_img', function (e) {
     var nowPic = 2;
     // var nowPic = 0;
     var nextPic= 0 ;
+
     function loop() {
         var dir = $(this).data("dir");
         var nexti = imgArr.splice(0, 1).toString();
         imgArr.push(nexti);
-        // // console.log(imgArr)
+        
         nowPic = (nowPic+1) % arrLength;
         nextPic = (nextPic+1) % arrLength;
-// console.log(nowPic)
-// console.log(nextPic)
+ 
         // $(".img_all_desc div")
         $('.title_bgi')
             .eq(nowPic)
@@ -1817,9 +1719,9 @@ $('.newimgs').on('touchstart', '.list_img', function (e) {
         // $(".show_box img").attr("src", imgArr[0]).animate({opacity: 1 }, 1000); 
 
         
-    var title_span = document.querySelector('.img_mask');
-    title_span.dataset.content = 'Posso alterar usando o dataset';
-    title_span.setAttribute('data-content', "0"+ (nextPic+1));
+        var title_span = document.querySelector('.img_mask');
+        title_span.dataset.content = 'Posso alterar usando o dataset';
+        title_span.setAttribute('data-content', "0"+ (nextPic+1));
 
     }
 
@@ -1830,10 +1732,6 @@ $('.newimgs').on('touchstart', '.list_img', function (e) {
     }
 
     do_slide();
-    // $(".circle_btn:last").click();
-
-
-
 
 </script> 
 </body>
