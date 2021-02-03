@@ -50,12 +50,14 @@
 
   <script src="./js/jquery.min.js"></script>
 <script src="./js/format.js"></script>
+
     <script>
 
 
         $(document).ready(function () {  
 
              $(".headerPage").load("project_header.html");
+
           //safari 100vh bug
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -183,14 +185,14 @@
 // JSON.stringify 將陣列轉換為 JSON 字串
 
 
-           $("#btn_Show").on("click", function(e) {
+            $("#btn_Show").on("click", function(e) {
                 var categoryList = login_status();
                 console.log(categoryList)
 
-                // getLogin_format;
-                categoryList.then(function(data) {
-                    console.log('呼び出し先', data);
-                    if (data=="N"){
+                var usernaem = !!(JSON.parse(localStorage.getItem("user"))) ? localStorage.getItem("user") : "N"
+                console.log(usernaem)
+
+                if (usernaem=="N"){
                         alert("請先登入");
                         window.location.href = "project_cloversky_login.html";
                         // $("button#log_out").text("login");
@@ -199,9 +201,22 @@
                         window.location.href = "project_shopcart_step1.html";
                         $("button#log_out").text("logout");
                     }
-                }).fail(function() { 
-                    console.log('err');
-                });
+                
+                // getLogin_format;
+                // categoryList.then(function(data) {
+                //     console.log('呼び出し先', data);
+                //     if (data=="N"){
+                //         alert("請先登入");
+                //         window.location.href = "project_cloversky_login.html";
+                //         // $("button#log_out").text("login");
+                //     }else{
+                //         console.log("YYYY")
+                //         window.location.href = "project_shopcart_step1.html";
+                //         $("button#log_out").text("logout");
+                //     }
+                // }).fail(function() { 
+                //     console.log('err');
+                // });
                 // e.preventDefault();
                 var sstring = localStorage.getItem("cart")
                 console.log(sstring)
