@@ -213,13 +213,15 @@ getLogin_status().done(function(data) {
     var myResponse;
         $.ajax({
             type: "GET",
-            url: allurl + '/reirasys_api/shopitems.php',
+            // url: allurl + '/reirasys_api/shopitems.php',
+ url: 'https://reiracode.github.io/ajax/allitems.json',
             // async: false,//設定同步方式，非非同步=同步！
             // cache: false,//嚴格禁止快取！
             dataType: 'json',             
             success: function (data) {               
                 // var datass = data.items;
                 myResponse = data.items;
+                console.log(data.items)
                 localStorage.setItem("all_item", JSON.stringify(myResponse));
                 
                 // 一進來的頁面
@@ -394,7 +396,8 @@ function  defal() {
             var testring ='class="'+ classtype +'"&cloumn='+classname;
             $.ajax({
                     type: "GET",
-                    url: allurl + '/reirasys_api/shopitem.php?'+ testring,
+                    // url: allurl + '/reirasys_api/shopitem.php?'+ testring,
+                     url: 'https://reiracode.github.io/ajax/allitems.json',
                     dataType: 'json',             
                     success: function (data) {    
                         console.log(data)           
