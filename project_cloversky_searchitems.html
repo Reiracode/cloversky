@@ -449,7 +449,7 @@ $(".add_cart").click(function () {
     console.log(localStorage.getItem("cart"))
     //本次+localStorage.getItem("cart")
     console.log(cart)
-    
+    // 如果沒   0==>1 有效果      空的==>1 沒效果
     if (newItem.amount=="" || newItem.amount ==0 ){
         alert("請選擇數量");
         $(".amount").focus();
@@ -475,9 +475,9 @@ $(".add_cart").click(function () {
             localStorage.setItem("cart", JSON.stringify(cart));
             //  setCart();
 
-
             var data1 = JSON.parse(localStorage.getItem("cart"));
-           
+
+        
             $('.shopart_amount')
             .text(data1.length)
             .addClass("cart-run");

@@ -77,10 +77,11 @@
         // }
 
         var data = JSON.parse(localStorage.getItem("cart"));
-        // console.log(data.length)
-    
+//    console.log(data.length)
+//      console.log(!data)
         if (!data){
             $('.shopart_amount').css("display", "none")
+            //  $('.shopart_amount').css("opacity", "0")
         }else{
             //    $('.shopart_amount').addClass("cart-run");
 
