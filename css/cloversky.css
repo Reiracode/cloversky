@@ -1434,9 +1434,7 @@ a .title p, a .title p {
 /* footer part  start */
 footer {
     background-color: #e6e7e9;
-    /* background-color: black; */
-    padding: 10px 0 30px 0;
-    /* color: white; */
+    padding:20px;
     font-size: 16px;
     position: relative; 
 }
@@ -1467,10 +1465,10 @@ footer {
 }
 
 .footer_item h2{
-    font-size: 0.8rem;
-    color: #7b8386;
+    /* font-size: 0.8rem; */
+    color: #131414;
     margin: 10px 0;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
 }
 
 
