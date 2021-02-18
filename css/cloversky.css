@@ -1456,7 +1456,7 @@ footer {
      */
     color:#6b6262;
     letter-spacing: 0.15rem;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     word-break: break-all;
     /* display: block; */
 } 
@@ -2337,7 +2337,7 @@ i {
 }
 @media screen and (max-width: 420px){
     .col-2{
-        padding:unset;
+        padding:2rem 0;
     }
    
     .col-2-img figcaption{
