@@ -6,51 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rehome</title>
     <link rel="stylesheet" href="css/cloversky.css">
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;1,600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital@1&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
-<!-- <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet"> -->
-    <!-- top2 -->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet"> -->
-
-
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
-<style>
+    <style>
         body{
-            position: relative;
+            /* position: relative; */
         }
 
         .logox {
             width: 100vw;
             height: 100vh;
-             height: calc(var(--vh, 1vh) * 100);
-               min-height: -webkit-fill-available;
+            height: calc(var(--vh, 1vh) * 100);
+            min-height: -webkit-fill-available;
             position: relative;
         }
 
         .topimg {
             width: 100%;
-            /* height: 100%; */
             height: 100vh;
-             height: calc(var(--vh, 1vh) * 100);
+            height: calc(var(--vh, 1vh) * 100);
             position: absolute;
-            /* top: -8px; */
             z-index: -1;
         }
 
         .topimg img{
             height: 100%;
-              /* height: 100vh;
+            /* height: 100vh;
              height: calc(var(--vh, 1vh) * 100); */
             width:100%;
             filter: contrast(0.8)opacity(0.9);
@@ -71,7 +51,7 @@
             height: 100%;
             z-index: 1;
             /* background: linear-gradient(to right, rgb(212 55 245 / 20%), #ffffff87,#ffffff87,#7a8cf982); */
- /* background: linear-gradient(to right, rgb(205 91 172 / 60%), #ffffff87,#ffffff87,#3279beba); */
+            /* background: linear-gradient(to right, rgb(205 91 172 / 60%), #ffffff87,#ffffff87,#3279beba); */
         }
 
         .obj_text_bg1{
@@ -122,9 +102,6 @@
 
     :root {
         --background: #005;
-        /* --primary: #88D5BF;
-        --secondary: #5D6BF8;
-        --third: #e27fcb; */
         --primary:#edbab694;
         --secondary: #d2691e1f;
         --third: #45588066;
@@ -136,44 +113,44 @@
         height: 100%;
     }
 
-    /* svg */
-    #svg-1 {
-        /* display: block; */
-        margin: auto;
-        height: 100%;
-        width:500px;
-        padding-top: 80px;      
-        filter: drop-shadow(6px 6px #ffffff47);
-         /* filter: drop-shadow(6px 6px #380505ec); */
-    }
-/* path class */
-    .squiggle {
-        stroke-dasharray: 1280;
-        stroke-dashoffset: 1280;
-        animation: draw 2s 5s linear both,
-                    draw_work 1s 7s linear both;
-    }
-/* draw 手寫字 draw_work 變白 */
-    @keyframes draw {
-        to {
-            stroke-dashoffset: 0;
-        }  
-    }
-    @keyframes drawhandwriting{
-        to {
-            stroke-dashoffset: 0;
-        }  
-    }
-    @keyframes draw_work {
-        to {
-            /* stroke:##ea9999; */
-            /* stroke:#f5d1d8; */
-            /* stroke:url(#myGradient); */
-            /* stroke:#ffcfcffa; */
-            /* stroke:#e7e2fb; */
-            stroke:#ffffff;
+        /* svg */
+        #svg-1 {
+            /* display: block; */
+            margin: auto;
+            height: 100%;
+            width:500px;
+            padding-top: 80px;      
+            filter: drop-shadow(6px 6px #ffffff47);
+            /* filter: drop-shadow(6px 6px #380505ec); */
         }
-    }
+    /* path class */
+        .squiggle {
+            stroke-dasharray: 1280;
+            stroke-dashoffset: 1280;
+            animation: draw 2s 5s linear both,
+                        draw_work 1s 7s linear both;
+        }
+        /* draw 手寫字 draw_work 變白 */
+            @keyframes draw {
+                to {
+                    stroke-dashoffset: 0;
+                }  
+            }
+            @keyframes drawhandwriting{
+                to {
+                    stroke-dashoffset: 0;
+                }  
+            }
+            @keyframes draw_work {
+                to {
+                    /* stroke:##ea9999; */
+                    /* stroke:#f5d1d8; */
+                    /* stroke:url(#myGradient); */
+                    /* stroke:#ffcfcffa; */
+                    /* stroke:#e7e2fb; */
+                    stroke:#ffffff;
+                }
+            }
 
 
     @media screen and (max-width: 767px){
@@ -196,14 +173,12 @@
             width:80vw;
         }
 
-         #svg2{
+        #svg2{
              /* height: ; */
             height: 100vh;
              height: calc(var(--vh, 1vh) * 100);
-         
         }
     }
- 
 
 /* general reset/setup styling for icons - needed on all */
 .icon::before {
@@ -393,11 +368,13 @@ h2.title1.active::before {
                 
                     </div>
 
-                    <div class="obj_text_bg1"></div>
+                    <div class="obj_text_bg1">
+                        <!-- <p>Explore Something Amazing</p> -->
+                    </div>
                     <!-- <svg id="svg2" version="1.0" xmlns="http://www.w3.org/2000/svg"
                            viewBox="0 0 450.000000 339.000000"       width="100%"  height="100%" 
                         preserveAspectRatio="none">   -->
-                <svg  id="svg2" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                    <svg  id="svg2" version="1.0" xmlns="http://www.w3.org/2000/svg"
               
                      viewBox="0 0 450.000000 339.000000"
                     preserveAspectRatio="none"> 
@@ -1558,9 +1535,6 @@ h2.title1.active::before {
                         <path d="M2027 21 c-3 -14 0 -21 9 -21 16 0 18 9 5 28 -6 10 -10 9 -14 -7z"/>
                         </g>
                     </svg>
-                
-                
-                
                 </div>  
 
         </section>
@@ -1597,8 +1571,9 @@ h2.title1.active::before {
                         <figure class="flex_list_img">
                             <img src="./images/cloversky/flex_list_img01.jpeg" class="item-pic-3" alt="">	
                             <figcaption>
-                                <span>2019.07.01</span>
-                                <p>-実験-　輪ジミはどのぐらいの時間で発生するのか　その２</p>
+                                <h3>新生活キャンペーン配送料無料</h3>
+                                <p>*￥30,000以上のお買い上げでメインエリア内で配送料が無料2021年5月13日（木）まで</p>
+                                <span>2021年5月13日（木）まで</span>
                             </figcaption> 
                         </figure>
                     </a>
@@ -1609,8 +1584,8 @@ h2.title1.active::before {
                         <figure class="flex_list_img">
                             <img src="./images/cloversky/flex_list_img02.jpeg" class="item-pic-3" alt="">      
                             <figcaption>
-                                <span>2019.07.01</span>
-                                <p>-実験-　輪ジミはどのぐらいの時間で発生するのか　その２</p>
+                                <h3>新しい習慣でおしゃれな部屋づくりをはじめよう</h3>
+                                <p>新しい習慣で自分らしい暮らしを始めませんか。​好きなものに囲まれて、暮らしを丁寧に心地よく整えることで、希望と自信に満ち溢れた毎日を送りましょう。</p>
                             </figcaption> 
                         </figure>
                     </a>
@@ -1621,8 +1596,8 @@ h2.title1.active::before {
                         <figure class="flex_list_img">
                             <img src="./images/cloversky/flex_list_img03.jpeg" class="item-pic-3" alt="">
                             <figcaption>
-                                <span>2019.07.01</span>
-                                <p>-実験-　輪ジミはどのぐらいの時間で発生するのか　その２</p>
+                                <h3>冬の終わりとともに、古きを捨て、新しきを得る</h3>
+                                <p>春のインスピレーションあふれる新商品が登場しました。 より軽やかでフレッシュな色合いや、冬の間待ち焦がれていた自然とのふれあいを楽しめるアイテムが揃っています。 メインテーマは、エレガントなシンプルさ。すっきりとしたフォルムは、機能や素材のよさを際立たせます。</p>
                             </figcaption> 
                         </figure>
                     </a>
@@ -1642,10 +1617,12 @@ h2.title1.active::before {
                 <div id="triangle-up"></div>
                 <div id="triangle-right"></div>
                 <figure class="clip_head">
-                    <img src="./images/cloversky/photo2.jpeg"  alt="">
+                    <!-- <img src="./images/cloversky/photo2.jpeg"  alt=""> -->
+                    <img src="./images/cloversky/top1.jpg"  alt="">
                     <figcaption>
-                        <h3>inara</h3>
-                        <span>FASHION LOOKBOOK</span>
+                        <h3>Cloversky Familyメンバーになろう！</h3>
+                        <span>お買い物だけではなくイケアを最大限楽しめる特典が満載！（入会費・年会費無料）</span>
+                        <span class="pub__btn__inner"><span class="pub__btn__label">詳しく見る</span>
                     </figcaption> 
                 </figure>  
             </div> 
@@ -1662,7 +1639,7 @@ h2.title1.active::before {
                     <img src="./images/cloversky/reira_logo.jpeg" alt="">
                     <figcaption>
                         <h3>Reira</h3>
-                        <p>プロダクトデザイナー。Design Studio S代表。エレクトロニクス製品から、文具、家具、食器、ホテルなど、生活に関わるデザインを軸に活動している。</p>
+                        <p>プロダクトデザイナー。Front-End Web Application Developer, 生活に関わるデザインを軸に活動している。</p>
                     </figcaption>
                 </figure>
                 <figure class="col-2-img">
@@ -1774,7 +1751,8 @@ h2.title1.active::before {
                         <figure class="list_img">
                             <img src='./images/cloversky/${myResponse[p].id}_1.jpg' class="" alt="">
                             <figcaption>
-                            <p>${myResponse[p].title}</p>
+                            <p style="background: #fabfbfb5;padding: 10px;">${myResponse[p].title}</p>
+                            <p>${myResponse[p].price}</p>
                         <a href="./project_cloversky_searchitems.html?item_id=${myResponse[p].id}"></a>
                             </figcaption>		
                         </figure>   
