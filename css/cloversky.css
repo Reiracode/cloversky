@@ -1151,6 +1151,11 @@ figure.clip_head figcaption h3::after{
 }
 
 
+@media(max-width:600px){
+figure.clip_head figcaption h3::after{content: unset;}
+figure.clip_head figcaption h3:before{content: unset;}
+}
+
 .wrap_about{
     background-color: #d2691e1f;
     position: relative;
