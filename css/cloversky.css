@@ -1522,7 +1522,7 @@ footer {
     flex-direction: column;
     min-height: 100vh;
       /* height: 100%; */
-    background-color: pink;
+    /* background-color: pink; */
     align-items: center;
     /* padding: 85px 0 0; */
 }
