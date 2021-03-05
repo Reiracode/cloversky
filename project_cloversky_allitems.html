@@ -4,49 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <meta http-equiv="Pragma" content="Cache-Control: reload"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
-
+    <title>Rehome</title>
     <link rel="stylesheet" href="css/cloversky.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="./js/simplePagination.css" />
-     -->
-    
-    
-    
-    <title>allitem</title>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet"> -->
-    <link rel="stylesheet" href="css/cloversky.css">
-     <link type="text/css" rel="stylesheet" href="./js/simplePagination.css" />
-   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-
-    <!-- 1、top_page.innerHTML +  js jquery 共用的問題 發生selector change異常 
-    
-    3、index.html default all
-    (1)
+    <link type="text/css" rel="stylesheet" href="./js/simplePagination.css" />  
+    <!--
     ?id=lo ==> 全文檢索詞 ==> query string 
     " " ==> all 
     (2)
     下拉?class="all"/sofa
 
+    github:json
+    url: 'https://reiracode.github.io/ajax/allitems.json',
+
+    local+sql:API
+        // url: allurl + '/reirasys_api/shopitems.php',
+
+        ajax
+    defal()
+     selectclass():下拉選單
     -->
 </head>
 <body>
-    <!-- <div class="headerPage"></div>
-    <div id="second_mains"> -->
 
-<!-- <div class="main_body"> -->
-<div id="second_mains"> 
-    <div class="headerPage"></div>    
-        <!-- <div class="banFix"></div> -->
-        <div class="top_page">
+<div id="second_mains">
+    <div class="headerPage"></div>   
+    <div class="top_page">
+        <div class="select-tool">
             <select name="sources" id="myselect" class="myclass" placeholder="Source Type">
                 <option value="all">ALL</option>
             </select>
-    
+
             <nav class="items">
                 <ul>
                     <li><a href="test.html">Test 1</a></li>
@@ -66,155 +53,58 @@
             </nav>
 
             <div class="breadcrumb"></div>
-            </div>
 
-            <div class="pagination-holder clearfix">
-                <div id="light-pagination" class="paginationss"></div>
-            </div>
         </div>
+
+        <div class="product-all"></div>
+    </div>
+
+    <div class="pagination-holder clearfix">
+        <div id="light-pagination" class="paginationss"></div>
+    </div>
+</div>
 
 <script  type="text/javascript" src="./js/jquery.min.js"></script>
 <script  type="text/javascript" src="./js/jquery.simplePagination.js"></script>
 <script  type="text/javascript" src="./js/format.js"></script>
 <script>
 $(document).ready(function () {
-    console.log(current_page())
-    $(".headerPage").load("project_header.html");     
-    // breadcrumb
+    $(".headerPage").load("project_header.html");  
 
+    // breadcrumb
+    console.log(current_page())
     var currentItem = $(".items").find("[href$='" + current_page()[0] + "']");
     //  console.log(currentItem)
+
     $(currentItem.parents("li").get().reverse()).each(function () {
         //  console.log($(this).children("a"))
         $(".breadcrumb").append($(this).children("a")).append("|");
     });
 
- 
-        // function getId() {
-        //     // 追加処理      
-        //     // Ajaxで送信
-        //     return $.ajax({
-        //         url: allurl + '/reirasys_api/is_login.php',
-        //         type: 'get',
-        //         dataType: 'json' 
-        //     }).done(function (data) {
-        //         console.log(data)
-        //         console.log(data.success)
-        //         if (data.success == 'Y') {
-        //             // ({ IsLogin: true })
-        //             aa = true;
-        //         } else {
-        //             aa=  "false";
-        //             //  ({ IsLogin: false })
-        //         }
-        //     }).fail(function(jqXHR, textStatus, errorThrown) {
-        //         alert("失敗");
-        //     });
-        // }
+    //判斷有沒登入way1
+    var categoryList = login_status();
+    categoryList.then(function(data) {
+        console.log('呼び出し先', data);
+        if (data.success){
+            console.log("login success sucess")
+        }
+    }).fail(function() { 
+        console.log('err');
+    });
 
-//way1
-var categoryList = login_status();
-categoryList.then(function(data) {
-    console.log('呼び出し先', data);
-    if (data.success){
-        console.log("login success sucess")
-    }
-}).fail(function() { 
-    console.log('err');
-});
+    //way2
+    getLogin_status().done(function(data) {
+        last_id = data;
+        console.log(last_id)
+    });
 
-//way2
-getLogin_status().done(function(data) {
-    last_id = data;
-    console.log(last_id)
-});
-
-
-
-  	
-// var myHeaders = new Headers();
-// myHeaders.append('pragma', 'reload');
-// myHeaders.append('cache-control', 'reload');
-
-// var myInit = {
-//   method: 'GET',
-//   headers: myHeaders,
-// };
-    
-// fetch(allurl + '/cache/cache.txt', myInit)
-//         .then(function(response) { 
-//                console.log("cachetext")	 
-//               console.log(response)	
-//          });
-
-// fetch(allurl + '/reirasys_api/order_query.php?id=12', myInit)
-// fetch(allurl + '/reirasys_api/cache-json.php', myInit)		
-// fetch(allurl + '/cache/cache.html', myInit)		
-//     .then(res => res.json())	
-//     .then(function(response) { 
-//                console.log("cachetext")	 
-//               console.log(response)	
-//          });
-	// .then(data => {	
-    //     data.map((data)=>{	
-    //     console.log(data)	
-    //     })
-    // });
-  
-// this.addEventListener('fetch', event => {
-// 	const dataUrl = allurl + '/reirasys_api/shopitems.php';
-//     console.log(dataUrl);
-//     console.log('event.request:', event.request);
-//     event.respondWith(
-// 		caches.match(event.request).then(function (response) {
-// 			return response || fetch(event.request).then(res =>
-// 				// 存 caches 之前，要先打開 caches.open(dataCacheName)
-// 				caches.open(dataCacheName)
-// 				.then(function(cache) {
-// 					// cache.put(key, value)
-// 					// 下一次 caches.match 會對應到 event.request
-// 					cache.put(event.request, res.clone());
-// 					return res;
-// 				})
-// 			);
-// 		})
-// 	);
-// });         
-// self.addEventListener("fetch", function (event) {
-//     event.respondWith(
-//       caches.open("dynamiccache").then(function (cache) {
-//         return fetch(event.request).then(function (res) {
-//           cache.put(event.request, res.clone());
-//           return res;
-//         })
-//       })
-//     )
-//   });
-
-
-
-
-
-        // $.ajax({
-        //     type: "GET",
-        //     url: allurl + '/cache/cache.txt',
-        //     // async: false,//設定同步方式，非非同步=同步！
-        //     // cache: false,//嚴格禁止快取！
-        //     dataType: 'json',             
-        //     success: function (data) {               
-        //         // var datass = data.items;
-        //        // myResponse = data.items;
-        //        console.log(data)
-        //     }
-        // });
-
-    // dealut Íquery to ＡＰＩ
+    // dealut query to ＡＰＩ/json
     var this_page = $(".paginationss")
     var myResponse;
         $.ajax({
             type: "GET",
             // url: allurl + '/reirasys_api/shopitems.php',
- url: 'https://reiracode.github.io/ajax/allitems.json',
+            url: 'https://reiracode.github.io/ajax/allitems.json',
             // async: false,//設定同步方式，非非同步=同步！
             // cache: false,//嚴格禁止快取！
             dataType: 'json',             
@@ -223,46 +113,40 @@ getLogin_status().done(function(data) {
                 myResponse = data.items;
                 console.log(data.items)
                 localStorage.setItem("all_item", JSON.stringify(myResponse));
-                
                 // 一進來的頁面
                 // mainPagenation(data.items);
                 defal()
-                
                 selectclass()
-
             }
         });
 
+        // ajax :success==>1 myResponse,2 localStorage.setItem("all_item)
+
     function hashpage(){
-        // console.log(myResponse)
-        // console.log("The hash has changed! It's now " + location.hash);
         var w_change_page = (location.hash).substr(6, 1) ;
         mainPagenation(myResponse,w_change_page)
     }
-    // window.addEventListener('hashchange',hashpage, false);
     window.addEventListener('mouseenter',hashpage, false);
 
     
-    // window.addEventListener('hashchange',defal, false);
-// ******* *****?id=GE240** 
-// 搜尋keyword******* ******* ******* ******* ******* *******
+// ******* *****?id=GE240** 搜尋keyword******* ******* ******* ******* ******* *******
 function  defal() {
     var allserach =   myResponse
     var results = [];
-    //在#page2 refresh 
     console.log("current_page"+current_page())
+    // 第幾頁
+    console.log(myResponse)//allitems
+
     if (!Array.isArray(current_page()[1])){
         console.log(current_page()[1])
         var spage =  current_page()[1].substr(5, 1) ;
         console.log("spage"+ spage)
-        // alert("spage"+spage)
         mainPagenation(allserach,spage);
     }else{
         // var toSearch = "lo";
         var toSearch = current_page()[1][1];
         alert("?id="+ toSearch)
-        console.log(toSearch)
-
+        // console.log(toSearch)
         for(var i=0; i<allserach.length; i++) {
             for(key in allserach[i]) {
                 if(allserach[i][key].indexOf(toSearch)!=-1) {
@@ -280,78 +164,23 @@ function  defal() {
     } 
     
 }
-0
-// ******* *****?id=GE240** 搜尋keyword******* *****       
-//  all or url?id=2 #page-2
-//  一進網頁應先判斷是否有.html 後面的值  沒有就all  有就寫入
-    // function htmlsend(){    
-    //     console.log(myResponse)
-    //     console.log(location.search)//?id=GE240
-    //     var url = location.href;
-    //     console.log(url)
-    //         //再來用去尋找網址列中是否有資料傳遞(QueryString)
-    //     if (url.indexOf('?') != -1) {
-    //         var id = "";
-    //         //在此直接將各自的參數資料切割放進ary中
-    //         var ary = url.split('?')[1].split('&');
-    //         //此時ary的內容為：
-    //         //ary[0] = 'id=U001'，ary[1] = 'name=GQSM'
-    //         console.log(ary)//0: "id=123"  1: "class=sofa"
-    //         //下迴圈去搜尋每個資料參數
-    //         for (i = 0; i <= ary.length - 1; i++) {
-    //             //如果資料名稱為id的話那就把他取出來
-    //             if (ary[i].split('=')[0] == 'id')
-    //                 id = ary[i].split('=')[1];
-    //                 console.log("id:" + id)//value:table
-    //         }
-    //         console.log("檢索word:" + ary[0])
-    //         // selectorfilter(id)
-    //         console.log("id:" + id)//value:table
-    //         selectorfilter("all")
-    //     }     
-    // }      
-        
-        
-        
-        // console.log("global_data"+global_data)
-        // class index 下拉選單:不同分類 item.id
-        function selectclass(){
-            console.log(myResponse)
-            // var selectall = JSON.parse(localStorage.getItem("all_item"));
-            var selectall = myResponse;
 
-            const nameList = Object.values(selectall).map(items => items.class);
-            console.log(nameList);
+// 下拉選單:不同分類 item.id
+function selectclass(){
+    console.log(myResponse)
+    // var selectall = JSON.parse(localStorage.getItem("all_item"));
+    var selectall = myResponse;
 
-            var index = Array.from(new Set(nameList));
-            console.log(index);
+    const nameList = Object.values(selectall).map(items => items.class);
+    console.log(nameList);
 
-            for(i=0;i<index.length;i++){
-                $("#myselect").append('<option value="'+ index[i]+'">'+ index[i]+'</option>');
-            }
-        }
+    var index = Array.from(new Set(nameList));
+    console.log(index);
 
-
-    // function hashHandler() {
-	// 	console.log("The hash has changed! It's now " + location.hash);
-	// 	// console.log("pageIndex--" + pageIndex + "o.currentPage--" + o.currentPage + "location.hash" + location.hash)
-	// 	change_page = (location.hash).substr(6, 1) ;
-    //     console.log("change_page"+change_page)
-    //     var test;
-    //     $.ajax({
-    //         type: "GET",
-    //         url: allurl + '/reirasys_api/shopitems.php',
-    //         // async: false,//設定同步方式，非非同步=同步！
-    //         // cache: false,//嚴格禁止快取！
-    //         dataType: 'json',             
-    //         success: function (data) {               
-               
-    //             mainPagenation(data.items,change_page)      
-    //         }
-    //     });
-                
-	// }
-
+    for(i=0;i<index.length;i++){
+        $("#myselect").append('<option value="'+ index[i]+'">'+ index[i]+'</option>');
+    }
+}
 
 // ?id=GE240#page-3  
 // 下拉選單 ==>selectorfilter()
@@ -378,15 +207,8 @@ function  defal() {
                 // select 
                 console.log("NNNNNNNNN page")
             }
-
         }   
-
     }); 
-
-
-
-
-
 
         //下拉選單 選值後 api 取值
         function query_item(classtypeword) {
@@ -397,7 +219,7 @@ function  defal() {
             $.ajax({
                     type: "GET",
                     // url: allurl + '/reirasys_api/shopitem.php?'+ testring,
-                     url: 'https://reiracode.github.io/ajax/allitems.json',
+                    url: 'https://reiracode.github.io/ajax/allitems.json',
                     dataType: 'json',             
                     success: function (data) {    
                         console.log(data)           
@@ -408,7 +230,6 @@ function  defal() {
             });
         }
 
-    // console.log(myResponse)
     // 下拉單 selectorfilter()=>mainPagenation()
     function selectorfilter(newquery){
         console.log("all-myResponse")
@@ -417,10 +238,9 @@ function  defal() {
         if (newquery=="all"){
             var filterClass = myResponse;
         }else{
-            // 下拉選單分類
-                // var selectall = JSON.parse(localStorage.getItem("all_item"))
+                // 下拉選單分類
             var filterClass = myResponse.filter(function (item, index, array) {
-            return item.class == newquery;       
+                return item.class == newquery;       
             });
         }
 
@@ -429,9 +249,9 @@ function  defal() {
         //pass data    page : defal
     }
 
-        // var product=[];
-        //  console.log(usersname)
-        // 選擇頁數
+    // var product=[];
+    //  console.log(usersname)
+    // 選擇頁數
     function mainPagenation(data,page){
         $(".product_allitem").remove();
         console.log(data)
@@ -469,13 +289,10 @@ function  defal() {
         })
 
         // append per page structure 總頁數
-
-/* product_allitem=> product_allitem */
+        /* product_allitem=> product_allitem */
         for (p = 1; p<= totalpage; p++){
-            $('.top_page').append(`
-                <div class="product_allitem"  id='page-${p}'></div>
-            `);
-            // top_page.innerHTML += "<div class='selection' id='page-" + p + "'>"
+            // $('.top_page').append(`<div class="product_allitem"  id='page-${p}'></div>`);
+            $('.product-all').append(`<div class="product_allitem"  id='page-${p}'></div>`);
         
             for (x = 0; x < perpage_item; x++) {
                 // console.log("x"+x+"p"+p)
@@ -491,30 +308,25 @@ function  defal() {
                 }
 
                 $("#page-" + p).append("<div class='search_div'>" +
-                "<figure class='search_items'><img class='kv_image' src='./images/cloversky/" + data[max_num - 1].id + "_1.jpg'>" +
-                "</figure>" +
-                "<p class='list_item_name'>" + data[max_num - 1].title + "</p>" +
-                "<p class='list_item_price'>" + data[max_num - 1].price + "</p >" +
-                "</a></div> ")
+                    "<figure class='search_items'><img class='kv_image' src='./images/cloversky/" + data[max_num - 1].id + "_1.jpg'>" +
+                    "</figure>" +
+                    "<p class='list_item_name'>" + data[max_num - 1].title + "</p>" +
+                    "<p class='list_item_price'>" + data[max_num - 1].price + "</p >" +
+                    "</a></div> ")
 
                 $(".search_div").click(function () {
                     var index = $(".search_div").index(this);
                     console.log("index" + index);
-                    // ****
                     window.location.href = './project_cloversky_searchitems.html?item_id=' + (data[index].id);
                 });
             }
         }
-        // alert(page)
         
         if (!page){
             showPage(1) 
         }else{
-            // alert("changePage")
             showPage(page) 
         }
-
-
     }
     // console.log(product);
 
@@ -524,41 +336,19 @@ function  defal() {
         $('.product_allitem').hide();
         $(page).show();
     }
-
-// // ******* ******* 搜尋keyword******* ******* ******* ******* ******* *******
-//     var allserach = JSON.parse(localStorage.getItem("all_item"));
-//     var results = [];
-//     console.log(current_page()[1][1])
-//     if (!current_page()[1][1]){
-//     //all
+ 
 
 
 
 
-//     }else{
-//         // var toSearch = "lo";
-//         var toSearch = current_page()[1][1];
-
-//         for(var i=0; i<allserach.length; i++) {
-//             for(key in allserach[i]) {
-//                 if(allserach[i][key].indexOf(toSearch)!=-1) {
-//                 results.push(allserach[i]);
-//                 }
-//             }
-//         }
-//         console.log(results)
-//         // ******* ******* duplicate ******* ******* ******* ******* ******* *******
-//         const data = [...new Map(results.map(item => [item.id, item])).values()]
-//         console.log(data)
-//         mainPagenation(data);
-// }
 
 
-//results = {id: "000000000122", class: "singleSofa", title: "No.209 Diplomat Chair by Finn Juhl", size: "W:700 D:670 H:800 (SH460)", price: "184000", …}
+        // NOTE****************************************************
+        //results = {id: "000000000122", class: "singleSofa", title: "No.209 Diplomat Chair by Finn Juhl", size: "W:700 D:670 H:800 (SH460)", price: "184000", …}
 // 1: {id: "000000000122", class: "singleSofa", title: "No.209 Diplomat Chair by Finn Juhl", size: "W:700 D:670 H:800 (SH460)", price: "184000", …}
 // 2: {id: "000000000861", class: "CHAIR / 椅子", title: "Arm Chair", size: "W:650 D:720 H:800 (SH 410)", price: "444000", …}
 // length: 3  array
-var results = JSON.parse(localStorage.getItem("all_item"));
+        var results = JSON.parse(localStorage.getItem("all_item"));
         //  下二種方式 =(getUnique  step1) 以取出array中 的 ojbect id 組成新的array ["000000000122", "000000000122", "000000000861"]
         const nameList = Object.values(results).map(items => items.id);
         console.log(nameList);
@@ -567,21 +357,16 @@ var results = JSON.parse(localStorage.getItem("all_item"));
         // 
 //array, index id
 //  to remove the duplicate objects from an array.
-        function getUnique(arr, comp) {
-            const unique = arr
-            // (step1)
-                .map(e => e[comp])
+function getUnique(arr, comp) {
+    const unique = arr.map(e => e[comp])
+        // store the keys of the unique objects  [0, false, 2]
+        .map((e, i, final) => final.indexOf(e) === i && i)
+        // eliminate the dead keys & store unique objects
+        .filter(e => arr[e]).map(e => arr[e]);
+    return unique;
+}
 
-                // store the keys of the unique objects  [0, false, 2]
-                .map((e, i, final) => final.indexOf(e) === i && i)
-
-                // eliminate the dead keys & store unique objects
-                .filter(e => arr[e]).map(e => arr[e]);
-
-            return unique;
-        }
-
-        console.log(getUnique(results,'id'))
+console.log(getUnique(results,'id'))
 }) 
 
 /*
