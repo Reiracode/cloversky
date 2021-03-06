@@ -1943,10 +1943,12 @@ ul.breadcrumb {
 }
 
 
-
 /* shopcar step1  */
     form#myForm{
-        padding:0 5em;
+        /* padding:0 5em; */
+        flex: 1;
+        margin: 15vh 0 0;
+       
     }
 
 
@@ -1962,6 +1964,7 @@ ul.breadcrumb {
 @media screen and (min-width: 768px) and (max-width: 979px) {
     /* // 如果使用者之視窗寬度介於 768px ~ 979px，將會再載入這裡的 CSS。 */
     form#myForm{
+        /* width: 80vw; */
         /* padding:0 3em; */
     }
 }
