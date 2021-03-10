@@ -967,6 +967,10 @@ body{
     .newimgs{
         padding:1rem;
     }
+
+    .get_more{
+        width:50vw;
+    }
     /* .new_arr  {
         width: 30%;
         margin: 1.5vh 1.66% 10vh;
@@ -982,9 +986,7 @@ body{
         justify-content:center;
     }
 
-    .get_more{
-        width:50vw;
-    }
+    
     .get_more a{
         padding: 10px;
         font-size: 1rem;
@@ -1008,6 +1010,9 @@ figure.list_img:nth-child(1){
     grid-row-start: span 2;
     grid-column-start: span 2;
 }
+
+
+
 
 figure.list_img figcaption {
     position: absolute;
@@ -1034,6 +1039,7 @@ figure.list_img h2, figure.list_img p {
     -o-transform 0.35s,transform 0.35s; */
     transition: opacity 0.35s;    
 }
+
 
 
 
@@ -1080,11 +1086,11 @@ figure.list_img:hover figcaption p{
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-/* figure.list_img:hover figcaption p:nth-child(1){
-    background: #fabfbfb5;
-    text-overflow: unset;
-    overflow: hidden;
-} */
+ 
+figure.list_img:nth-child(1):hover figcaption p:nth-child(1){
+     
+    font-size: 2rem;
+}
 
 /* .list_img:hover,.list_img.hover{ */
 .list_img:hover{
@@ -1243,11 +1249,8 @@ figure.clip_head1{display: unset;}
     /* clip-path: polygon(0 0, 100% 0, 66% 100%, 0 100%); */
 }
 
-.title{
+/* .title{
     color:#ddd;
-    /* background: url(images/ta_back.jpg) repeat;     */
-    /* background: radial-gradient(circle, #aecde6c7 , #0064fb);       */
-    /* background-color:#282E34; */
     text-align:center;
     padding:50px 80px;
     text-align: justify;
@@ -1259,10 +1262,10 @@ figure.clip_head1{display: unset;}
     font-size:22px;
     letter-spacing: 5px;
     text-transform: uppercase;
-}
+} */
 
 .list_item_name,.list_item_price{
-    font-size: 0.5rem;
+    font-size: 1rem;
     text-align:center;
 }
 
@@ -1288,6 +1291,9 @@ figure.clip_head1{display: unset;}
  
 
 @media screen and (max-width: 767px){
+    .get_more{
+        width:50vw;
+    }
     .flex_sec3_main{
         flex-wrap:wrap;
     }
@@ -1495,6 +1501,7 @@ footer {
 @media screen and (max-width: 420px){
     .footer_link p{
         font-size: .8rem;
+        padding-top: 3px;
     }
 }
 
