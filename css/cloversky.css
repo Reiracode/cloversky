@@ -1269,10 +1269,7 @@ figure.clip_head1{display: unset;}
 /* section-stores */
 .flex_sec3_main{
     position: relative;
-    /* margin:10vh auto; */
     display: flex;
-    /* flex-wrap: wrap; */
-    /* flex-direction: row;  */
     padding:2vw 8vw;
     justify-content:space-evenly; 
 }
@@ -1283,15 +1280,12 @@ figure.clip_head1{display: unset;}
     width:30%;
     margin:15px 0;
     box-shadow: 0px 6px 24px rgb(99 93 93 / 20%);
-    transition: flex-grow cubic-bezier(0.2, 0.54, 0.4, 0.82) 800ms;
+    /* transition: flex-grow cubic-bezier(0.2, 0.54, 0.4, 0.82) 800ms; */
+    transition: width cubic-bezier(0.2, 0.54, 0.4, 0.82) 800ms;
+    display: flex;
+    flex-direction: column;
 }
-.flex_alink3  figcaption>p{
-   /* display: none; */
-}
-
-/* .flex_alink3:hover{
-    flex-grow: 4;
-} */
+ 
 
 @media screen and (max-width: 767px){
     .flex_sec3_main{
@@ -1324,34 +1318,45 @@ figure.clip_head1{display: unset;}
 }
 
 
-.flex_sec3_main .flex_list_img{
-    /* width:100%; */
+.flex_list_card{
+    height:200px;
 }
-
-.flex_list_img figcaption{
-    padding: 0 20px 10px;
-    height: auto;
-       /* height: 200px; */
-}
-.flex_list_img figcaption h3{
-    color:#503b3b;
-}
-.item-pic-3{
+.flex_list_card>img{
     width:100%;
-    height: 200px;
-    /* height: auto; */
+    height: 100%;
     object-fit: cover;
     border-radius: 3px;
 }
 
-.flex-
-.title-wrap{
-    text-align: center;
-    position: relative;
-    /* padding: 120px 0 60px; */
+.flex_list_descript{
+    flex-grow: 1;
+    padding: 0 20px 10px;
+}
+.flex_list_descript>h3{
+    margin: 10px 0;
+}
+.flex_list_img figcaption{
+    /* padding: 0 20px 10px;
+    height: auto; */
+}
+.flex_list_img figcaption h3{
+    /* color:#503b3b; */
+}
+.item-pic-3{
+    /* width:100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 3px; */
 }
 
-.title-wrap::before{
+
+/* .title-wrap{
+    text-align: center;
+    position: relative;
+     padding: 120px 0 60px; 
+} */
+
+/* .title-wrap::before{
     height: 100px;
     content: '';
     width: 1px;
@@ -1373,7 +1378,7 @@ figure.clip_head1{display: unset;}
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-}
+} */
 
 .flex_alink3 span,
 .flex_alink3  p{
