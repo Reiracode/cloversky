@@ -123,8 +123,8 @@
 // });
         $("#triger_opennav").click(function (event) {
             console.log("triger_opennav");
-            // event.preventDefault();
-            // event.stopPropagation();   
+            event.preventDefault();
+            event.stopPropagation();   
 
             
 
@@ -132,12 +132,13 @@
                 console.log("nav-btnhas:Class")
                 $(".nav-btn").removeClass("active");
                 $(".overlay-scale").removeClass("open");
-                // $("body").css("overflow", "scroll");
+                $("body").css("overflow", "scroll");
             } else {
                 console.log("nav-btn NOT has:Class")
                 $(".nav-btn").addClass("active");
                 $('.overlay-scale').addClass("open");
-                // $("body").css("overflow", "hidden");
+                $("body").css("overflow", "hidden");
+                // overlay body no overflow
             }
         })
 
