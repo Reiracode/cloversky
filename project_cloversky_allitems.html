@@ -25,6 +25,15 @@
     selectclass():下拉選單
     format.js current_page()
     -->
+    <style>
+    .typebutton{
+       display: inline-block;
+    border-radius: 19px;
+    padding: 10px;
+    background-color: pink;
+    cursor: pointer;
+    }
+    </style>
 </head>
 <body>
 
@@ -35,6 +44,7 @@
             <select name="sources" id="myselect" class="myclass" placeholder="Source Type">
                 <option value="all">ALL</option>
             </select>
+            <div id="ddd">ddd</div>
             <nav class="items">
                 <ul>
                     <li><a href="test.html">Test 1</a></li>
@@ -182,9 +192,16 @@ function selectclass(){
     console.log(index);
 
     for(i=0;i<index.length;i++){
-        $("#myselect").append('<option value="'+ index[i]+'">'+ index[i]+'</option>');
+        // $("#myselect").append('<option value="'+ index[i]+'">'+ index[i]+'</option>');
+        // $(".select-tool").append('<button class="typebutton">'+ index[i]+ '</button>')
+        $("#ddd").append('<a class="typebutton">'+ index[i]+ '</a>')
     }
 }
+$(document).on('click', '.typebutton', function(e) {
+      // This will work!
+       var index = $(".typebutton").index(this);
+        console.log("index" + index);
+});
 
 // ?id=GE240#page-3  
 // 下拉選單 ==>selectorfilter()
