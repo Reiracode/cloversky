@@ -8,13 +8,6 @@
     <link rel="stylesheet" href="css/cloversky.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
     <style>
-        :root {
-            --background: #005;
-            --primary:#edbab694;
-            --secondary: #d2691e1f;
-            --third: #45588066;
-        }
-
         .logox {
             width: 100vw;
             height: 100vh;
@@ -38,7 +31,6 @@
             opacity: 0;
             animation: drawbg 2s 7s cubic-bezier(.21,1.02,.73,.94) forwards;
         }
-
 
         .obj_text_bg{
             display: flex;
@@ -81,6 +73,7 @@
             stroke-dasharray: 10000;
             stroke-dashoffset:10000;
             stroke:rgb(206, 200, 199);
+            stroke:#dfc0c0;
             /* stroke:#b59e9a; */
             stroke-width: 5pt;
             /* animation: draw 6s linear both;   */
@@ -173,6 +166,7 @@
     color:#ea9999;
 }
 
+/* fontawesome persudo */
 .icon-marker::before{
     content: "\f041";
 }
@@ -220,9 +214,9 @@
 }
 
 @media screen and (max-width: 992px){
-  .topimg img{
+  /* .topimg img{
         width:unset;
-    }
+    } */
 
     #svg2{
         width:unset;
@@ -1562,9 +1556,10 @@ h2.title1.active::before {
             </div>
 
             <div class="newimgs"></div>
-            <div class="get_more">
+            <!-- <div class="get_more">
                 <a href="./project_cloversky_allitems.html">read more</a>
-            </div>
+            </div> -->
+            <a  class="get_more" href="./project_cloversky_allitems.html">read more</a>
         </section>
 
         <section class="flex_sec3">
@@ -1614,27 +1609,18 @@ h2.title1.active::before {
             </div>
 
             <div class="wrap_about">
-                <div id="triangle-topleft"></div>
+                <!-- <div id="triangle-topleft"></div>
                 <div id="triangle-up"></div>
-                <div id="triangle-right"></div>
+                <div id="triangle-right"></div> -->
                 <figure class="clip_head">
                     <img src="./images/cloversky/top3.jpg"  alt="">
                     <figcaption>
                         <h3>Cloversky Familyメンバーになろう！</h3>
                         <span>お買い物だけではなくイケアを最大限楽しめる特典が満載！（入会費・年会費無料）</span>
-                        <span class="pub__btn__inner"><span class="pub__btn__label">詳しく見る</span>
+                        <!-- <span class="pub__btn__inner"><span class="pub__btn__label">詳しく見る</span> -->
+                        <a>詳しく見る</a>
                     </figcaption> 
                 </figure>  
-
-
-                <!-- <figure class="clip_head1">
-                    <img src="./images/cloversky/flex_list_img03.jpeg"  alt="">
-                    <figcaption>
-                        <h3>Cloversky WWlyメンバーになろう！</h3>
-                        <span>お買い物だけではなくイケアを最大限楽しめる特典が満載！（入会費・年会費無料）</span>
-                        <span class="pub__btn__inner"><span class="pub__btn__label">詳しく見る</span>
-                    </figcaption> 
-                </figure> -->
             </div> 
         </section>
 
@@ -1691,6 +1677,12 @@ h2.title1.active::before {
                     <p class="test1 icontype icon-phone">323-678-567</p>
                     <p class="test1 icontype icon-email">info@altairtheme.com</p>
                     <p class="test1 icontype icon-globe">themegoods.com</p>
+
+                    <p><i class="fas fa-map-marker"></i>732/21 Second Street, Manchester, King Street, Kingston United Kingdom</p>
+                    <!-- <p><i class="fas fa-mobile-alt"></i>345-677-554</p>
+                    <p><i class="fas fa-phone"></i>323-678-567</p>
+                    <p><i class="fas fa-envelope"></i>info@altairtheme.com</p>
+                    <p><i class="fas fa-globe"></i>themegoods.com</p> -->
                 </div>
             </div>
 
@@ -1706,13 +1698,33 @@ h2.title1.active::before {
                 <div><i class="fab fa-twitter"></i></div> -->
 
                 <ul class="ct-connect">
-                    <li><a class="icon-twitter" href="https://github.com/codrops"></a></li>
+                    <!-- <li><a class="icon-twitter" href="https://github.com/codrops"></a></li>
                     <li><a class="icon-fb" href="https://github.com/codrops"></a></li>
                     <li><a class="icon-ig" href="https://github.com/codrops"></a></li>
-                    <li><a class="icon-pinterest" href="https://github.com/codrops"></a></li>
+                    <li><a class="icon-pinterest" href="https://github.com/codrops"></a></li> -->
+                    <li><a><i class="fab fa-twitter"></i></a></li>
+                    <li><a><i class="fab fa-twitter-square"></i></a></li>
+                    <li><a><i class="fab fa-instagram"></i></a></li>
+                    <li><a><i class="fab fa-facebook"></i></a></li>
                 </ul>
                 <p>&copy;2020 Reira.Co.,Ltd. All Rights Reserved.</p>
+    <!-- <div class="wrap">
+    <i class="fas fa-user fa-spin"></i>
+    <i class="fas fa-spinner fa-pulse"></i>
 
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-twitter-square"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-pinterest"></i>
+
+    <i class="fas fa-map-marker"></i>
+    <i class="fas fa-mobile-alt"></i>
+    <i class="fas fa-phone"></i>
+    <i class="fas fa-envelope"></i>
+    <i class="fas fa-globe"></i>
+    </div> -->
                 
 <!-- .icon-fb::before{
     content: "\f09a";
@@ -1733,7 +1745,11 @@ h2.title1.active::before {
 
 
     <script src="./js/jquery.min.js"></script>
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script> -->
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script> -->
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
+    <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+
+
     <script src="./js/format.js"></script>
 
     <script>
@@ -1760,13 +1776,15 @@ h2.title1.active::before {
         $("#preloader").delay(3550).fadeOut("slow"); 
         $(".headerPage").load("project_header.html");
         $(".headerPage").css({ opacity: "0" });
+        // 
+        // $("img.lazy").lazyload({effect : "fadeIn"});
     });
  
     console.log("load")
     $.ajax({
         type: "GET",
-        // url: allurl + '/reirasys_api/shopitems.php',
-        url: 'https://reiracode.github.io/ajax/allitems.json',
+        url: allurl + '/reirasys_api/shopitems.php',
+        // url: 'https://reiracode.github.io/ajax/allitems.json',
         dataType: 'json',             
         success: function (data) {               
             // var datass = data.items;
@@ -1775,9 +1793,10 @@ h2.title1.active::before {
             myResponse.sort((ele1,elem2)=> Math.random() - Math.random())
             for (p = 0; p< 8; p++){
                 //  console.log(myResponse[p].id)
+                //   <img data-original='./images/cloversky/${myResponse[p].id}_1.jpg' class="lazy" alt="">
                 $('.newimgs').append(`
                         <figure class="list_img">
-                            <img src='./images/cloversky/${myResponse[p].id}_1.jpg' class="" alt="">
+                            <img src='./images/cloversky/${myResponse[p].id}_1.jpg' alt="">
                             <figcaption>
                             <p>${myResponse[p].title}</p>
                             <p>${myResponse[p].price}</p>
@@ -1789,7 +1808,7 @@ h2.title1.active::before {
             }
         }
     });
-
+// 手機時 remove hover 屬性
     $('.newimgs').on('touchstart', '.list_img', function (e) {
         // var link = $(this); //preselect the link
         // if (link.hasClass('hover')) {
@@ -1841,7 +1860,6 @@ h2.title1.active::before {
     // ps.最常用的應該是：$this = $(this);
     // https://ithelp.ithome.com.tw/articles/10185668
 
-
     // 在JS/jQuery中，怎麽觸發input的keypress/keydown/keyup事件
     $("#search1_btn").on("click",function(e){
         console.log($(this))
@@ -1879,7 +1897,6 @@ h2.title1.active::before {
         window.location.href = "project_cloversky_searchItem.html?search=" + keystring ;
     }
 
-
     //js
     var as = [...document.querySelectorAll('.img_all img')]
     const imgArr = [];
@@ -1900,7 +1917,7 @@ h2.title1.active::before {
         
         nowPic = (nowPic+1) % arrLength;
         nextPic = (nextPic+1) % arrLength;
- 
+
         // $(".img_all_desc div")
         $('.title_bgi')
             .eq(nowPic)
@@ -1915,7 +1932,6 @@ h2.title1.active::before {
         $(".show_box img").animate({opacity: 0.1 }, 800);
         $(".show_box img").attr("src", imgArr[2]).animate({opacity: 1 }, 1000); 
         // $(".show_box img").attr("src", imgArr[0]).animate({opacity: 1 }, 1000); 
-
         
         // var title_span = document.querySelector('.img_mask');
         // title_span.dataset.content = 'Posso alterar usando o dataset';
@@ -1938,6 +1954,37 @@ h2.title1.active::before {
 
 <!-- fontawesome
 https://fontawesome.com/how-to-use/on-the-web/advanced/css-pseudo-elements
+
+note1
+1 svg animation
+  -handwriting  figma: https://www.figma.com/file/qyztQRJaNCIgVlxgWZFvQ2/Rehome?node-id=0%3A1
+  -background image : Picsvg  Free SVG converter
+
+2' flex to grid
+
+
+3'fontawsome icon  font-size
+   1- .css   pesudo
+   2- .js    font
+
+   font animation:fa-spin  fa-spinner fa-pulse"
+.svg-inline--fa
+4'getmore
+  read more to endloess div
+
+
+
+5'pesudo div :before border-top to triangle
+裝飾性的不用實體div佔空間
+
+100vh
+
+
+
+
+.shopcart.html  
+fname0>p 會影響width
+
 
 
 -->

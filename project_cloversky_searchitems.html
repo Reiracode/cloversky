@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>searchitem</title>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
+    <title>Rehome</title>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/cloversky.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet"> -->
-
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.css"> -->
 <style>
-
-
     .mini_circle_img{
         width: 30px;
         height: 30px;
@@ -115,10 +112,6 @@
 #contents div.active {
     display: block; 
 }
-
-
-
-
 </style>
 </head>
 <!-- 
@@ -127,7 +120,6 @@
 3' input type=text and number 不同
 4、js arrary search
 .fiter (x.price==1200)  //結果可以有n個(>1)的
-
 .find 只會回傳第一個為true的值//結果=1)的
 
 -->
@@ -154,18 +146,18 @@
 
     <div class="prod_detail">
         <div class="div_left">
-            <!-- mobile -->
+            <!-- mobile swiper -->
             <div class="div_mobile_swiper">
                 <div class="swiper-container">
-                    <div class="swiper-wrapper">
-
-                    </div>
+                    <div class="swiper-wrapper"></div>
                     <div class="swiper-pagination"></div>
                     <div class="swiper-button-prev swiper-button-white"></div>
                     <div class="swiper-button-next swiper-button-white"></div>
                     <div class="swiper-scrollbar"></div>
                 </div>
             </div>
+    
+            
 
             <!-- pc -->
             <div class="prod_detail_pc">
@@ -200,7 +192,8 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-info btn-block add_cart">Add to Cart</button>
+                    <!-- <button class="btn btn-info btn-block add_cart">Add to Cart</button> -->
+                    <button class="btn  add_cart">Add to Cart</button>
                 </div>
             </div> 
 
@@ -225,6 +218,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
 <script>
     $(document).ready(function () {
+
         setCart();
         // $(".headerPage").load("project_header.html");  
 
@@ -300,6 +294,14 @@
                     "<img src=./images/cloversky/" + filterListno.id + "_"+ x + ".jpg alt=swpier" + x + ">" +
                     "</div></div>")
                 }   
+            
+            // $(".bxslider")
+            //         .append("<div>"+
+            //         "<img src=./images/cloversky/" + filterListno.id + "_"+ x + ".jpg alt=swpier" + x + ">" +
+            //         "</div>")
+            //     }   
+
+
         } else {
             console.log(windowwidth.matches)
             for (x=1; x<=filterListno.imgno; x++){
@@ -309,7 +311,11 @@
             }
             $(".mini_pic .protail_img:first-child").addClass('active');
         }
-
+//   $('.bxslider').bxSlider({
+//     mode: 'fade',
+//     captions: true,
+//     slideWidth: 600
+//   });     
         //click 商品圖置換父層大圖
         $(".protail_img").click(function() {    
             //小図

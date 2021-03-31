@@ -46,9 +46,9 @@
 			// o.currentPage = change_page;
 			var self = this;
 			o.pages = o.pages ? o.pages : Math.ceil(o.items / o.itemsOnPage) ? Math.ceil(o.items / o.itemsOnPage) : 1;
-			console.log("start")
-			console.log(o.pages)//4
-			console.log(o.currentPage)//0
+			// console.log("start")
+			// console.log(o.pages)//4
+			// console.log(o.currentPage)//0
 			if (o.currentPage)
 				o.currentPage = o.currentPage - 1;
 			else
@@ -67,7 +67,7 @@
 		},
 
 		selectPage: function(page) {
-			console.log("selectPage")
+			// console.log("selectPage")
 			methods._selectPage.call(this, page - 1);
 			return this;
 		},
@@ -186,15 +186,15 @@
 				// interval = { start: 2, end: 3},
 				i,
 				tagName;
-			console.log("_draw" + interval)
-			console.log(o)
-			console.log(interval)
+			// console.log("_draw" + interval)
+			// console.log(o)
+			// console.log(interval)
 			methods.destroy.call(this);
 
 		
 
 			tagName = (typeof this.prop === 'function') ? this.prop('tagName') : this.attr('tagName');
-			console.log("_draw tagName" + tagName)
+			// console.log("_draw tagName" + tagName)
 			var $panel = tagName === 'UL' ? this : $('<ul' + (o.listStyle ? ' class="' + o.listStyle + '"' : '') + '></ul>').appendTo(this);
 
 			// Generate Prev link  prevText: "前へ"
@@ -209,25 +209,25 @@
 
 			// Generate start edges
 			if (!o.invertPageOrder) {
-				console.log("!o.invertPageOrder true") //page2 {start: 1, end: 2}
+				// console.log("!o.invertPageOrder true") //page2 {start: 1, end: 2}
 				if (interval.start > 0 && o.edges > 0) {
 					if(o.useStartEdge) {//click之前的page3   2，render 0 1
-						console.log("o.useStartEdge")//{start: 3, end: 4} edges=2 ok Math.min取最小
+						// console.log("o.useStartEdge")//{start: 3, end: 4} edges=2 ok Math.min取最小
 						var end = Math.min(o.edges, interval.start);
 						for (i = 0; i < end; i++) {
 							methods._appendItem.call(this, i);
 						}
 					}
 					if (o.edges < interval.start && (interval.start - o.edges != 1)) {
-						console.log("invertPageOrder true 1")
+						// console.log("invertPageOrder true 1")
 						$panel.append('<li class="disabled"><span class="ellipse">' + o.ellipseText + '</span></li>');
 					} else if (interval.start - o.edges == 1) {
-						console.log("invertPageOrder true 2")//{start: 3, end: 4}ok
+						// console.log("invertPageOrder true 2")//{start: 3, end: 4}ok
 						methods._appendItem.call(this, o.edges);
 					}
 				}
 			} else {
-				console.log("!o.invertPageOrder false")
+				// console.log("!o.invertPageOrder false")
 				if (interval.end < o.pages && o.edges > 0) {
 					if(o.useStartEdge) {
 						var begin = Math.max(o.pages - o.edges, interval.end);
@@ -272,7 +272,7 @@
 				}
 			} else {
 				if (interval.start > 0 && o.edges > 0) {
-					console.log("interval.start > 0 && o.edges > 0")
+					// console.log("interval.start > 0 && o.edges > 0")
 					if (o.edges < interval.start && (interval.start - o.edges != 1)) {
 						$panel.append('<li class="disabled"><span class="ellipse">' + o.ellipseText + '</span></li>');
 					} else if (interval.start - o.edges == 1) {
@@ -376,8 +376,8 @@
 			//pageIndex = click 頁數==> 顯示頁面
 			var o = this.data('pagination');
 			o.currentPage = pageIndex;
-			console.log("_selectPage")
-			console.log(o.selectOnClick)
+			// console.log("_selectPage")
+			// console.log(o.selectOnClick)
 			if (o.selectOnClick) {
 				methods._draw.call(this);
 			}
@@ -389,13 +389,13 @@
 		_ellipseClick: function($panel) {
 			//pagination button 顯示的 
 			//alert("_ellipseClick=")
-			console.log($panel)
-			console.log($panel.get())
+			// console.log($panel)
+			// console.log($panel.get())
 			var self = this,
 				o = this.data('pagination'),
 				$ellip = $panel.find('.ellipse');
-			console.log(o)
-			console.log($ellip)
+			// console.log(o)
+			// console.log($ellip)
 
 			$ellip.addClass('clickable').parent().removeClass('disabled');
 			$ellip.click(function(event) {

@@ -22,7 +22,7 @@ if (url.indexOf('/') != -1) {
     //在此直接將各自的參數資料切割放進ary中
     var ary = url.split('/');
     var add = (ary[ary.length - 1]).split('?')
-    console.log(add[0])
+    // console.log(add[0])//project_cloversky_allitems.html#page-3
 }        
 
 function process_color(){
@@ -109,7 +109,7 @@ function formTrim(formValueall){
     return data;
 }
 
-
+// allitem.html
 function current_page() {
     let url = location.href;
     if (url.indexOf('/') != -1) {
@@ -120,7 +120,7 @@ function current_page() {
         var q_string;
         if ((ustring.indexOf('?') != -1) || (ustring.indexOf('#') != -1)) {
             var ary1 = ustring.split('?');
-            console.log(ary1)
+            //console.log(ary1)//["project_cloversky_allitems.html#page-3"]
             // array 
             if (ary1.length>1){
                 ustring = ary1[0];
@@ -132,7 +132,7 @@ function current_page() {
             }else{
                 // var ary1 = ary1.toString().split('#');
                 var ary1 = ary1[0].split('#');
-                console.log(ary1)
+                //console.log(ary1)//["project_cloversky_allitems.html#page-3"]
                 ustring = ary1[0];
                 if (ary1[1].indexOf('=') != -1) {
                     // 第二層id=12

@@ -48,7 +48,7 @@
 <div class="modal_bg">
     <div class="modal_box start" id="search">
         <!-- <form action="./form_test2_next2.html" id="more_form" method="get"> -->
-             <form action="./project_cloversky_allitems.html" id="more_form" method="get">
+            <form action="./project_cloversky_allitems.html" id="more_form" method="get">
             <input type="text" name="id" id="id">
             <!-- <button id="more"> -->
             <span class="icon-search"></span>
@@ -110,22 +110,32 @@
             $('.modal_close').click(() => {
             $('.modal_bg').css('display', 'none');
         })
-
+// const menuBtn = document.querySelector('.menu-btn');
+// let menuOpen = false;
+// menuBtn.addEventListener('click', () => {
+//   if(!menuOpen) {
+//     menuBtn.classList.add('open');
+//     menuOpen = true;
+//   } else {
+//     menuBtn.classList.remove('open');
+//     menuOpen = false;
+//   }
+// });
         $("#triger_opennav").click(function (event) {
             console.log("triger_opennav");
-            event.preventDefault();
-            event.stopPropagation();
+            // event.preventDefault();
+            // event.stopPropagation();
 
             if ($(".nav-btn").hasClass("active")) {
                 console.log("nav-btnhas:Class")
                 $(".nav-btn").removeClass("active");
                 $(".overlay-scale").removeClass("open");
-                $("body").css("overflow", "scroll");
+                // $("body").css("overflow", "scroll");
             } else {
                 console.log("nav-btn NOT has:Class")
                 $(".nav-btn").addClass("active");
                 $('.overlay-scale').addClass("open");
-                $("body").css("overflow", "hidden");
+                // $("body").css("overflow", "hidden");
             }
         })
 

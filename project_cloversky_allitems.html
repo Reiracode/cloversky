@@ -7,6 +7,7 @@
     <title>Rehome</title>
     <link rel="stylesheet" href="css/cloversky.css">
     <link type="text/css" rel="stylesheet" href="./js/simplePagination.css" />  
+    <!-- filter資料 1、檢索   2'下拉選單-->
     <!--
     ?id=lo ==> 全文檢索詞 ==> query string 
     " " ==> all 
@@ -19,9 +20,10 @@
     local+sql:API
         // url: allurl + '/reirasys_api/shopitems.php',
 
-        ajax
+    //取得allitem 及分類 再分頁
     defal()
-     selectclass():下拉選單
+    selectclass():下拉選單
+    format.js current_page()
     -->
 </head>
 <body>
@@ -33,7 +35,6 @@
             <select name="sources" id="myselect" class="myclass" placeholder="Source Type">
                 <option value="all">ALL</option>
             </select>
-
             <nav class="items">
                 <ul>
                     <li><a href="test.html">Test 1</a></li>
@@ -51,11 +52,8 @@
                     <li><a href="test3.html">Test 3</a></li>
                 </ul>
             </nav>
-
             <div class="breadcrumb"></div>
-
         </div>
-
         <div class="product-all"></div>
     </div>
 
@@ -72,7 +70,7 @@ $(document).ready(function () {
     $(".headerPage").load("project_header.html");  
 
     // breadcrumb
-    console.log(current_page())
+    console.log(current_page())//["project_cloversky_allitems.html", "page-2"]
     var currentItem = $(".items").find("[href$='" + current_page()[0] + "']");
     //  console.log(currentItem)
 
@@ -81,7 +79,7 @@ $(document).ready(function () {
         $(".breadcrumb").append($(this).children("a")).append("|");
     });
 
-    //判斷有沒登入way1
+    //判斷有沒登入way1***************************************
     var categoryList = login_status();
     categoryList.then(function(data) {
         console.log('呼び出し先', data);
@@ -97,45 +95,48 @@ $(document).ready(function () {
         last_id = data;
         console.log(last_id)
     });
-
-    // dealut query to ＡＰＩ/json
+    //判斷有沒登入way1***************************************
+    // dealut query to API/json
     var this_page = $(".paginationss")
     var myResponse;
-        $.ajax({
-            type: "GET",
-            // url: allurl + '/reirasys_api/shopitems.php',
-            url: 'https://reiracode.github.io/ajax/allitems.json',
-            // async: false,//設定同步方式，非非同步=同步！
-            // cache: false,//嚴格禁止快取！
-            dataType: 'json',             
-            success: function (data) {               
-                // var datass = data.items;
-                myResponse = data.items;
-                console.log(data.items)
-                localStorage.setItem("all_item", JSON.stringify(myResponse));
-                // 一進來的頁面
-                // mainPagenation(data.items);
-                defal()
-                selectclass()
-            }
-        });
+    $.ajax({
+        type: "GET",
+        url: allurl + '/reirasys_api/shopitems.php',
+        // url: 'https://reiracode.github.io/ajax/allitems.json',
+        // async: false,//設定同步方式，非非同步=同步！
+        // cache: false,//嚴格禁止快取！
+        dataType: 'json',             
+        success: function (data) {               
+            // var datass = data.items;
+            myResponse = data.items;
+            // myResponse globe
+            localStorage.setItem("all_item", JSON.stringify(myResponse));
+            // 一進來的頁面
+            // mainPagenation(data.items);
+            defal()
+            selectclass()
+        }
+    });
 
-        // ajax :success==>1 myResponse,2 localStorage.setItem("all_item)
-
-    function hashpage(){
-        var w_change_page = (location.hash).substr(6, 1) ;
-        mainPagenation(myResponse,w_change_page)
-    }
-    window.addEventListener('mouseenter',hashpage, false);
+    // ajax :success==>1 myResponse,2 localStorage.setItem("all_item)
+    // 忘了為什麼要寫這個hover click
+    // function hashpage(){
+    //     var w_change_page = (location.hash).substr(6, 1) ;
+    //     console.log(w_change_page)
+    //     mainPagenation(myResponse,w_change_page)
+    // }
+    // console.log(hashpage)
+    // window.addEventListener('mouseenter',hashpage, false);
 
     
 // ******* *****?id=GE240** 搜尋keyword******* ******* ******* ******* ******* *******
+//如果aseaarch時 數量不同 把result傳入
 function  defal() {
+    console.log(myResponse)//allitems
     var allserach =   myResponse
     var results = [];
     console.log("current_page"+current_page())
     // 第幾頁
-    console.log(myResponse)//allitems
 
     if (!Array.isArray(current_page()[1])){
         console.log(current_page()[1])
@@ -143,9 +144,12 @@ function  defal() {
         console.log("spage"+ spage)
         mainPagenation(allserach,spage);
     }else{
+        //toSearch 檢索http://localhost:8080/dashboard/F2E_project/cloversky/project_cloversky_allitems.html?id=GE290
+        // 取網址後的變數
         // var toSearch = "lo";
         var toSearch = current_page()[1][1];
         alert("?id="+ toSearch)
+
         // console.log(toSearch)
         for(var i=0; i<allserach.length; i++) {
             for(key in allserach[i]) {
@@ -165,7 +169,7 @@ function  defal() {
     
 }
 
-// 下拉選單:不同分類 item.id
+// 産生下拉選單:不同分類 item.id
 function selectclass(){
     console.log(myResponse)
     // var selectall = JSON.parse(localStorage.getItem("all_item"));
@@ -186,9 +190,9 @@ function selectclass(){
 // 下拉選單 ==>selectorfilter()
     $('#myselect').change(function(){
         var newquery = $("#myselect").val();
-        console.log("newquery"+newquery)
+        console.log("newquery" + newquery);
         // pass  newquery  ==> selectorfilter render
-        selectorfilter(newquery)
+        selectorfilter(newquery);
         
         var url = location.href;
         console.log(url)
@@ -218,8 +222,8 @@ function selectclass(){
             var testring ='class="'+ classtype +'"&cloumn='+classname;
             $.ajax({
                     type: "GET",
-                    // url: allurl + '/reirasys_api/shopitem.php?'+ testring,
-                    url: 'https://reiracode.github.io/ajax/allitems.json',
+                    url: allurl + '/reirasys_api/shopitem.php?'+ testring,
+                    // url: 'https://reiracode.github.io/ajax/allitems.json',
                     dataType: 'json',             
                     success: function (data) {    
                         console.log(data)           
@@ -348,25 +352,25 @@ function selectclass(){
 // 1: {id: "000000000122", class: "singleSofa", title: "No.209 Diplomat Chair by Finn Juhl", size: "W:700 D:670 H:800 (SH460)", price: "184000", …}
 // 2: {id: "000000000861", class: "CHAIR / 椅子", title: "Arm Chair", size: "W:650 D:720 H:800 (SH 410)", price: "444000", …}
 // length: 3  array
-        var results = JSON.parse(localStorage.getItem("all_item"));
-        //  下二種方式 =(getUnique  step1) 以取出array中 的 ojbect id 組成新的array ["000000000122", "000000000122", "000000000861"]
-        const nameList = Object.values(results).map(items => items.id);
-        console.log(nameList);
-        const nameList1 = results.map(items => items.id);
-        console.log(nameList1);
+        // var results = JSON.parse(localStorage.getItem("all_item"));
+        // //  下二種方式 =(getUnique  step1) 以取出array中 的 ojbect id 組成新的array ["000000000122", "000000000122", "000000000861"]
+        // const nameList = Object.values(results).map(items => items.id);
+        // console.log(nameList);
+        // const nameList1 = results.map(items => items.id);    
+        // console.log(nameList1);
         // 
 //array, index id
 //  to remove the duplicate objects from an array.
-function getUnique(arr, comp) {
-    const unique = arr.map(e => e[comp])
-        // store the keys of the unique objects  [0, false, 2]
-        .map((e, i, final) => final.indexOf(e) === i && i)
-        // eliminate the dead keys & store unique objects
-        .filter(e => arr[e]).map(e => arr[e]);
-    return unique;
-}
+        //     function getUnique(arr, comp) {
+        //         const unique = arr.map(e => e[comp])
+        //             // store the keys of the unique objects  [0, false, 2]
+        //             .map((e, i, final) => final.indexOf(e) === i && i)
+        //             // eliminate the dead keys & store unique objects
+        //             .filter(e => arr[e]).map(e => arr[e]);
+        //         return unique;
+        //     }
 
-console.log(getUnique(results,'id'))
+        // console.log(getUnique(results,'id'))
 }) 
 
 /*
