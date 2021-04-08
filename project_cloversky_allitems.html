@@ -27,11 +27,16 @@
     -->
     <style>
     .typebutton{
-       display: inline-block;
-    border-radius: 19px;
-    padding: 10px;
-    background-color: pink;
-    cursor: pointer;
+        display: inline-block;
+        border-radius: 19px;
+        padding: 10px;
+        background-color:#ea9999;
+        color:white;
+        cursor: pointer;
+        font-size: .9rem;
+    }
+    .typebutton.active{
+        background-color:pink;
     }
     </style>
 </head>
@@ -41,10 +46,12 @@
     <div class="headerPage"></div>   
     <div class="top_page">
         <div class="select-tool">
-            <select name="sources" id="myselect" class="myclass" placeholder="Source Type">
+          
+            <!-- <select name="sources" id="myselect" class="myclass" placeholder="Source Type">
                 <option value="all">ALL</option>
-            </select>
-            <div id="ddd">ddd</div>
+            </select> -->
+            <!-- <div id="ddd">ddd</div> -->
+
             <nav class="items">
                 <ul>
                     <li><a href="test.html">Test 1</a></li>
@@ -63,6 +70,8 @@
                 </ul>
             </nav>
             <div class="breadcrumb"></div>
+            <div class="select-div"><li data-target='all' class="typebutton">ALL</li></div>
+              <!-- <li data-target='all' class="typebutton">ALL</li> -->
         </div>
         <div class="product-all"></div>
     </div>
@@ -192,15 +201,23 @@ function selectclass(){
     console.log(index);
 
     for(i=0;i<index.length;i++){
-        // $("#myselect").append('<option value="'+ index[i]+'">'+ index[i]+'</option>');
-        // $(".select-tool").append('<button class="typebutton">'+ index[i]+ '</button>')
-        $("#ddd").append('<a class="typebutton">'+ index[i]+ '</a>')
+        console.log(index[i])
+        $("#myselect").append('<option value="'+ index[i]+'">'+ index[i]+'</option>');
+        $(".select-div").append('<li data-target= '+ index[i]+' class="typebutton">'+ index[i]+ '</li>')
     }
 }
 $(document).on('click', '.typebutton', function(e) {
-      // This will work!
-       var index = $(".typebutton").index(this);
-        console.log("index" + index);
+    // This will work!
+    var index = $(".typebutton").index(this);
+    console.log("index" + index);
+    // var a =e.target.data("target");
+    console.log(e.target)
+    console.log($(this).data("target"))
+
+    selectorfilter($(this).data("target"));
+    $(this).addClass('active').siblings('li').removeClass('active');
+
+    //  selectorfilter(newquery);
 });
 
 // ?id=GE240#page-3  
@@ -251,20 +268,20 @@ $(document).on('click', '.typebutton', function(e) {
             });
         }
 
-    // 下拉單 selectorfilter()=>mainPagenation()
+    // 下拉選單 selectorfilter()=> 算頁數mainPagenation()
     function selectorfilter(newquery){
         console.log("all-myResponse")
         console.log(myResponse)
-        
+        //ajax  myResponse = data.items;
+        let filterClass;
         if (newquery=="all"){
-            var filterClass = myResponse;
+            filterClass = myResponse;
         }else{
                 // 下拉選單分類
-            var filterClass = myResponse.filter(function (item, index, array) {
+            filterClass = myResponse.filter(function (item, index, array) {
                 return item.class == newquery;       
             });
         }
-
         console.log(filterClass);
         mainPagenation(filterClass)
         //pass data    page : defal
