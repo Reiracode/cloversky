@@ -11,15 +11,15 @@
         .logox {
             width: 100vw;
             height: 100vh;
-            height: calc(var(--vh, 1vh) * 100);
+            /* height: calc(var(--vh, 1vh) * 100); */
             min-height: -webkit-fill-available;
             position: relative;
         }
 
         .topimg {
             width: 100%;
-            height: 100vh;
-            height: calc(var(--vh, 1vh) * 100);
+            height: 100%;
+            /* height: calc(var(--vh, 1vh) * 100); */
             position: absolute;
             z-index: -1;
         }
@@ -214,11 +214,11 @@
 }
 
 @media screen and (max-width: 992px){
-  /* .topimg img{
+  .topimg img{
         width:unset;
-    } */
+    } 
 
-    #svg2{
+     #svg2{
         width:unset;
     }
 }
@@ -1748,11 +1748,16 @@ h2.title1.active::before {
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script> -->
     <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
     <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"></script>
+<!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script> -->
 
 
     <script src="./js/format.js"></script>
 
     <script>
+
+gsap.from(".newimgs", { opacity: 0, y: 100, delay:5,duration: 1});
+gsap.from(".flex_sec3_main", { opacity: 0, y: 100, delay:9,duration: 1});
     const logo = document.querySelectorAll("#mypath path");
 
     for (let i=0; i<logo.length; i++){
@@ -1946,6 +1951,8 @@ h2.title1.active::before {
     // }
 
     // do_slide();
+
+
 
 </script> 
 </body>

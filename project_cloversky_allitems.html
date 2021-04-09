@@ -35,7 +35,7 @@
         cursor: pointer;
         font-size: .9rem;
     }
-    .typebutton.active{
+     .typebutton:hover,.typebutton.active{
         background-color:pink;
     }
     </style>
@@ -86,6 +86,8 @@
 <script  type="text/javascript" src="./js/format.js"></script>
 <script>
 $(document).ready(function () {
+    console.log(location.href);
+
     $(".headerPage").load("project_header.html");  
 
     // breadcrumb
@@ -120,8 +122,8 @@ $(document).ready(function () {
     var myResponse;
     $.ajax({
         type: "GET",
-        url: allurl + '/reirasys_api/shopitems.php',
-        // url: 'https://reiracode.github.io/ajax/allitems.json',
+        // url: allurl + '/reirasys_api/shopitems.php',
+        url: 'https://reiracode.github.io/ajax/allitems.json',
         // async: false,//設定同步方式，非非同步=同步！
         // cache: false,//嚴格禁止快取！
         dataType: 'json',             
@@ -256,8 +258,8 @@ $(document).on('click', '.typebutton', function(e) {
             var testring ='class="'+ classtype +'"&cloumn='+classname;
             $.ajax({
                     type: "GET",
-                    url: allurl + '/reirasys_api/shopitem.php?'+ testring,
-                    // url: 'https://reiracode.github.io/ajax/allitems.json',
+                    // url: allurl + '/reirasys_api/shopitem.php?'+ testring,
+                    url: 'https://reiracode.github.io/ajax/allitems.json',
                     dataType: 'json',             
                     success: function (data) {    
                         console.log(data)           
