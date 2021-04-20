@@ -1801,8 +1801,8 @@ h2.title1.active::after {
 
     <script>
     // gsap animation
-    gsap.from(".newimgs", { opacity: 0, y: 100, delay:8,duration: 1});
-    gsap.from(".flex_sec3_main", { opacity: 0, y: 100, delay:9,duration: 1});
+    gsap.from(".newimgs", { opacity: 0, y: 100, delay:5,duration: 1});
+    gsap.from(".flex_sec3_main", { opacity: 0, y: 100, delay:8,duration: 1});
 
     // logo path
     const logo = document.querySelectorAll("#mypath path");
@@ -1832,10 +1832,15 @@ h2.title1.active::after {
         // $("img.lazy").lazyload({effect : "fadeIn"});
     });
  
-    console.log("load")
+    console.log("allurl"+allurl)
+     const dataurl = !!(allurl == "http://localhost:8080") 
+                    ?  allurl +'/reirasys_api/shopitems.php'
+                    : "https://reiracode.github.io/ajax/allitems.json"
+
     $.ajax({
         type: "GET",
-        url: allurl + '/reirasys_api/shopitems.php',
+        url:dataurl,
+        // url: allurl + '/reirasys_api/shopitems.php',
         // url: 'https://reiracode.github.io/ajax/allitems.json',
         dataType: 'json',             
         success: function (data) {               
