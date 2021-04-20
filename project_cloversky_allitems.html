@@ -25,7 +25,7 @@
     selectclass():下拉選單
     format.js current_page()
     -->
-    <style>
+<style>
     .typebutton{
         display: inline-block;
         border-radius: 19px;
@@ -35,14 +35,15 @@
         cursor: pointer;
         font-size: .9rem;
     }
-     .typebutton:hover,.typebutton.active{
+    .typebutton:hover,.typebutton.active{
         background-color:pink;
     }
-    </style>
+</style>
 </head>
 <body>
 
-<div id="second_mains">
+<!-- <div id="second_mains"> -->
+<div class="second_mains">
     <div class="headerPage"></div>   
     <div class="top_page">
         <div class="select-tool">
@@ -86,21 +87,24 @@
 <script  type="text/javascript" src="./js/format.js"></script>
 <script>
 $(document).ready(function () {
-    console.log(location.href);
+    //判斷資料來源
+    const dataurl = !!(allurl == "http://localhost:8080") 
+                    ?  allurl +'/reirasys_api/shopitems.php'
+                    : "https://reiracode.github.io/ajax/allitems.json"
 
     $(".headerPage").load("project_header.html");  
 
     // breadcrumb
     console.log(current_page())//["project_cloversky_allitems.html", "page-2"]
     var currentItem = $(".items").find("[href$='" + current_page()[0] + "']");
-    //  console.log(currentItem)
+    console.log(currentItem)
 
     $(currentItem.parents("li").get().reverse()).each(function () {
         //  console.log($(this).children("a"))
         $(".breadcrumb").append($(this).children("a")).append("|");
     });
 
-    //判斷有沒登入way1***************************************
+    //判斷有沒登入way1**
     var categoryList = login_status();
     categoryList.then(function(data) {
         console.log('呼び出し先', data);
@@ -111,26 +115,27 @@ $(document).ready(function () {
         console.log('err');
     });
 
-    //way2
+    //判斷有沒登入way2
     getLogin_status().done(function(data) {
         last_id = data;
         console.log(last_id)
     });
-    //判斷有沒登入way1***************************************
+
     // dealut query to API/json
     var this_page = $(".paginationss")
     var myResponse;
     $.ajax({
         type: "GET",
+        url: dataurl,
         // url: allurl + '/reirasys_api/shopitems.php',
-        url: 'https://reiracode.github.io/ajax/allitems.json',
+        // url: 'https://reiracode.github.io/ajax/allitems.json',
         // async: false,//設定同步方式，非非同步=同步！
         // cache: false,//嚴格禁止快取！
         dataType: 'json',             
         success: function (data) {               
             // var datass = data.items;
-            myResponse = data.items;
             // myResponse globe
+            myResponse = data.items;
             localStorage.setItem("all_item", JSON.stringify(myResponse));
             // 一進來的頁面
             // mainPagenation(data.items);
@@ -208,6 +213,7 @@ function selectclass(){
         $(".select-div").append('<li data-target= '+ index[i]+' class="typebutton">'+ index[i]+ '</li>')
     }
 }
+// data-target click function
 $(document).on('click', '.typebutton', function(e) {
     // This will work!
     var index = $(".typebutton").index(this);
@@ -218,7 +224,6 @@ $(document).on('click', '.typebutton', function(e) {
 
     selectorfilter($(this).data("target"));
     $(this).addClass('active').siblings('li').removeClass('active');
-
     //  selectorfilter(newquery);
 });
 
@@ -245,7 +250,7 @@ $(document).on('click', '.typebutton', function(e) {
                 //  document.location.href="./form_test2_next2.html";
             } else {
                 // select 
-                console.log("NNNNNNNNN page")
+                console.log("NONE")
             }
         }   
     }); 
@@ -258,8 +263,9 @@ $(document).on('click', '.typebutton', function(e) {
             var testring ='class="'+ classtype +'"&cloumn='+classname;
             $.ajax({
                     type: "GET",
+                    url:dataurl,
                     // url: allurl + '/reirasys_api/shopitem.php?'+ testring,
-                    url: 'https://reiracode.github.io/ajax/allitems.json',
+                    // url: 'https://reiracode.github.io/ajax/allitems.json',
                     dataType: 'json',             
                     success: function (data) {    
                         console.log(data)           
@@ -319,8 +325,8 @@ $(document).on('click', '.typebutton', function(e) {
             items: data.length / perpage_item,
             displayedPages: 1,
             currentPage: $pages,
-            prevText: "前へ",
-            nextText: "次へ",
+            prevText: "<",
+            nextText: ">",
             cssStyle: 'light-theme',
             onPageClick: function (currentPageNumber) {
         //  alert("onPageClick"+currentPageNumber)
@@ -376,8 +382,6 @@ $(document).on('click', '.typebutton', function(e) {
         $('.product_allitem').hide();
         $(page).show();
     }
- 
-
 
 
 

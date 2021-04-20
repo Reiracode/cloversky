@@ -9,64 +9,25 @@
 <link rel="stylesheet" href="css/cloversky.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css">
 <style>
-/*         
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css";
-@import "https://fonts.googleapis.com/css?family=Open+Sans:400,600|Raleway"; */
-.col2_item{
-  margin:15px;
-  flex:1;
-}
 
-.user2 {
-  position: relative;
-  /* display:inline-block; */
-  display:block;
-  margin: 15px 0;
-}
+  i { 
+    position: absolute; 
+    top: calc(50% - 0.5em);
+    font-size:20px;
+    margin:0 5px;
+    color: #888;
+    left:10px;
+  }
 
-.user2::before{
-  height: 80%;
-  content: '';
-  width: 1px;
-  border-right: 1px solid white;
-  position: absolute;
-  left: 45px;
-  top:50%;
-  transform: translateY(-50%);
-}
-
-i { 
-  position: absolute; 
-  top: calc(50% - 0.5em);
-  font-size:20px;
-  margin:0 5px;
-  color: #888;
-  left:10px;
-}
-
-.user2 input {
-  width:100%;
-  font-size:18px;
-  padding:12px;
-  text-indent:45px;
-  background:#ddd;
-  border:none;
-  outline:none;
-}
-
-.col2_item button{
-  width: 100%;
-  height: 40px;
-  border-radius: 4px;
-  font-size: 20px;
-  background-color: #88b4da;
-  color: white;
-}
-
-.col2_item button:hover{
-  background-color: #104b80;
-  color: rgb(190, 181, 181);
-}
+  .user2 input {
+    width:100%;
+    font-size:18px;
+    padding:12px;
+    text-indent:45px;
+    background:#fff;
+    border:none;
+    outline:none;
+  }
 </style>
 </head>
 <!-- 
@@ -74,66 +35,66 @@ i {
 2、add TO CART 加入相同品項的清單 跳轉至購物車 修改數量
 -->
 <body>
-  <div class="main_body">
-<div class="headerPage"></div>
+<div class="main_body">
+  <div class="headerPage"></div>
 
-<div class="prod_detail">
-<!-- form.serialize()  input name is nes -->
-  <div class="col2_item">
-    <form id="form_login">
-      <label class="user2">
-        <i class="fas fa-user"></i>
-        <input type="text" placeholder="Username" name="userno" class="userno" id="userno" required />
-      </label>
+  <div class="prod_detail">
+    <div class="col2_item">
+      <form id="form_login">
+        <label class="user2">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Username" name="userno" class="userno" id="userno" required />
+        </label>
 
-      <label class="user2">
-        <i class="fas fa-unlock-alt toogle_pwd"></i>
-        <input type="password" placeholder="Password" name="password" class="password" id="password" required />
-      </label>
+        <label class="user2">
+          <i class="fas fa-unlock-alt toogle_pwd"></i>
+          <input type="password" placeholder="Password" name="password" class="password" id="password" required />
+        </label>
 
-      <button id="login_btn">login</button>
-    </form>
+        <button id="login_btn">login</button>
+      </form>
+    </div>
+
+    <div class="col2_item">
+      <form id="form_register">
+        <label class="user2">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Userno" name="userno" class="userno" id="userno" required />
+        </label>
+
+        <label class="user2">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Username" name="username" class="username" id="username" required />
+        </label>
+    
+        <label class="user2">
+          <i class="fas fa-unlock-alt toogle_pwd"></i>
+          <input type="password" placeholder="Password" name="password" class="password" id="password" required />
+        </label>
+
+        <label class="user2">
+          <i class="fas fa-unlock-alt"></i>
+          <input type="email" placeholder="Email" name="email" class="email" id="email" required />
+        </label>
+
+        <label class="user2">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Depno" name="depno" class="depno" id="depno" required />
+        </label>
+    
+        <button id="regis_btn">register</button>
+      </form>
+    </div>
+
+    <div id="results"></div>
   </div>
-
-  <div class="col2_item">
-    <form id="form_register">
-      <label class="user2">
-        <i class="fas fa-user"></i>
-        <input type="text" placeholder="Username" name="username" class="username" id="username" required />
-      </label>
-  
-      <label class="user2">
-        <i class="fas fa-unlock-alt toogle_pwd"></i>
-        <input type="password" placeholder="Password" name="password" class="password" id="password" required />
-      </label>
-
-      <label class="user2">
-        <i class="fas fa-unlock-alt"></i>
-        <input type="email" placeholder="Email" name="email" class="email" id="email" required />
-      </label>
-
-    <label class="user2">
-      <i class="fas fa-user"></i>
-      <input type="text" placeholder="Userno" name="userno" class="userno" id="userno" required />
-    </label>
-  
-      <button id="regis_btn">register</button>
-    </form>
-  </div>
-
-  <div id="results"></div>
-
-</div>
 </div>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/format.js"></script>
 <script>
-       //safari 100vh bug
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-
-
+  //safari 100vh bug
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
   $(".headerPage").load("project_header.html"); 
 
   var categoryList = login_status();
@@ -156,10 +117,8 @@ i {
         .addClass('fa-unlock-alt')
         .next().prop('type', 'password');
   })
-    // $form.sealized()
 
-
-
+  // $form.sealized()
   $("button#login_btn").click(function (e) {
     e.preventDefault();
     var str = $("form#form_login").serialize();

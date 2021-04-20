@@ -192,36 +192,41 @@
 </head>
 
 <body>
-    <div class="headerPage"></div>
-    <div class="second_mainss">
-        <div class="col2_item">會員中心</div>
-        <nav class="nav justify-content-center">
-            <a class="nav-link active" href="#">訂單查詢</a>
-            <a class="nav-link" href="#">修改資料</a>
-            <a class="nav-link disabled" href="#">Disabled link</a>
-        </nav>
+    <div class="second_main">
+        <div class="headerPage"></div>
+        <div class="mainbody">
+            <div class="main1">
+                <div class="col2_item">會員中心</div>
+                <nav class="member-nav nav justify-content-center">
+                    <a class="nav-link active" href="#">訂單查詢</a>
+                    <a class="nav-link" href="#">修改資料</a>
+                    <a class="nav-link disabled" href="#">Disabled link</a>
+                </nav>
+            </div>
+            <!-- <ul>
+                <li>會員中心</li>
+                <li>訂單查詢</li>
+                <li>修改</li>
+                <li></li>
+                <li></li>
+            </ul> -->
+            <div  class="main2">
+                 <!-- <caption>會員資料</caption>   -->
+                <table class="TB_SHOPCART" id="myTable">
+                   
+                    <thead>
+                        <tr>
+                            <th>訂單號碼</th>
+                            <th>価格</th>
+                            <th>数量</th>
+                            <th>小計</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
     </div>
-
-    <ul>
-        <li>會員中心</li>
-        <li>訂單查詢</li>
-        <li>修改</li>
-        <li></li>
-        <li></li>
-    </ul>
-
-        <table class="TB_SHOPCART" id="myTable">
-            <caption>會員資料</caption>  
-            <thead>
-                <tr>
-                    <th>訂單號碼</th>
-                    <th>価格</th>
-                    <th>数量</th>
-                    <th>小計</th>
-                </tr>
-            </thead>
-        </table>
-
+    
     <script src="./js/jquery.min.js"></script>
     <script src="./js/format.js"></script>
     <script src="./js/members.js"></script>
@@ -303,7 +308,23 @@
 //             { "data": 'recip_street' }
 //       ]
 //    });
+  var categoryList = login_status();
+    categoryList.then(function(data) {
+        console.log('呼び出し先', data);
+        if (data.success){
+            console.log("login success sucess")
+        }
+    }).fail(function() { 
+        console.log('err');
+    });
 
+    //判斷有沒登入way2
+    getLogin_status().done(function(data) {
+        last_id = data;
+        console.log(last_id)
+    });
+
+    
     var table = $('#myTable').DataTable({
     'processing': true,
     "ajax": {

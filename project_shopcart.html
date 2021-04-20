@@ -15,46 +15,36 @@
 <body>
     <div id="second_mains">
         <div class="headerPage"></div>
-    
-    
+        <div class="top_page">
+            <form id="myForm">
+                <table class="TB_SHOPCART">
+                    <caption>購物車</caption>
+                    <thead>
+                        <tr>
+                            <th>商品</th>
+                            <th>価格</th>
+                            <th>数量</th>
+                            <th>小計</th>
+                            <th>delete</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
 
-        <form id="myForm">
-            <table class="TB_SHOPCART">
-                <caption>購物車</caption>
-                <thead>
-                    <tr>
-                        <th>商品</th>
-                        <th>価格</th>
-                        <th>数量</th>
-                        <th>小計</th>
-                        <th>delete</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+                <div class="bill-item">
+                    <span id = "label">合計金額</span>
+                    <span id = "car_total"><strong></strong></span>        
+                </div>
 
-            <div class="bill-item">
-                <span id = "label">合計金額</span>
-                <span id = "car_total"><strong></strong></span>        
-            </div>
-
-            <button id="btn_Show" type="button">結帳</button>
-        </form>
-
+                <button id="btn_Show" type="button">結帳</button>
+            </form>
+        </div>
     </div>
     
-    <!-- <script src="./js/jquery.min.js"></script> -->
-    <!-- <script src="./js/format.js"></script> -->
-  <!-- <script  type="text/javascript" src="./js/format.js"></script>   -->
-
-
-  <script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.min.js"></script>
 <script src="./js/format.js"></script>
-
-    <script>
-
-
-        $(document).ready(function () {  
+<script>
+ $(document).ready(function () {  
 
             //  $(".headerPage").load("project_header.html");
 
@@ -89,6 +79,8 @@
                             "<td><button class='btn_remove'><i class='fas fa-times'></i></i><button></td></tr>"   
                             )
             });
+
+ 
 
         
             function setCart() {
@@ -183,24 +175,54 @@
     
 // JSON.parse 將 JSON 字串轉換為物件。
 // JSON.stringify 將陣列轉換為 JSON 字串
+  var categoryList = login_status();
+    categoryList.then(function(data) {
+        console.log('呼び出し先', data);
+         console.log(data.IsLogin);
+        if (data.IsLogin){
+            console.log("login success sucess")
+        }
+    }).fail(function() { 
+        console.log('err');
+    });
+
+    //判斷有沒登入way2
+    getLogin_status().done(function(data) {
+        last_id = data;
+        console.log(last_id)
+    });
+
 
 
             $("#btn_Show").on("click", function(e) {
                 var categoryList = login_status();
-                console.log(categoryList)
-
-                var usernaem = !!(JSON.parse(localStorage.getItem("user"))) ? localStorage.getItem("user") : "N"
-                console.log(usernaem)
-
-                if (usernaem=="N"){
-                        alert("請先登入");
-                        window.location.href = "project_cloversky_login.html";
-                        // $("button#log_out").text("login");
-                    }else{
-                        console.log("YYYY")
-                        window.location.href = "project_shopcart_step1.html";
+                categoryList.then(function(data) {
+                    console.log('呼び出し先', data);
+                    console.log(data.IsLogin);
+                    if (data.IsLogin){
+                        console.log("login success sucess")
+                         window.location.href = "project_shopcart_step1.html";
                         $("button#log_out").text("logout");
                     }
+                }).fail(function() { 
+                    console.log('err');
+                      alert("請先登入");
+                        window.location.href = "project_cloversky_login.html";
+                });
+
+
+                // var usernaem = !!(JSON.parse(localStorage.getItem("user"))) ? localStorage.getItem("user") : "N"
+                // console.log(usernaem)
+
+                // if (usernaem=="N"){
+                //         alert("請先登入");
+                //         window.location.href = "project_cloversky_login.html";
+                //         // $("button#log_out").text("login");
+                //     }else{
+                //         console.log("YYYY")
+                //         window.location.href = "project_shopcart_step1.html";
+                //         $("button#log_out").text("logout");
+                //     }
                 
                 // getLogin_format;
                 // categoryList.then(function(data) {

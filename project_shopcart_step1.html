@@ -1,42 +1,25 @@
 <!DOCTYPE html>
 <html>
-<!-- 
-    onclick 事件https://www.fooish.com/jquery/events.html
-    判斷require 都填了
-    前端pattern
-    後端false api
-
-
-    .TB_COLLAPSE=> .TB_SHOPCART
--->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>STEP1</title>
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet">
-
-
     <link rel="stylesheet" href="css/cloversky.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css">
     <style>
-   
-</style>
+  
+    </style>
 </head>
 
 <body>
+    <!-- <div id="second_mains" class="shop_process"> -->
+    <div class="second_mains">
     <div class="headerPage"></div>
-    <div id="second_mains" class="shop_process">
+    
         <div class="top_page">
-            <!-- <div class="process">
-                <a href="#">
-                    <span>1</span>
-                </a>
-                <a href="./project_shopcart_step2.html">
-                    <span>2</span>
-                </a>
-            </div> -->
             <div class="process2">
                 <a href="./project_shopcart_step1.html">
                     <div>
@@ -44,20 +27,12 @@
                         <p>填寫配送資訊</p>
                     </div>  
                 </a>
-
-                <a href="./project_shopcart_step.html">
+                <a href="./project_shopcart_step2.html">
                     <div>
                         <p>STEP2</p>
                         <p>確認資訊</p>
                     </div>
                 </a>
-                <!-- <div>
-                    <p>STEP2</p>
-                    <p>確認資訊</p>
-                </div> -->
-
-
-
                 <div>
                     <p>STEP3</p>
                     <p>完成訂單</p>
@@ -71,38 +46,38 @@
                 <span></span>
                 <div></div>
             </div>
-        </div>
+  
 
         <div class="col2_item">
             <form id="form_checkout1" action="#">
                 <label class="user2">
-                <i class="far fa-user"></i>
+                <i class="step1_member far fa-user"></i>
                 <input type="text" placeholder="名前" name="recip_name"  id="recip_name" required>
                 </label>
 
                 <label class="user2">
-                <i class="fas fa-unlock-alt "></i>
+                <i class="step1_member fas fa-unlock-alt "></i>
                 <input type="text" placeholder="住所" name="recip_street"   id="recip_street" required>
                 </label>
 
                 <label class="user2 recip_city">
-                <i class="far fa-address-book"></i>
+                <i class="step1_member  far fa-address-book"></i>
                 <input type="text" placeholder="city" name="recip_city"   id="recip_city" required>
                 <input type="mobile" placeholder="state" name="recip_state"   id="recip_state" required>
                 </label>
 
                 <label class="user2">
-                <i class="fas fa-mobile-alt"></i>
+                <i class="step1_member fas fa-mobile-alt"></i>
                 <input type="mobile" placeholder="電話番号" name="recip_mobile"   id="recip_mobile" required>
                 </label>
 
                 <label class="user2">
-                <i class="far fa-envelope"></i>
+                <i class="step1_member far fa-envelope"></i>
                 <input type="mail" placeholder="mail" name="recip_mail"   id="recip_mail" required>
                 </label>
 
                 <label class="user2">
-                <i class="far fa-envelope"></i>
+                <i class="step1_member far fa-envelope"></i>
                 <input type="text" placeholder="備註" name="recip_ps"   id="recip_ps" >
                 </label>  
                 
@@ -110,24 +85,29 @@
             </form>
         </div>
 <!-- TB_COLLAPSE -->
-        <table class="TB_SHOPCART">
-            <caption>配送資訊</caption>
-            <thead>
-                <tr>
-                    <th>商品</th>
-                    <th>価格</th>
-                    <th>数量</th>
-                    <th>小計</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-            <!-- <button id="btnShow" type='submit'>Try</button> -->
-        </table>
-        <div class="bill-item">
-            <span id = "label">合計金額</span>
-            <span id = "car_total"><strong></strong></span>
+       <div class="div_shopcar_detail">
+            <table class="TB_SHOPCART">
+                <caption>商品資訊</caption>
+                <thead>
+                    <tr>
+                        <th>商品</th>
+                        <th>価格</th>
+                        <th>数量</th>
+                        <th>小計</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <!-- <button id="btnShow" type='submit'>Try</button> -->
+            </table>
+            <div class="bill-item">
+                <span id = "label">合計金額</span>
+                <span id = "car_total"><strong></strong></span>
+            </div>
+
         </div>
         <button id="btn_Show" type="button">下一步</button>
+
+        </div>
     </div>
     
     
@@ -144,18 +124,30 @@ $(document).ready(function () {
 
     process_color();
 
-    $('#form_checkout1 input:required')
+    var thisform =$('#form_checkout1 input:required')
+    console.log(thisform)
+
+        // 是這個form有keyup時檢查一次，不是每一個input keyup觸發
+    // $('#form_checkout1 input:required') ==>6*6 次
+    // thisform.keyup(checkForm)
+        // .keyup();   
+
+    // var thisform1 =$('#form_checkout1')
+    // console.log(thisform1)
+
+    $('#form_checkout1')
         .keyup(checkForm)
         .keyup();   
         //預設就先執行keyup  .keyup(function(){}).keyup();       
 
     // 1  判是否空值=   2、符合格式================================
     function checkForm() {
+        console.log("1")
         var isValidForm = true; //預設可送  disabled !true not true 
-        var thisform =$(this.form).find('input:required') ;
+        // var thisform =$(this.form).find('input:required') ;
         // thisform.filter("[type!='text']").css("background-color","#d6e1d4")
         thisform.each(function() {
-            // console.log(this.name)
+            console.log(this.name)
             if ((!this.value.trim()))  { //!""
                 // console.log("空白不可送單"+this.name+ "--" + this.value)
                 isValidForm = false;  //不可送單    
@@ -179,7 +171,7 @@ $(document).ready(function () {
             var this_type = $(this).attr('type');
             var this_name = $(this).attr('name');;
             var this_val = $(this).val();
-            
+            console.log(this_type)
             // switch (this_type) {               
             //     case "mobile":
             //         if (!validateMobile(this_val))  {
@@ -200,9 +192,9 @@ $(document).ready(function () {
             // if (this_type != "text"){
                 if (!(validateAll(this_type,this_val)))   {
                     allowSubmit = false;
-                    console.log(this_name + "請輸入正確" + this_type)
+                
                 }else{
-                    console.log(this_name + "~~輸入正確~~~"+ this_type)
+                    console.log("success"+this_name + "：已輸入正確格式"+ this_type)
                 }
             // }
 

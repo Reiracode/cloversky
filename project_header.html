@@ -46,6 +46,10 @@
 <!-- </div> -->
 
 <div class="modal_bg">
+    <button class="modal_close">
+            <span></span>
+            <span></span>
+        </button>
     <div class="modal_box start" id="search">
         <!-- <form action="./form_test2_next2.html" id="more_form" method="get"> -->
             <form action="./project_cloversky_allitems.html" id="more_form" method="get">
@@ -56,10 +60,7 @@
             <!-- <i class="fas fa-search"></i> -->
         </form>
 
-        <button class="modal_close">
-            <span></span>
-            <span></span>
-        </button>
+        
     </div>
 </div>
 <!-- <script src="./js/jquery.min.js"></script> -->
@@ -81,18 +82,24 @@
 //      console.log(!data)
         if (!data){
             $('.shopart_amount').css("display", "none")
-            //  $('.shopart_amount').css("opacity", "0")
+            //$('.shopart_amount').css("opacity", "0")
         }else{
-            //    $('.shopart_amount').addClass("cart-run");
-
+            //$('.shopart_amount').addClass("cart-run");
             $('.shopart_amount').text(data.length)
-        
         }
         
         // no animate
         // modal search
+        // overlay open
         $(".modal_open").on('click', function (e) {
-            $(".modal_bg").css('display', 'flex');
+            // $(".modal_bg").css('display', 'flex');
+            $(".modal_bg").addClass('active');
+        })
+
+        // overlay close
+        $('.modal_close').click(() => {
+            // $('.modal_bg').css('display', 'none');
+            $(".modal_bg").removeClass('active');
         })
 
         $('.modal_bg').click((e) => {
@@ -103,13 +110,11 @@
 
             if (!$(e.target).closest('.start').length) {
                 // console.log("filter")
-                $('.modal_bg').css('display', 'none');
+                // $('.modal_bg').css('display', 'none');
+                $(".modal_bg").removeClass('active');
             }
         });
 
-            $('.modal_close').click(() => {
-            $('.modal_bg').css('display', 'none');
-        })
 // const menuBtn = document.querySelector('.menu-btn');
 // let menuOpen = false;
 // menuBtn.addEventListener('click', () => {
@@ -127,12 +132,12 @@
             event.stopPropagation();   
 
             
-
+// nav-btn active || overlay open
             if ($(".nav-btn").hasClass("active")) {
                 console.log("nav-btnhas:Class")
                 $(".nav-btn").removeClass("active");
                 $(".overlay-scale").removeClass("open");
-                $("body").css("overflow", "scroll");
+                $("body").css("overflow", "auto");
             } else {
                 console.log("nav-btn NOT has:Class")
                 $(".nav-btn").addClass("active");

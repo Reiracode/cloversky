@@ -102,7 +102,7 @@
 }
 
 #tabs{
-    height: 200px;
+    /* height: 200px; */
 }
 
 #contents div {
@@ -111,6 +111,19 @@
 
 #contents div.active {
     display: block; 
+}
+
+/* .list_img1>img:nth-child(2){
+    position: absolute; 
+    left: 0;
+    top: 0;
+    filter: contrast(0.5) opacity(0.8); 
+} */
+.list_img1>img:nth-child(1){
+    position: absolute; 
+    left: 0;
+    top: 0;
+    filter: contrast(0.5) opacity(0.8); 
 }
 </style>
 </head>
@@ -144,7 +157,7 @@
         </ul>
     </nav>
 
-    <div class="prod_detail">
+    <div class="prod_detail"> 
         <div class="div_left">
             <!-- mobile swiper -->
             <div class="div_mobile_swiper">
@@ -161,12 +174,18 @@
 
             <!-- pc -->
             <div class="prod_detail_pc">
+                <!-- 大図 -->
                 <figure class="list_img1">
-                    <img src="" alt="">
+                    <img src="./images/cloversky/000000000370_1.jpg" alt="" >
+                    <img src="./images/cloversky/000000000370_1.jpg" alt="" class="active">
+                    <!-- <img src="" alt=""> -->
+                    <!-- <div class="img_all"><img src="" alt=""></div> -->
                 </figure>
-
-                <div class="mini_pic"></div>
+                
+                <!-- 小図 -->
+               <div class="mini_pic"></div>
             </div>
+             
         </div>
 
         <div class="div_right">
@@ -199,8 +218,6 @@
 
         <div id="tabs">
             <div id="menu">
-                <!-- <div class="active"><a href="#content1">商品尺寸</a></div>
-                <div><a href="#content2">商品細節</a></div> -->
                 <div data-active="prod_data_size" class="product_detail_title active"><span>商品尺寸</span></div>
                 <div data-active="prod_data_detail"class="product_detail_title"><span>商品細節</span></div>
             </div>
@@ -208,9 +225,14 @@
                 <div id="prod_data_size" class="product_detail active"></div>
                 <div id="prod_data_detail" class="product_detail"></div>      
             </div>
+
+            <!-- <div id="prod_data_size" class="product_detail active"></div>
+                <div id="prod_data_detail" class="product_detail"></div>   -->
+
         </div>
 
         </div>
+       
     </div>
 </div>
 <script src="./js/jquery.min.js"></script>
@@ -294,13 +316,6 @@
                     "<img src=./images/cloversky/" + filterListno.id + "_"+ x + ".jpg alt=swpier" + x + ">" +
                     "</div></div>")
                 }   
-            
-            // $(".bxslider")
-            //         .append("<div>"+
-            //         "<img src=./images/cloversky/" + filterListno.id + "_"+ x + ".jpg alt=swpier" + x + ">" +
-            //         "</div>")
-            //     }   
-
 
         } else {
             console.log(windowwidth.matches)
@@ -309,6 +324,7 @@
                     "<img src=./images/cloversky/" + filterListno.id + "_"+ x + ".jpg>" +
                     "</figure>")
             }
+          
             $(".mini_pic .protail_img:first-child").addClass('active');
         }
 //   $('.bxslider').bxSlider({
@@ -317,18 +333,89 @@
 //     slideWidth: 600
 //   });     
         //click 商品圖置換父層大圖
-        $(".protail_img").click(function() {    
+        $(".protail_img").click(function() {   
+            // console.log(e.currentTarget) 
+            console.log($(this))
             //小図
             $(this).addClass('active').siblings("figure") //find sibling h3 elements
-                .removeClass("active");
+                    .removeClass("active");
 
             var index = $(".protail_img").index(this);
             console.log(index)
             var place_img = $(this).find("img").attr("src");
+
             //大図
-            $(".list_img1 img").addClass("active").delay(1000).queue(function(){
-                $(this).attr("src", place_img).removeClass("active").dequeue();
-            });
+            // $(".list_img1 img").addClass("active").delay(1000).queue(function(){
+                // $(this).attr("src", place_img).removeClass("active").dequeue();
+            // });
+            //  $(".list_img1 img").animate({opacity: 0 }, 800).delay(1000).queue(function(){
+            //     $(this).attr("src", place_img).animate({opacity: 1 },1000).dequeue();
+            // });
+//big
+//current target 
+    // $(".list_img1>img").animate({opacity: 0}, 800)
+    // .delay(100)
+    // .queue(function(){
+    //     $(this) .attr("src",place_img).animate({opacity: 1 }).dequeue();
+    // });
+    //  $(".mini_pic .protail_img:first-child").addClass('active');
+    // $(".list_img1>img").removeClass('active')
+
+    // OK
+    // $(".list_img1>img:first-child").removeClass('active')
+    // .delay(100)
+    // .queue(function(){
+    //     $(this).attr("src",place_img).addClass('active').dequeue();
+    // });
+
+// console.log( $(".list_img1 img"))
+    // $(".list_img1 img").first().removeClass('active')
+    // .delay(100)
+    // .queue(function(){
+    //     console.log($(this).parent().children());
+    //     console.log($(this).parent().children().eq(1));
+    //     // this means acitve first
+    //     $(this).parent().children().eq(1).attr("src",place_img);
+    //     $(this).attr("src",place_img).addClass('active').dequeue();
+    // });
+
+
+
+    $(".list_img1 img:nth-child(2)").removeClass('active')
+    .delay(100)
+    .queue(function(){
+        console.log($(this).parent().children());
+        console.log($(this).parent().children().eq(0));
+        console.log($(this).closest());
+        // this means acitve first
+        $(this).parent().children().eq(0).attr("src",place_img);
+        $(this).attr("src",place_img).addClass('active').dequeue();
+    });
+
+
+
+//    $(".list_img1>img")
+//     .animate({opacity: 0}, 800)
+//     .delay(1000)
+//     .queue(function() {
+//         $(this).attr("src",place_img).addClass("active").dequeue();
+//     })
+    
+// $(".list_img1>img").animate({opacity: 0.1 }, 800);
+// $(".list_img1>img").attr("src", place_img).animate({opacity: 1 }, 1000); 
+
+
+//   $( ".img_all img" )
+//     .attr("src", place_img)
+//     .queue(function() {
+//       $( this ).addClass( "active" ).dequeue();
+//     })
+//     .delay(2000)
+//     .queue(function() {
+//       $( this ).removeClass( "active" ).dequeue();
+//     });
+  
+
 
             return false;
         });
