@@ -87,11 +87,13 @@ body{
 /* one page */
 .main_body{
     height: 100vh;
-     min-height: 100vh;
+    min-height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    /* for mobile horizon */
     /*width:  100vw;*/
     padding: 85px 0 0px;
     /* overflow: auto; */
-    /* height: calc(var(--vh, 1vh) * 100); */
+ 
     /* background-color:  var(--mainbody); */
     background-color:#eadbdbf2;
 }
@@ -2198,8 +2200,9 @@ ul.breadcrumb {
     /* // 如果使用者之視窗寬度 <= 768px，將會再載入這裡的 CSS。 */
     form#myForm{
         /* padding: 0 10px; */
-        padding: 0 10px;
-        margin: 85px 10px 0;
+        /* padding: 0 10px; */
+        /* margin: 85px 10px 0; */
+        /* margin: 85px 0; */
     }
 }
 
@@ -2720,7 +2723,8 @@ i {
 
     .div_left{
         height: 50vh;
-            padding: unset;
+        padding: unset;
+        margin:unset;
          /* height: 500px; */
     }
 
