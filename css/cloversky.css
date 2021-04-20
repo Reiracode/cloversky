@@ -87,8 +87,10 @@ body{
 /* one page */
 .main_body{
     height: 100vh;
-    min-height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    /* searchitems */
+      min-height: 700px;
+    /* min-height: 100vh; */
+    /* height: calc(var(--vh, 1vh) * 100); */
     /* for mobile horizon */
     /*width:  100vw;*/
     padding: 85px 0 0px;
@@ -911,6 +913,9 @@ width:100%;
     font-size:0.7rem;
     cursor: pointer;
     width: 30%;
+    /* project_shopcart_step1 */
+    display: block;
+    margin: 10px auto 50px;
 }
 
 #btn_Show[disabled] {
@@ -1641,7 +1646,8 @@ footer {
 .product-all{
     /* padding: 0 5vw; */
     /* min-height: 500px; */
-    margin:0 50px;
+    /* project_cloversky_allitems */
+    /* margin:0 50px; */
 }
 .product_allitem{
     display:flex;
@@ -1967,6 +1973,14 @@ button.add_minus_btn.add_cal:hover{
     background-color: white; */
     /* margin: 15vh 0 0; */
     margin: 85px 0 0;
+     /* shop step1 */
+      /* project_cloversky_allitems */
+    padding:0 10rem;
+}
+/* project_shopcart  step1 */
+@media screen and (max-width: 767px){
+    .top_page{padding:0 30px;}
+
 }
 .select-tool{
     margin: 0 60px;
@@ -2171,11 +2185,11 @@ ul.breadcrumb {
 
 /* shopcar step1  */
     form#myForm{
-        width: 100vw;
-        padding: 0px 10vw;
+        width: 100%;
+        /* padding: 0px 10vw; */
         /* padding:0 5em; */
         flex: 1;
-        margin: 85px 0 0;
+        /* margin: 85px 0 0; */
     }
 
 
@@ -2212,6 +2226,10 @@ ul.breadcrumb {
         padding:0 50px;
         width:70vw;
     } */
+    /* shopcar step1 */
+    .div_shopcar_detail{
+        /* padding: 1rem; */
+    }
     table.TB_SHOPCART {
         width:100%;
         border-collapse:collapse;
@@ -2377,7 +2395,8 @@ ul.breadcrumb {
       /* display: inline-block; */
        /* height: 150px; */
     /* padding: 1em 1em 4em; */
-    padding:1em 50px;
+    /* padding:1em 50px; */
+    padding:1.2rem;
     margin-bottom: 50px;
        /* opacity: 0.5; */
 }
@@ -2437,7 +2456,8 @@ ul.breadcrumb {
 
 
 .col2_item{
-    margin: 15px;
+    /* shopcar step1 */
+    /* margin: 15px; */
     flex: 1;
 }
 
