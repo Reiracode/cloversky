@@ -201,9 +201,15 @@ $(document).ready(function () {
         setCart();
     });
 
- 
+
 
     $("#btn_checkout").on("click", function(e) {
+        const dataurl = !!(allurl == "http://localhost:8080") 
+                ?  true
+                :  false
+
+
+    if (dataurl){
         categoryList.then(function(data) {
             // console.log('呼び出し先', data);
             console.log(data.IsLogin);
@@ -219,6 +225,13 @@ $(document).ready(function () {
         }).fail(function() { 
             console.log('catch data err');
         });
+    }else{
+            alert("API請先登入");
+            window.location.href = "project_cloversky_login.html";
+            
+    }
+
+
     });
         
 
