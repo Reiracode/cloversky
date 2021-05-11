@@ -378,7 +378,7 @@ function triigletabcontent() {
         if (response.IsLogin){
            // if localStorage有資料就可以下一戊
             if (loginstyle){
-                localStorage.setItem("githublogin", JSON.stringify(IsLogin)); 
+                localStorage.setItem("githublogin", JSON.stringify(login_status)); 
             }
 
             alert(response.LoginMessage) 
