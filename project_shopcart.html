@@ -226,7 +226,7 @@ $(document).ready(function () {
             console.log('catch data err');
         });
     }else{
-          
+    console.log(localStorage.getItem("githublogin"))
             if (localStorage.getItem("githublogin")){
                 // JSON.parse(githublogin);
                 window.location.href = "project_shopcart_step1.html";
