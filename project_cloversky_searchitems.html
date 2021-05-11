@@ -5,44 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rehome</title>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/cloversky.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.css"> -->
 <style>
-    .mini_circle_img{
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background: yellow;
-    }
-/* .prod_detail  {
-    position: relative;
-    padding: unset;
-    height: 80vh;
-    margin: 85px 20px 30px 20px;
-} */
-/* .div_left {
-    padding: unset;
-    height: 100%;
-    width: 60vw;
-} */
-
-/* .div_right {
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    position: absolute;
-    top: 0px;
-    right: 0;
-    height: 100%;
-    width: 30vw;
-    background: #d7c9c9b3;
-} */
+.mini_circle_img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: yellow;
+}
 
 .product_title{
     font-size: 1.5rem;
@@ -50,41 +22,18 @@
     letter-spacing: 1px;
 }
 /* 
-.add_cart {
+.add_car {
     width: 50%;
 } */
 
 .div_left>figure {
     height: 100%;
 }
-/* .bg-image {
-    background-image: url('./images/cloversky/0000000008483.jpg');
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
-
-/* .bg-text {
-    background-color: rgb(238 233 233 / 40%);
-    color: white;
-    font-weight: bold;
-    border: 3px solid #f1f1f1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 95%;
-    height: 95%;
-    padding: 15px;
-} */
-
+ 
 #menu{
     display: flex;
     justify-content: space-around;
+    position: relative;
 }
 
 #menu>div>span{
@@ -98,12 +47,9 @@
 }
 
 #menu>div.active{
-    border-bottom: 2px solid #fae5e8;
+    border-bottom: 2px solid #fff;
 }
 
-#tabs{
-    /* height: 200px; */
-}
 
 #contents div {
     display: none;
@@ -113,12 +59,7 @@
     display: block; 
 }
 
-/* .list_img1>img:nth-child(2){
-    position: absolute; 
-    left: 0;
-    top: 0;
-    filter: contrast(0.5) opacity(0.8); 
-} */
+
 .list_img1>img:nth-child(1){
     position: absolute; 
     left: 0;
@@ -178,61 +119,54 @@
                 <figure class="list_img1">
                     <img src="./images/cloversky/000000000370_1.jpg" alt="" >
                     <img src="./images/cloversky/000000000370_1.jpg" alt="" class="active">
-                    <!-- <img src="" alt=""> -->
-                    <!-- <div class="img_all"><img src="" alt=""></div> -->
                 </figure>
-                
                 <!-- 小図 -->
-               <div class="mini_pic"></div>
+                <div class="mini_pic"></div>
             </div>
-             
         </div>
 
         <div class="div_right">
-            <ul class="breadcrumb"></ul>
+          <ul class="breadcrumb"></ul>
             <h2 class="product_title"></h2>
 
-            <div class="card">
+           <div class="card">
                 <div class="card-body">
                     <div class="form-row">
                         <div class="price_style">
-                            <!-- <p class="card_price">PRICE:</p> -->
                             <p class="card-text"></p>
                         </div>
 
                         <div class="price_style">
                             <p class="card_price">数量</p>
                             <p class="price_col"> 
-                                <button class="add_minus_btn minus_cal"><i class="fas fa-minus"></i></button>               
-                                <!-- <input type="number"  placeholder="3" min="1" max="100" value=1 class="circle form-control amount" disabled="disabled"> -->
+                                <button class="add_minus_btn minus_cal"><i class="fas fa-minus"></i></button>                                    
                                 <input type="text" class="prod_detail_amount amount" placeholder="23" min="1" max="100" value=1 disabled/>
                                 <button class="add_minus_btn add_cal"><i class="fas fa-plus"></i></button>
                             </p> 
                         </div>
                     </div>
 
-                    <!-- <button class="btn btn-info btn-block add_cart">Add to Cart</button> -->
-                    <button class="btn  add_cart">Add to Cart</button>
+                    <button class="btn_type  btn-100 add_car">Add to Cart</button>
                 </div>
             </div> 
 
-        <div id="tabs">
-            <div id="menu">
-                <div data-active="prod_data_size" class="product_detail_title active"><span>商品尺寸</span></div>
-                <div data-active="prod_data_detail"class="product_detail_title"><span>商品細節</span></div>
-            </div>
-            <div id="contents">
-                <div id="prod_data_size" class="product_detail active"></div>
-                <div id="prod_data_detail" class="product_detail"></div>      
-            </div>
+            <div id="tabs">
+                <div id="menu">
+                    <div data-active="prod_data_size" class="product_detail_title active"><span>商品尺寸</span></div>
+                    <div data-active="prod_data_detail"class="product_detail_title"><span>商品細節</span></div>
+                </div>
+                <div id="contents">
+                    <div id="prod_data_size" class="product_detail active"></div>
+                    <div id="prod_data_detail" class="product_detail"></div>      
+                </div>
 
-            <!-- <div id="prod_data_size" class="product_detail active"></div>
-                <div id="prod_data_detail" class="product_detail"></div>   -->
+                 <!-- <div id="prod_data_size" class="product_detail active"></div>
+                    <div id="prod_data_detail" class="product_detail"></div>    -->
+
+            </div>   
 
         </div>
-
-        </div>
-       
+    
     </div>
 </div>
 <script src="./js/jquery.min.js"></script>
@@ -240,8 +174,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
 <script>
     $(document).ready(function () {
-
+        $(".headerPage").load("project_header.html");
         setCart();
+
+        
         // $(".headerPage").load("project_header.html");  
 
 
@@ -300,8 +236,8 @@
         
 
 //加入shopping CAR
-        $(".add_cart").attr("data-price", filterListno.price);
-        $(".add_cart").attr("data-id", filterListno.id);
+        $(".add_car").attr("data-price", filterListno.price);
+        $(".add_car").attr("data-id", filterListno.id);
 
         // 大図
         // $(".div_left>figure img").attr("src", "./images/cloversky/" + filterListno.id+ "_1.jpg")
@@ -440,8 +376,8 @@
         $("#prod_data_size").append
         (   "<li>CLASS：" + filterListno.class + "</li>"+
             "<li>SIZE：" + filterListno.size + "</li>"+
-            "<li>COLOR:" + filterListno.color + "</li>"+
-            "<li>Material:" + filterListno.material + "</li>")
+            "<li>COLOR：" + filterListno.color + "</li>"+
+            "<li>Material：" + filterListno.material + "</li>")
 
         $("#prod_data_detail").append("<li>DESCRIPT：" + filterListno.descript + "</li>")
 
@@ -514,7 +450,7 @@
 
 
 // 加入購物車
-$(".add_cart").click(function () {
+$(".add_car").click(function () {
     console.log("OK")
 
     // 加入購物車
@@ -565,21 +501,20 @@ $(".add_cart").click(function () {
             //  setCart();
 
             var data1 = JSON.parse(localStorage.getItem("cart"));
-            console.log(data)
+            console.log(data1)
 
-            if (!data){
-            $('.shopart_amount').css("display", "block")
-            }
-
-
+            // if (!data1){
+                $('.shopart_amount').css("display", "block")
+            // }
 
             $('.shopart_amount')
             .text(data1.length)
             .addClass("cart-run");
 
             //先shopart_amount
-
-            setTimeout(setCart, 3000);//delay 2000 execute setcart(reload page)
+            // setCart();
+            setTimeout(setCart, 3000);
+            //delay 2000 execute setcart(reload page)
 
             // setTimeout( $('.shopart_amount').addClass("cart-run"), 2000);
         }

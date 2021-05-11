@@ -1,7 +1,7 @@
 <body>
     <div class="header-in">
         <div class="left">
-            <a href="./project_cloverskyA.html" class="logo">
+            <a href="./project_cloversky.html" class="logo">
             <img src="./css/logo.svg" alt="Rehome" class="logo">
             </a>
         </div>
@@ -20,8 +20,14 @@
                         <img src="./images/cloversky/icon-cart_black.svg" alt="">
                         <span>購物車</span>
                         <div class="shopart_amount"></div>
+                       
                     </a>
+                     <!-- <div class="shop_zero">
+                            <p>現在空的</p>
+                        </div> -->
+                    
                 </li>
+                
             </ul>
             <button class="nav-btn" id="triger_opennav">
                 <span></span>
@@ -79,13 +85,21 @@
 
         var data = JSON.parse(localStorage.getItem("cart"));
 //    console.log(data.length)
-//      console.log(!data)
+//      console.log(!data)//data is null clear shoppingcar
+// arr=[] or arr is null
         if (!data){
             $('.shopart_amount').css("display", "none")
             //$('.shopart_amount').css("opacity", "0")
         }else{
             //$('.shopart_amount').addClass("cart-run");
-            $('.shopart_amount').text(data.length)
+            // $('.shopart_amount').text(data.length)
+
+            if (!data.length){
+                $('.shopart_amount').css("display", "none")
+            }else{
+                $('.shopart_amount').text(data.length)
+            }
+
         }
         
         // no animate

@@ -18,22 +18,32 @@
 </head>
 
 <body>
+    <div class="second_mains" class="shop_process">
     <div class="headerPage"></div>
-    <div id="second_mains" class="shop_process">
+
         <div class="top_page">
-            <div class="process">
+            <div class="process2">
                 <a href="./project_shopcart_step1.html">
-                    <span>1 步驟一</span>
+                    <div>
+                        <p>STEP1</p>
+                        <p>填寫配送資訊</p>
+                    </div>  
                 </a>
                 <a href="./project_shopcart_step2.html">
-                    <span>2 填寫訂購資料</span>
+                    <div>
+                        <p>STEP2</p>
+                        <p>確認資訊</p>
+                    </div>
                 </a>
+
                 <a href="./project_shopcart_step3.html">
-                    <span>3 完成訂購</span>
+                    <div>
+                        <p>STEP3</p>
+                        <p>完成訂單</p>
+                    </div>
                 </a>
             </div>
-        </div>
-   
+        
 
         <div class="process3">
             <div></div>
@@ -42,7 +52,6 @@
             <span></span>
             <div></div>
         </div>
-     
 
         <div id="customers"></div>
         <!-- <form id="myForm" method="post"> -->
@@ -61,12 +70,12 @@
                 <tbody></tbody>
                 <!-- <button id="btnShow" type='submit'>Try</button> -->
             </table>
-            <button id="btn_Show" type="button">送出訂單</button>
+            <button id="btn_Show" class='btn_type' type="button">送出訂單</button>
             <!-- <div class="submit-button"><input type="submit" id="submit" value="Submit" /></div> -->
         </form>
 
- 
     </div>
+</div>
      
     <script src="./js/jquery.min.js"></script>
     <script src="./js/format.js"></script>
@@ -119,13 +128,26 @@
                 console.log(val.name)
                 console.log(data[i].name)
                 
-                $(".TB_SHOPCART tbody")
-                    .append("<tr><td name='fname0' id='fname0'><img src='./images/cloversky/" + data[i].item_no + "_1.jpg'  alt=''><p>"+ (data[i].name)+"</p></td>"+
-                            "<td name='fname1' id='fname1'>" + number_format(data[i].price) + "</td>"+
-                            "<td name='fname2' id='fname2'>"+data[i].amount + "</td>" +
-                            "<td name='fname3' id='fname3'>" + number_format(data[i].amount *  data[i].price)  + "</td >"+
-                            "</tr>"
-                            )
+                // $(".TB_SHOPCART tbody")
+                //     .append("<tr><td name='fname0' id='fname0'><img src='./images/cloversky/" + data[i].item_no + "_1.jpg'  alt=''><p>"+ (data[i].name)+"</p></td>"+
+                //             "<td name='fname1' id='fname1'>" + number_format(data[i].price) + "</td>"+
+                //             "<td name='fname2' id='fname2'>"+data[i].amount + "</td>" +
+                //             "<td name='fname3' id='fname3'>" + number_format(data[i].amount *  data[i].price)  + "</td >"+
+                //             "</tr>"
+                //             )
+                            $(".TB_SHOPCART tbody")
+                .append(`<tr> 
+                    <td name='fname0' id='fname0'>
+                        <img src='./images/cloversky/${data[i].item_no}_1.jpg' alt=''>
+                    </td> 
+                    <td name='fname1' id='fname1'>
+                        <p>${data[i].name}</p>
+                        <p>${number_format(data[i].price)}</p>
+                    </td>
+                    <td name='fname2' id='fname2'> ${data[i].amount}</td>                                   
+                    <td name='fname3' id='fname3'>${number_format(data[i].amount) * data[i].price}</td> 
+                   
+                    </tr> `)
             })
             
              
@@ -150,12 +172,15 @@
                 var loginStatus = login_status();
                 loginStatus.then(function(data) {
                     console.log('loginStatus:', data);
-                    console.log(data.success)
-                    if (data.success=="N"){
+                    console.log(data.IsLogin)
+                    if (!data.IsLogin){
+                    // if (data.success=="N"){
                         alert("請登入會員");
                         window.location.href = "project_cloversky_login.html";
                         // $("button#log_out").text("login");
                     }else{
+                         alert("送單");
+                        console.log(localStorage.getItem("cart"))
                     //送出訂單
                         $.ajax({
                             url: allurl +'/reirasys_api/add_to_shopcart.php',
@@ -171,11 +196,12 @@
                             // data: JSON.stringify(postData),
                             // data: { id: "111", user: "frank" },
                             success: function (data) {
-                                console.log(data)
+                                // console.log(data)
                                 localStorage.removeItem("cart");
                                 document.location.href= "project_shopcart_step3.html";
+                                //    window.location.href = "project_shopcart_step3.html";
                                 // alert(data)
-                                $('#output').html(data);
+                                // $('#output').html(data);
                             },
                             // success: function (result) {
                             //     console.log(result); // result是json物件

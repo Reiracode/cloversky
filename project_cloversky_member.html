@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- ok CSS-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,215 +10,63 @@
     <link rel="stylesheet" href="css/cloversky.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css">
-<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
     <style>
-        /* .form-container {
-            padding: 0px 40px;
-            text-align: center;
-            flex: 1;
-        }
+ table.dataTable tbody tr.odd-row {
+    background-color: #f8ebeb;
+}
 
-        .form-container .form-element {
-            position: relative;
-            margin: 15px 0px;
-        }
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before{
+    background-color: #c19a8a!important;
+}
 
-        .form-container .form-heading {
-            margin-bottom: 30px;
-            font-size: 32px;
-            font-weight: 600;
-            color: #375fbb;
-            font-family: "Open Sans", "Raleway", sans-serif;
-        }
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before{
+    background-color: #f8a979!important;
+}
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0.5em;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    margin-left: 3px;
+}
 
-        .form-container .form-element input {
-            width: 100%;
-            font-size: 18px;
-            padding: 12px;
-            text-indent: 50px;
-            background: #ddd;
-            border: none;
-            outline: none;
-        }
-
-        .form-container .form-element label {
-            position: absolute;
-            top: 50%;
-            left: 15px;
-            transform: translateY(-50%);
-            color: #888;
-        }
-
-        .form-container .form-element label:after {
-            content: "";
-            position: absolute;
-            top: -5px;
-            left: 30px;
-            width: 2px;
-            height: 25px;
-            background: #aaa;
-        }
-
-        .form-container .form-element button {
-            width: 100%;
-            padding: 12px;
-            font-size: 18px;
-            border: none;
-            outline: none;
-            background: #557ace;
-            color: #f5f5f5;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-family: "Open Sans", "Raleway", sans-serif;
-            font-weight: 600;
-        }
-
-        .form-container .form-element a {
-            color: #004ddc;
-            font-weight: 600;
-            font-size: 15px;
-            font-family: "Open Sans", "Raleway", sans-serif;
-            text-decoration: none;
-        }
-
-        .form-container .form-element.signup-link {
-            position: absolute;
-            width: calc(100% - 80px);
-            bottom: 5px;
-        }
-
-        .col2_item {
-            flex: 1;
-        }
-
-        .user2 {
-            position: relative;
-           
-            display: block;
-            margin: 15px 0;
-        }
-
-        .user2::before {
-            height: 80%;
-            content: '';
-            width: 1px;
-            border-right: 1px solid white;
-            position: absolute;
-            left: 45px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        i {
-            position: absolute;
-            top: calc(50% - 0.5em);
-            font-size: 20px;
-            margin: 0 5px;
-            color: #888;
-            left: 10px;
-        }
-
-
-        .user2 input {
-            width: 100%;
-            font-size: 18px;
-            padding: 12px;
-            text-indent: 45px;
-            background: #ddd;
-            border: none;
-            outline: none;
-        }
-
-        #login_btn {
-            width: 100%;
-            height: 40px;
-            border-radius: 4px;
-            font-size: 20px;
-            background-color: #88b4da;
-            color: white;
-        }   
-        
-        form#myForm{
-        padding:0 50px;
-        width:70vw;
-    }
-        
-        */
-
-
-
- 
-
-
-    /* 下面一様 */
-    /* table.TB_SHOPCART {
-        width:100%;
-        border-collapse:collapse;
-        
-    }
-    table.TB_SHOPCART caption {
-        padding:10px;
-        background-color:#f3f6f9;
-        letter-spacing: 1rem;
-        margin: 40px 0;
-    }
-
-    table.TB_SHOPCART thead th {
-        font-size: 0.7rem;
-        padding:5px 0px;
-        color:rgb(24, 23, 23);
-        border-bottom:1px solid #d4cbca;
-    }
-    table.TB_SHOPCART tbody td {
-        font-size: 0.7rem;
-        padding:5px 15px;
-        color:#555;
-        text-align:center;
-        background-color:#fff;
-        /* border-bottom:1px solid #d4cbca; */
-    /* } */
-
-    table.TB_SHOPCART tfoot td {
-        padding:5px 0px;
-        text-align:center;
-        background-color:#d6d6a5;
-    }
-
-    table.TB_SHOPCART tbody  tr{
-        border-bottom: 1px solid #dedbdb;
-    } */
+.paginate_button:hover{
+    background: #ea9999!important;
+    border: none!important;
+}
     </style>
 </head>
 
 <body>
-    <div class="second_main">
+    <div class="second_mains">
         <div class="headerPage"></div>
         <div class="mainbody">
-            <div class="main1">
-                <div class="col2_item">會員中心</div>
+            <div class="member_link">
+                <span>會員中心</span >
                 <nav class="member-nav nav justify-content-center">
                     <a class="nav-link active" href="#">訂單查詢</a>
                     <a class="nav-link" href="#">修改資料</a>
                     <a class="nav-link disabled" href="#">Disabled link</a>
                 </nav>
             </div>
-            <!-- <ul>
-                <li>會員中心</li>
-                <li>訂單查詢</li>
-                <li>修改</li>
-                <li></li>
-                <li></li>
-            </ul> -->
+
             <div  class="main2">
-                 <!-- <caption>會員資料</caption>   -->
-                <table class="TB_SHOPCART" id="myTable">
-                   
+                <!-- <caption>會員資料</caption>   -->
+                <table class="table_member" id="myTable">
                     <thead>
                         <tr>
                             <th>訂單號碼</th>
-                            <th>価格</th>
-                            <th>数量</th>
-                            <th>小計</th>
+                            <!-- <th>品項</th> -->
+                            <th>品名</th>
+                            <th>價格</th>
+                            <th>數量</th>
+                            <th>訂購時間</th>
+                            <th>地址</th>
+                            <th>訂購人</th>
                         </tr>
                     </thead>
                 </table>
@@ -230,85 +77,29 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/format.js"></script>
     <script src="./js/members.js"></script>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
-    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.flash.min.js"></script>  
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
+
+
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/dataTables.buttons.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
+    
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.flash.min.js"></script>  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script> -->
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.print.min.js"></script> 
+
+
     <script>
+
         $(".headerPage").load("project_header.html");
-
-        // var myResponse;
-        // $.ajax({
-        //     type: "GET",
-        //     url: allurl + '/reirasys_api/user_buy_item.php',
-        //     dataType: 'json',             
-        //     success: function (data) {               
-        //         console.log(data)
-
-        //     }
-        // });
-
-        // $.ajax({
-        //     type: "GET",
-        //     url: allurl + '/reirasys_api/user_buy_item.php', 
-        //     dataType: 'json',
-        //     success: function (data) {
-        //         console.log(data);
-        //         $.each(data, function (i, val) {
-        //             console.log(i);
-        //             console.log(val.id);
-        //             $(".TB_SHOPCART tbody")
-        //                 .append("<tr><td name='fname0' id='fname0'>" + val.id +"</td>"+
-        //                         "<td name='fname1' id='fname1'>" + val.recip_mobile + "</td>"+
-        //                         "<td name='fname2' id='fname2'>"+data[i].amount + "</td>" +
-        //                         "<td name='fname3' id='fname3'>" + number_format(data[i].amount *  data[i].price)  + "</td >"+
-        //                         "</tr>"
-        //                 )
-        //         })  
-                    
-        //     }
-        // });
-
-// $.ajax({
-//     'url': allurl + "/reirasys_api/user_buy_item.php", 
-//     'method': "GET",
-//     // 'contentType': 'application/json'
-// }).done( function(data) {
-//     $('#myTable').dataTable( {
-//         "Data": data,
-//         "columns": [
-//             { data: 'id' },
-//             { data: 'userno' },
-//             { data: 'recip_name' },
-//             { data: 'recip_street' },
-//             { data: 'recip_mobile' },
-//             { data: 'recip_mail' }
-//         ]
-//     })
-// })
-
-// $('#myTable').DataTable({
-//       'processing': true,
-//       'serverSide': true,
-//       'serverMethod': 'get',
-//       'ajax': {
-//           'url': allurl + "/reirasys_api/user_buy_item.php",
-//       },
-//       'columns': [
-//             { "data": 'id' },
-//             { "data": 'userno' },
-//             { "data": 'recip_name' },
-//             { "data": 'recip_street' }
-//       ]
-//    });
-  var categoryList = login_status();
+        var categoryList = login_status();
     categoryList.then(function(data) {
         console.log('呼び出し先', data);
         if (data.success){
@@ -318,80 +109,67 @@
         console.log('err');
     });
 
-    //判斷有沒登入way2
-    getLogin_status().done(function(data) {
-        last_id = data;
-        console.log(last_id)
-    });
 
-    
+const dataurl = !!(allurl == "http://localhost:8080") 
+                    ?  allurl +'/reirasys_api/user_buy_item.php'
+                    : "https://reiracode.github.io/ajax/user_buy_item.json"
+
+
+        var myResponse;
+        $.ajax({
+            type: "GET",
+            // url: allurl + '/reirasys_api/user_buy_item.php',
+            // url: "https://reiracode.github.io/ajax/user_buy_item.json",
+            url:dataurl,
+            dataType: 'json',             
+            success: function (data) {               
+                console.log(data)
+
+            }
+        });
+
+
+
     var table = $('#myTable').DataTable({
-    'processing': true,
-    "ajax": {
-            "type" : "GET",
-            "url" :  allurl + "/reirasys_api/user_buy_item.php",
-            "dataSrc": function ( json ) {
-                //Make your callback here.
-                // alert("Done!");
-                // return json.data;
-            },
-            "data" : function( d ) {
-                alert("Done!");
-                //   d.example_key1= $('#example_input1').val();
+            dom: 'Bfrtip',
+            responsive: true,
+            // rowReorder: true,
+            "stripeClasses": [ 'odd-row', 'even-row' ],
+            'processing': true,
+            "ajax": {
+                "type" : "GET",
+                // "url" :  allurl + "/reirasys_api/user_buy_item.php",
+                "url": "https://reiracode.github.io/ajax/user_buy_item.json",
+                "dataSrc": function ( json ) {
                 },
-            "dataSrc": ""       
+                // "data" : function( d ) {
+                //     },
+                "dataSrc": ""       
             },
-    "columns": [
-        { "data": 'id' },
-            { "data": 'userno' },
-            { "data": 'recip_name' },
-            { "data": 'recip_street' }
-        ],
-    //  "buttons": [
-    //     {
-    //         extend: 'excel',
-    //         text: 'Save current page',
-    //         exportOptions: {
-    //             modifier: {
-    //                 page: 'current'
-    //             }
-    //         }
-    //     }
-    // ]
-        dom: 'Bfrtip',
-        responsive: true,
-        buttons: [
-            'copy', {
-                extend: 'csv',
-                text: 'CSV',
-                bom : true}, 'excel', 'pdf', 'print'
+            "columns": [
+                { "data": 'id' },
+                { "data": 'name' },
+                { "data": 'price' },
+                { "data":  'amount'},
+                { "data": 'datatime' },
+                { "data": 'recip_street' },
+                { "data": 'userno' }
             ]
+           
+        // buttons: [
+        //     'copy', {
+        //         extend: 'csv',
+        //         text: 'CSV',
+        //         bom : true
+        //         }, 
+        //     'excel', 'pdf', 'print'
+        //     ],
+
     });
-table.ajax.reload() 
 
+    table.ajax.reload() 
 
-// var example_table = $('#myTable').DataTable({
-//     'processing': true,
-//     'ajax': {
-//         "type"   : "GET",
-//         "url"    : allurl + "/reirasys_api/user_buy_item.php",
-//         "data"   : function( d ) {
-//         //   d.example_key1= $('#example_input1').val();
-//         },
-//         "dataSrc": ""
-//     },
-//     'columns': [
-//                 { "data": 'id' },
-//                 { "data": 'userno' },
-//                 { "data": 'recip_name' },
-//                 { "data": 'recip_street' },
-//     ]
-//     });
-//To Reload The Ajax
-//See DataTables.net for more information about the reload method
-// example_table.ajax.reload() 
-
-    </script>
+</script>
 </body>
 
 </html>

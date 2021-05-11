@@ -38,6 +38,16 @@
     .typebutton:hover,.typebutton.active{
         background-color:pink;
     }
+
+    .myclass{
+        border: 1px solid #B9B9B9;
+        color: #797979;
+        min-height: 38px;
+        min-width: 255px;
+        border-radius: 5px;
+        text-indent: 10px;
+        margin-bottom: 30px;
+    }
 </style>
 </head>
 <body>
@@ -374,8 +384,7 @@ $(document).on('click', '.typebutton', function(e) {
             showPage(page) 
         }
     }
-    // console.log(product);
-
+    
     function showPage(currentPageNumber) {
         console.log("currentPageNumber--"+currentPageNumber)
         var page = "#page-" + currentPageNumber;
