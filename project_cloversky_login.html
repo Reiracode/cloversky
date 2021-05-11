@@ -354,9 +354,9 @@ function triigletabcontent() {
     const dataurl = !!(allurl == "http://localhost:8080") 
                     ?  allurl +'/reirasys_api/login_api.php'
                     : "https://reiracode.github.io/ajax/login.json"
-  const loginstyle = !(allurl == "http://localhost:8080") 
-                    ?  true
-                    :  false
+  const loginstyle = !!(allurl == "http://localhost:8080") 
+                    ?  false
+                    :  true
 
  console.log(loginstyle)
     // 同步與非同步 type: 'POST',
