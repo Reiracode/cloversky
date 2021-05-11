@@ -328,7 +328,7 @@ function triigletabcontent() {
       // $("#results").text(str);
 
       $.ajax({
-        type: 'post',
+        type: 'POST',
         url: allurl + '/reirasys_api/reg_api.php',                          
         // url: allurl + '/reirasys_api/register_api.php',
         // data: r_form.serialize(),
@@ -351,14 +351,18 @@ function triigletabcontent() {
     var str = $("form#form_login").serialize();
     console.log("str" + str)
     // $("#results").text(str);
-const dataurl = !!(allurl == "http://localhost:8080") 
+    const dataurl = !!(allurl == "http://localhost:8080") 
                     ?  allurl +'/reirasys_api/login_api.php'
                     : "https://reiracode.github.io/ajax/login.json"
+  const loginstyle = !(allurl == "http://localhost:8080") 
+                    ?  true
+                    :  false
 
-    // 同步與非同步
+ console.log(loginstyle)
+    // 同步與非同步 type: 'POST',
     var login_status;
     $.ajax({
-      type: 'get',
+      type: 'POST',
       // url: allurl + '/reirasys_api/login_api.php',
       // url: "https://reiracode.github.io/ajax/login.json",
       url: dataurl,
@@ -371,6 +375,11 @@ const dataurl = !!(allurl == "http://localhost:8080")
         login_status =response.IsLogin
         
         if (response.IsLogin){
+           // if localStorage有資料就可以下一戊
+            if (loginstyle){
+                localStorage.setItem("githublogin", JSON.stringify(IsLogin)); 
+            }
+
             alert(response.LoginMessage) 
             window.location.href = "project_cloversky_member.html"; 
         }else{

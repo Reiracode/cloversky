@@ -178,10 +178,10 @@ $(document).ready(function () {
     var categoryList = login_status();
     
     //判斷有沒登入way2
-    getLogin_status().done(function(data) {
-        last_id = data;
-        console.log(last_id)
-    });
+    // getLogin_status().done(function(data) {
+    //     last_id = data;
+    //     console.log(last_id)
+    // });
     // clear cart
     // $("#btn_Clearall").on("click",function (e) {
     //     cart=[];
@@ -226,10 +226,20 @@ $(document).ready(function () {
             console.log('catch data err');
         });
     }else{
-            alert("API請先登入");
-            window.location.href = "project_cloversky_login.html";
-            
-    }
+          
+            if (localStorage.getItem("githublogin")){
+                // JSON.parse(githublogin);
+                window.location.href = "project_shopcart_step1.html";
+            }else{
+                alert("API請先登入");
+                window.location.href = "project_cloversky_login.html";
+
+            }
+
+
+            // if localStorage有資料就可以下一戊
+    
+        }
 
 
     });
