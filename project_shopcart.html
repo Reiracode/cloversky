@@ -56,6 +56,7 @@ $(document).ready(function () {
     // console.log(data)
 
     var cart = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log(cart)
     // var cart = data;
     setCart();
 
@@ -86,6 +87,8 @@ $(document).ready(function () {
 
         
     function setCart() {
+        console.log(cart)
+        //var cart 之後，localStorage setItem更新
         if (localStorage.getItem("cart")) {
             cart = JSON.parse(localStorage.getItem("cart"));
         }
@@ -116,7 +119,7 @@ $(document).ready(function () {
         localStorage.setItem("cart", JSON.stringify(amount_old));  
         setCart();
     })
-
+// 移除
     $(".btn_remove").click(function(e){  
         e.preventDefault();
         // 取得刪除的row index

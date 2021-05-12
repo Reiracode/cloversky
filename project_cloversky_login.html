@@ -381,8 +381,19 @@ function triigletabcontent() {
                 localStorage.setItem("githublogin", JSON.stringify(login_status)); 
             }
 
+            var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
             alert(response.LoginMessage) 
-            window.location.href = "project_cloversky_member.html"; 
+         
+
+            if (!cart.length){
+                window.location.href = "project_cloversky_member.html"; 
+            }else{
+                window.location.href = "project_shopcart_step1.html"; 
+            }
+
+
+
         }else{
             alert(response.LoginMessage)  
         }
