@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 /*Plugin CSS*/
 :root {
     --background: #005;
@@ -78,7 +79,7 @@ body{
     display: flex;
     flex-direction: column;
 
-    
+
     height: 100vh;
     min-height: 100vh;
     padding: 85px 0 0px;
@@ -1769,7 +1770,8 @@ table.TB_SHOPCART tbody td p{
     font-weight: 900;
     margin-left: 10px;
     font-size: 1.2rem;
-    font-family: 'Cormorant Garamond', serif;
+    /* font-family: 'Cormorant Garamond', serif; */
+    font-family: 'Cinzel', serif;
 }
 
 table.TB_SHOPCART tbody tr td#fname3 {
