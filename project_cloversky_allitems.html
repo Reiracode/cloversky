@@ -133,26 +133,20 @@ $(document).ready(function () {
 
     // dealut query to API/json
     var this_page = $(".paginationss")
-    var myResponse;
-    $.ajax({
-        type: "GET",
-        url: dataurl,
-        // url: allurl + '/reirasys_api/shopitems.php',
-        // url: 'https://reiracode.github.io/ajax/allitems.json',
-        // async: false,//設定同步方式，非非同步=同步！
-        // cache: false,//嚴格禁止快取！
-        dataType: 'json',             
-        success: function (data) {               
-            // var datass = data.items;
-            // myResponse globe
-            myResponse = data.items;
-            localStorage.setItem("all_item", JSON.stringify(myResponse));
-            // 一進來的頁面
-            // mainPagenation(data.items);
-            defal()
-            selectclass()
-        }
-    });
+    var myResponse =JSON.parse(localStorage.getItem("all_item"))|| [];
+    defal();
+    selectclass();
+    // $.ajax({
+    //     type: "GET",
+    //     url: dataurl,
+    //     dataType: 'json',             
+    //     success: function (data) {               
+    //         myResponse = data.items;
+    //         localStorage.setItem("all_item", JSON.stringify(myResponse));
+    //         defal()
+    //         selectclass()
+    //     }
+    // });
 
     // ajax :success==>1 myResponse,2 localStorage.setItem("all_item)
     // 忘了為什麼要寫這個hover click

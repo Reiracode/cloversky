@@ -20,15 +20,10 @@
                         <img src="./images/cloversky/icon-cart_black.svg" alt="">
                         <span>購物車</span>
                         <div class="shopart_amount"></div>
-                       
-                    </a>
-                     <!-- <div class="shop_zero">
-                            <p>現在空的</p>
-                        </div> -->
-                    
+                    </a>        
                 </li>
-                
             </ul>
+
             <button class="nav-btn" id="triger_opennav">
                 <span></span>
                 <span></span>
@@ -37,7 +32,8 @@
         </div>
     </div>
 
-    <div class="overlay-scale overlay">
+    <!-- <div class="overlay-scale overlay">
+        <div class="overlay-content">
         <ul class="nav-global">
             <li><a href="#">家具<small>FURNITURE</small></a></li>
             <li><a href="#">アート＆雑貨<small>FURNITURE</small></a></li>
@@ -48,27 +44,40 @@
             <li><a href="#">サービス<small>FURNITURE</small></a></li>
             <li><a href="#">会社概要<small>FURNITURE</small></a></li>
         </ul>
+        </div>
+    </div> -->
+    <div class='overlay-test'>
+        <div class="overlay-content">
+        <ul>
+            <li><a href="#">家具<small>FURNITURE</small></a></li>
+            <li><a href="#">アート＆雑貨<small>FURNITURE</small></a></li>
+            <li><a href="#">サービス<small>FURNITURE</small></a></li>
+            <li><a href="#">会社概要<small>FURNITURE</small></a></li>
+            <li><a href="#">家具<small>FURNITURE</small></a></li>
+            <li><a href="http://localhost:8080/dashboard/F2E_project/form_test2_next2.html">single sofa<small>single</small></a></li>
+            <li><a href="#">サービス<small>FURNITURE</small></a></li>
+            <li><a href="#">会社概要<small>FURNITURE</small></a></li>
+        </ul>
+        </div>
     </div>
-<!-- </div> -->
 
-<div class="modal_bg">
-    <button class="modal_close">
+
+    <div class="modal_bg">
+        <button class="modal_close">
             <span></span>
             <span></span>
         </button>
-    <div class="modal_box start" id="search">
-        <!-- <form action="./form_test2_next2.html" id="more_form" method="get"> -->
-            <form action="./project_cloversky_allitems.html" id="more_form" method="get">
-            <input type="text" name="id" id="id">
-            <!-- <button id="more"> -->
-            <span class="icon-search"></span>
-            <!-- </button> -->
-            <!-- <i class="fas fa-search"></i> -->
-        </form>
 
-        
+        <div class="modal_box start" id="search">
+            <form action="./project_cloversky_allitems.html" id="more_form" method="get">
+                <input type="text" name="id" id="id">
+                <!-- <button id="more"> -->
+                <span class="icon-search"></span>
+                <!-- </button> -->
+                <!-- <i class="fas fa-search"></i> -->
+            </form>   
+        </div>
     </div>
-</div>
 <!-- <script src="./js/jquery.min.js"></script> -->
 
 <script>
@@ -108,12 +117,14 @@
         $(".modal_open").on('click', function (e) {
             // $(".modal_bg").css('display', 'flex');
             $(".modal_bg").addClass('active');
+            $("body").css("overflow", "hidden");
         })
 
         // overlay close
         $('.modal_close').click(() => {
             // $('.modal_bg').css('display', 'none');
             $(".modal_bg").removeClass('active');
+            $("body").css("overflow", "auto");
         })
 
         $('.modal_bg').click((e) => {
@@ -150,12 +161,20 @@
             if ($(".nav-btn").hasClass("active")) {
                 console.log("nav-btnhas:Class")
                 $(".nav-btn").removeClass("active");
-                $(".overlay-scale").removeClass("open");
+                // $(".overlay-scale").removeClass("open");
+                 $(".overlay-test").removeClass("open");
+
+
                 $("body").css("overflow", "auto");
             } else {
                 console.log("nav-btn NOT has:Class")
                 $(".nav-btn").addClass("active");
-                $('.overlay-scale').addClass("open");
+
+                // $('.overlay-scale').addClass("open");
+                 $(".overlay-test").addClass("open");
+
+
+
                 $("body").css("overflow", "hidden");
                 // overlay body no overflow
             }

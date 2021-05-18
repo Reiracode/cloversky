@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Permissions-Policy: interest-cohort=() -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -69,7 +70,7 @@
             filter: drop-shadow(6px 6px #ffffff47);
         }
 
-        /* letters paths clip ani */
+        /* letters paths clip animation */
         .squiggle {
             stroke-dasharray: 1280;
             stroke-dashoffset: 1280;
@@ -87,7 +88,6 @@
             to { stroke:#ffffff;}
         }
 
-        
 
         @media screen and (max-width: 992px){
             .logo_bg img{
@@ -100,46 +100,16 @@
         }
 
 
-        @media screen and (max-width: 767px){
+        @media screen and (max-width: 768px){
             #svg_sign{
                 position: unset;
                 width:80vw;
             }
-
-            /* #svg_bgpaths{
-                height: 100vh;
-                height: calc(var(--vh, 1vh) * 100);
-            } */
         }
-/* @media screen and (max-width: 992px){
-    .logo_bg img{
-        width:unset;
-    } 
-
-    #svg_bgpaths{
-        width:unset;
-    }
-} */
 
 
 /* general reset/setup styling for icons - needed on all */
-.icon::before {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block; 
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-}
-
-.test::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f095";
-}
-
-.test1{
+.icontype{
     position: relative;
     margin-left: 30px;
 }
@@ -151,49 +121,8 @@
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
     color:#ea9999;
+    content:attr(data-icon);
 }
-
-/* fontawesome persudo */
-.icon-marker::before{
-    content: "\f041";
-}
-
-.icon-mobile::before{
-    content: "\f10b";
-}
-
-.icon-phone::before{
-    content: "\f095";
-}
-
-.icon-email::before{
-    content: "\f0e0";
-}
-
-.icon-globe::before{
-    content: "\f0ac";
-}
-
-.icon-fb::before{
-    content: "\f09a";
-    font-family: "Font Awesome 5 Brands"; 
-}
-.icon-twitter::before{
-    font-family: "Font Awesome 5 Brands"; 
-    content: "\f099";
-}
-
-.icon-ig::before{
-    font-family: "Font Awesome 5 Brands"; 
-    content: "\f16d";
-}
-
-.icon-pinterest::before{
-    font-family: "Font Awesome 5 Brands"; 
-    content: "\f0d2";
-}
-
-
 
 h2.title1:after {
     background: #fecfcf;
@@ -1444,151 +1373,152 @@ h2.title1.active::after {
         </div>  
     </section>
 
-        <section>
-            <div class="section_header hideme">
-                <span></span>
-                    <h2 class="title1">NEW ARRIVALS</h2>
+    <section>
+        <div class="section_header hideme">
+            <span></span>
+                <h2 class="title1">NEW ARRIVALS</h2>
+        </div>
+
+        <div class="newimgs"></div>
+
+        <a target="_blank" href="https://fonts.google.com/specimen/Roboto+Slab" class="explore-button">Explore</a>
+        <!-- <a class="get_more" href="./project_cloversky_allitems.html">read more</a> -->
+    </section>
+
+    <section class="flex_sec3">
+        <div class="section_header hideme">
+            <span></span>
+            <h2 class="title1">STORIES</h2>
+        </div>
+        
+        <div class="flex-layout">
+            <div class="flex_alink3"> 
+                <div class="flex_list_card">
+                    <img src="./images/cloversky/flex_list_img01.jpeg" alt="">
+                </div> 
+
+                <div class="flex_list_descript">
+                    <h3>新生活キャンペーン配送料無料</h3>
+                    <p>*￥30,000以上のお買い上げでメインエリア内で配送料が無料2021年5月13日（木）まで</p>
+                    <span>2021年5月13日（木）まで</span>
+                </div> 
             </div>
 
-            <div class="newimgs"></div>
+            <div class="flex_alink3"> 
+                <div class="flex_list_card">
+                    <img src="./images/cloversky/flex_list_img02.jpeg"  alt="">
+                </div>
+                <div class="flex_list_descript">
+                    <h3>新しい習慣でおしゃれな部屋づくりをはじめよう</h3>
+                    <p>新しい習慣で自分らしい暮らしを始めませんか。​好きなものに囲まれて、暮らしを丁寧に心地よく整えることで、希望と自信に満ち溢れた毎日を送りましょう。</p>
 
-            <a class="get_more" href="./project_cloversky_allitems.html">read more</a>
-        </section>
-
-        <section class="flex_sec3">
-            <div class="section_header hideme">
-                <span></span>
-                <h2 class="title1">STORIES</h2>
+                </div> 
             </div>
             
-            <div class="flex_sec3_main">
-                <div class="flex_alink3"> 
-                    <div class="flex_list_card">
-                        <img src="./images/cloversky/flex_list_img01.jpeg" alt="">
-                    </div> 
-
-                    <div class="flex_list_descript">
-                        <h3>新生活キャンペーン配送料無料</h3>
-                        <p>*￥30,000以上のお買い上げでメインエリア内で配送料が無料2021年5月13日（木）まで</p>
-                        <span>2021年5月13日（木）まで</span>
-                    </div> 
-                </div>
-
-                <div class="flex_alink3"> 
-                    <div class="flex_list_card">
-                        <img src="./images/cloversky/flex_list_img02.jpeg"  alt="">
-                    </div>
-                    <div class="flex_list_descript">
-                        <h3>新しい習慣でおしゃれな部屋づくりをはじめよう</h3>
-                        <p>新しい習慣で自分らしい暮らしを始めませんか。​好きなものに囲まれて、暮らしを丁寧に心地よく整えることで、希望と自信に満ち溢れた毎日を送りましょう。</p>
-
-                    </div> 
-                </div>
-                
-                <div class="flex_alink3"> 
-                    <div class="flex_list_card">
-                        <img src="./images/cloversky/flex_list_img03.jpeg"  alt="">
-                    </div> 
-                    <div class="flex_list_descript">
-                        <h3>冬の終わりとともに、古きを捨て、新しきを得る</h3>
-                        <p>春のインスピレーションあふれる新商品が登場しました。 より軽やかでフレッシュな色合いや、冬の間待ち焦がれていた自然とのふれあいを楽しめるアイテムが揃っています。 メインテーマは、エレガントなシンプルさ。すっきりとしたフォルムは、機能や素材のよさを際立たせます。</p>
-                    </div> 
-                </div>
+            <div class="flex_alink3"> 
+                <div class="flex_list_card">
+                    <img src="./images/cloversky/flex_list_img03.jpeg"  alt="">
+                </div> 
+                <div class="flex_list_descript">
+                    <h3>冬の終わりとともに、古きを捨て、新しきを得る</h3>
+                    <p>春のインスピレーションあふれる新商品が登場しました。 より軽やかでフレッシュな色合いや、冬の間待ち焦がれていた自然とのふれあいを楽しめるアイテムが揃っています。 メインテーマは、エレガントなシンプルさ。すっきりとしたフォルムは、機能や素材のよさを際立たせます。</p>
+                </div> 
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="flex_sec3">
-            <div class="section_header hideme">
-                <span></span>
-                <h2 class="title1">ABOUT US</h2>
-                </div>
+    <section class="flex_sec3">
+        <div class="section_header hideme">
+            <span></span>
+            <h2 class="title1">ABOUT US</h2>
             </div>
+        </div>
 
-            <div class="wrap_about">
-                <!-- <div id="triangle-topleft"></div>
-                <div id="triangle-up"></div>
-                <div id="triangle-right"></div> -->
-                <figure class="clip_head">
-                    <img src="./images/cloversky/top3.jpg"  alt="">
-                    <figcaption>
-                        <h3>Cloversky Familyメンバーになろう！</h3>
-                        <span>お買い物だけではなくイケアを最大限楽しめる特典が満載！（入会費・年会費無料）</span>
-                        <!-- <span class="pub__btn__inner"><span class="pub__btn__label">詳しく見る</span> -->
-                        <a target="_blank" href="https://fonts.google.com/specimen/Roboto+Slab" class="explore-button">Explore</a>
+        <div class="wrap_about">
+            <!-- <div id="triangle-topleft"></div>
+            <div id="triangle-up"></div>
+            <div id="triangle-right"></div> -->
+            <figure class="clip_head">
+                <img src="./images/cloversky/top3.jpg"  alt="">
+                <figcaption>
+                    <h3>Cloversky Familyメンバーになろう！</h3>
+                    <span>お買い物だけではなくイケアを最大限楽しめる特典が満載！（入会費・年会費無料）</span>
+                    <!-- <span class="pub__btn__inner"><span class="pub__btn__label">詳しく見る</span> -->
+                    <a target="_blank" href="https://fonts.google.com/specimen/Roboto+Slab" class="explore-button">Explore</a>
 
 
-                    </figcaption> 
-                </figure>  
-            </div> 
-        </section>
+                </figcaption> 
+            </figure>  
+        </div> 
+    </section>
 
-        <section class="flex_sec3">
-            <div class="section_header hideme">
-                <span></span>
-                <h2 class="title1">DESIGNER</h2>
+    <section class="flex_sec3">
+        <div class="section_header hideme">
+            <span></span>
+            <h2 class="title1">DESIGNER</h2>
+        </div>
+
+        <div class="col-2 col-2-bg">
+            <figure class="col-2-img">
+                <img src="./images/cloversky/reira_logo.jpeg" alt="">
+                <figcaption>
+                    <h3>Reira</h3>
+                    <p>プロダクトデザイナー。Front-End Web Application Developer, 生活に関わるデザインを軸に活動している。</p>
+                </figcaption>
+            </figure>
+            <figure class="col-2-img">
+                <img src="./images/cloversky/000000000416_1.jpg" alt="">
+                <figcaption>
+                    <h3>Miiko</h3>
+                    <p>Industrial Designer、家具、食器、ホテルなど、生活に関わるデザインを軸に活動している。</p>
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <footer>
+        <div class="flex-layout">
+            <div class="footer_item">
+                <h2>CUSTOMER SUPPORT</h2>
+                <p>Tel:+27-211111-424-1037</p>
+                <p>Fax:+27-21-424-1036</p>
+                <p>Contact by Mail</p>
             </div>
-
-            <div class="col-2 col-2-bg">
-                <figure class="col-2-img">
-                    <img src="./images/cloversky/reira_logo.jpeg" alt="">
-                    <figcaption>
-                        <h3>Reira</h3>
-                        <p>プロダクトデザイナー。Front-End Web Application Developer, 生活に関わるデザインを軸に活動している。</p>
-                    </figcaption>
-                </figure>
-                <figure class="col-2-img">
-                    <img src="./images/cloversky/000000000416_1.jpg" alt="">
-                    <figcaption>
-                        <h3>Miiko</h3>
-                        <p>Industrial Designer、家具、食器、ホテルなど、生活に関わるデザインを軸に活動している。</p>
-                    </figcaption>
-                </figure>
+            <div class="footer_item">
+                <h2>BUSINESS HOURS</h2>
+                <p>Mon-Fri.08:00-17:00</p>
+                <p>Saturday.08:00-12:00</p>
             </div>
-        </section>
-
-        <footer>
-            <div class="info_wrap">
-                <div class="footer_item">
-                    <h2>CUSTOMER SUPPORT</h2>
-                    <p>Tel:+27-211111-424-1037</p>
-                    <p>Fax:+27-21-424-1036</p>
-                    <p>Contact by Mail</p>
-                </div>
-                <div class="footer_item">
-                    <h2>BUSINESS HOURS</h2>
-                    <p>Mon-Fri.08:00-17:00</p>
-                    <p>Saturday.08:00-12:00</p>
-                </div>
-                <div class="footer_item">
-                    <h2>RESOURCES</h2>
-                    <ul>
-                        <li><a href="#">Reservatiob and Booking</a></li>
-                        <li><a href="#">Booking Condition</a></li>
-                        <li><a href="#">Visa and Passport</a></li>
-                        <li><a href="#">About Siyabona Africa (Pty) Ltd</a></li>
-                    </ul>
-                </div>
-                <div class="footer_item">
-                    <h2>CONTACT</h2>  
-                    <p class="test1 icontype icon-marker">732/21 Second Street, Manchester, King Street, Kingston United Kingdom</p>
-                    <p class="test1 icontype icon-mobile">345-677-554</p>
-                    <p class="test1 icontype icon-phone">323-678-567</p>
-                    <p class="test1 icontype icon-email">info@altairtheme.com</p>
-                    <p class="test1 icontype icon-globe">themegoods.com</p>
-                </div>
-            </div>
-
-            <div class="footer_link">
-                <ul class="ct-connect">
-                    <li><a><i class="fab fa-twitter"></i></a></li>
-                    <li><a><i class="fab fa-twitter-square"></i></a></li>
-                    <li><a><i class="fab fa-instagram"></i></a></li>
-                    <li><a><i class="fab fa-facebook"></i></a></li>
+            <div class="footer_item">
+                <h2>RESOURCES</h2>
+                <ul>
+                    <li><a href="#">Reservatiob and Booking</a></li>
+                    <li><a href="#">Booking Condition</a></li>
+                    <li><a href="#">Visa and Passport</a></li>
+                    <li><a href="#">About Siyabona Africa (Pty) Ltd</a></li>
                 </ul>
-                <p>&copy;2020 Reira.Co.,Ltd. All Rights Reserved.</p>
             </div>
-        </footer>  
-    </div>
+            <div class="footer_item">
+                <h2>CONTACT</h2>  
+                <p class="icontype" data-icon="&#xf041">732/21 Second Street, Manchester, King Street, Kingston United Kingdom</p>
+                <p class="icontype" data-icon="&#xf10b">345-677-554</p>
+                <p class="icontype" data-icon="&#xf095">323-678-567</p>
+                <p class="icontype" data-icon="&#xf0e0">info@altairtheme.com</p>
+                <p class="icontype" data-icon="&#xf0ac">themegoods.com</p>
+            </div>
+        </div>
+
+        <div class="footer_link">
+            <ul class="ct-connect">
+                <li><a><i class="fab fa-twitter"></i></a></li>
+                <li><a><i class="fab fa-twitter-square"></i></a></li>
+                <li><a><i class="fab fa-instagram"></i></a></li>
+                <li><a><i class="fab fa-facebook"></i></a></li>
+            </ul>
+            <p>&copy;2020 Reira.Co.,Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>  
+</div>
 
 
 <script src="./js/jquery.min.js"></script>
@@ -1601,7 +1531,7 @@ h2.title1.active::after {
     <script>
     // gsap animation
     // gsap.from(".newimgs", { opacity: 0, y: 100, delay:5,duration: 1});
-    // gsap.from(".flex_sec3_main", { opacity: 0, y: 100, delay:8,duration: 1});
+    // gsap.from(".flex-layout", { opacity: 0, y: 100, delay:8,duration: 1});
 
     // logo path
     const logo = document.querySelectorAll("#svg_bgpaths path");
@@ -1642,6 +1572,7 @@ h2.title1.active::after {
         success: function (data) {               
             // var datass = data.items;
             myResponse = data.items;
+            localStorage.setItem("all_item", JSON.stringify(myResponse));
             console.log(data.items)
             myResponse.sort((ele1,elem2)=> Math.random() - Math.random())
             for (p = 0; p< 8; p++){

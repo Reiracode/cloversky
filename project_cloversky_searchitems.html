@@ -17,7 +17,9 @@
 }
 
 .product_title{
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    /* font-family: 'Arvo', serif; */
+    font-family: 'Cormorant Garamond', serif;
     color: white;
     letter-spacing: 1px;
 }
@@ -138,11 +140,16 @@
 
                         <div class="price_style">
                             <p class="card_price">数量</p>
-                            <p class="price_col"> 
+                            <!-- <p class="price_col"> 
                                 <button class="add_minus_btn minus_cal"><i class="fas fa-minus"></i></button>                                    
                                 <input type="text" class="prod_detail_amount amount" placeholder="23" min="1" max="100" value=1 disabled/>
                                 <button class="add_minus_btn add_cal"><i class="fas fa-plus"></i></button>
-                            </p> 
+                            </p>  -->
+                            <div class='price_col'> 
+                                <button class='add_minus_btn shop_cart_btn minus_cal'><i class='fas fa-minus'></i></button> 
+                                <input type='num' class='carlist_amount amount' min='1' value=1 disabled='disabled'> 
+                                <button class='add_minus_btn shop_cart_btn   add_cal'><i class='fas fa-plus'></i></button> 
+                            </div>
                         </div>
                     </div>
 
