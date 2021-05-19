@@ -58,7 +58,7 @@
                 </label>
 
                 <label class="user2">
-                <i class="step1_member fas fa-unlock-alt"></i>
+                <i class="step1_member far fa-address-card"></i>
                 <input type="text" placeholder="住所" name="recip_street"   id="recip_street" required>
                 </label>
 
@@ -79,7 +79,7 @@
                 </label>
 
                 <label class="user2">
-                <i class="step1_member far fa-envelope"></i>
+                <i class="step1_member far fa-edit"></i>
                 <input type="text" placeholder="備註" name="recip_ps"   id="recip_ps" >
                 </label>  
                 
@@ -235,15 +235,15 @@ function checkAlIInput() {
                         <p>${number_format(data[i].price)}</p>
                     </td>
                     <td name='fname2' id='fname2'> ${data[i].amount}</td>                                   
-                    <td name='fname3' id='fname3'>${number_format(data[i].amount) * data[i].price}</td> 
+                    <td name='fname3' id='fname3'>${number_format(data[i].amount*data[i].price)}</td> 
                     </tr> `)
 
 
         })
-        console.log("total--"+total)
+        console.log("total--"+number_format(total));
 
         
-        $("#car_total").text(total);
+        $("#car_total").text(number_format(total));
 
         var tr_len = $('table.TB_SHOPCART tbody tr').length
         console.log("tr_len" + tr_len);
