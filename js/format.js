@@ -30,44 +30,42 @@ function process_color(){
         var step = add[0].split('_');
         var step = step[step.length-1];
         console.log(step.substr(4, 1));
+
         var now_step = step.substr(4, 1);
         for (var i = now_step-1; i >= 0; i--) {
             console.log(i)
-            $('.process2 a div').eq(i).css({'backgroundColor':'#d08080','opacity':'1'});
+            // $('.process2 a div').eq(i).css({'backgroundColor':'#d08080','opacity':'1'});
+            $('.process3 li').eq(i).css({ 'backgroundColor': '#d08080', 'opacity': '1' });
         }
-       
-        // $('.process2 a').eq(now_step - 1).find('div').css('backgroundColor', '#DEAF3B')
-        //     .parent().prev().find('div').css('backgroundColor', '#DEAF3B');
-        switch (step.substr(4, 1)) {
-            case "1":        
-                console.log("this1")     
-                // $('.process3').eq(0).css('backgroundColor', '#DEAF3B')
-                $('.process3 div').eq(0).css('backgroundColor', '#DEAF3B')
-                                        // .css('opacity',"1")
-                break;
-            case "2":
-                console.log("this2")
-                // $('.process2 a div').eq(1).css('backgroundColor','grey').prev().css('backgroundColor', 'grey')
-                // $('.process2 a').eq(1).find('div').css('backgroundColor','pink');
-                // $('.process2 a').eq(2).attr('disabled', 'disabled');
 
-                $('.process3 div').eq(0).css('backgroundColor', '#DEAF3B')
-                $('.process3 div').eq(1).css('backgroundColor', '#DEAF3B')
-                $('.process3 span').eq(0).css('backgroundColor', '#DEAF3B')
+     
+ 
+        // switch (step.substr(4, 1)) {
+        //     case "1":        
+        //         console.log("this1")     
+        //         $('.process3 div').eq(0).css('backgroundColor', '#DEAF3B')
+        //         break;
 
-                break;
-            case "3":
-                console.log("this3")
-                $('.process3 div').eq(0).css('backgroundColor', '#DEAF3B')
-                $('.process3 div').eq(1).css('backgroundColor', '#DEAF3B')
-                $('.process3 div').eq(2).css('backgroundColor', '#DEAF3B')
-                $('.process3 span').eq(1).css('backgroundColor', '#DEAF3B')
+        //     case "2":
+        //         console.log("this2")
+        //         $('.process3 div').eq(0).css('backgroundColor', '#DEAF3B')
+        //         $('.process3 div').eq(1).css('backgroundColor', '#DEAF3B')
+        //         $('.process3 span').eq(0).css('backgroundColor', '#DEAF3B')
 
-                break;
+        //         break;
 
-            default:
-                break;
-        }
+        //     case "3":
+        //         console.log("this3")
+        //         $('.process3 div').eq(0).css('backgroundColor', '#DEAF3B')
+        //         $('.process3 div').eq(1).css('backgroundColor', '#DEAF3B')
+        //         $('.process3 div').eq(2).css('backgroundColor', '#DEAF3B')
+        //         $('.process3 span').eq(1).css('backgroundColor', '#DEAF3B')
+
+        //         break;
+
+        //     default:
+        //         break;
+        // }
     }
 }
 

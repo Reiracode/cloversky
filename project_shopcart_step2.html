@@ -22,49 +22,25 @@
     <div class="headerPage"></div>
 
         <div class="top_page">
-            <div class="process2">
-                <a href="./project_shopcart_step1.html">
-                    <div>
-                        <p>STEP1</p>
-                        <p>填寫配送資訊</p>
-                    </div>  
-                </a>
-                <a href="./project_shopcart_step2.html">
-                    <div>
-                        <p>STEP2</p>
-                        <p>確認資訊</p>
-                    </div>
-                </a>
-
-                <a href="./project_shopcart_step3.html">
-                    <div>
-                        <p>STEP3</p>
-                        <p>完成訂單</p>
-                    </div>
-                </a>
-            </div>
-        
-
-        <div class="process3">
-            <div></div>
+        <ul class="process3">
+            <li><a href="./project_shopcart_step1.html">1</a></li>
             <span></span>
-            <div></div>
+            <li><a href="./project_shopcart_step2.html">2</a></li>
             <span></span>
-            <div></div>
-        </div>
+            <li><a href="./project_shopcart_step3.html">3</a></li>
+        </ul>
 
         <div id="customers"></div>
         <!-- <form id="myForm" method="post"> -->
         <form id="myForm">
             <table class="TB_SHOPCART">
-                <caption>付款方式</caption>
+                <caption class="order_detail">付款方式</caption>
                 <thead>
                     <tr>
                         <th>商品</th>
                         <th>価格</th>
                         <th>数量</th>
                         <th>小計</th>
-                      
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -82,7 +58,7 @@
     <script>
         $(document).ready(function () {
             $(".headerPage").load("project_header.html"); 
-            $(".process span:nth-child(2)").css("background-color","grey")
+            // $(".process span:nth-child(2)").css("background-color","grey")
             process_color();
 
             $.ajax({

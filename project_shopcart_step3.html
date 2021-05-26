@@ -12,55 +12,7 @@
     <link rel="stylesheet" href="css/cloversky.css">
     <script src="./js/all.js"></script>
     <style>
-        .order_detail{
-            padding: 10px;
-            background-color: #f3f6f9;
-            letter-spacing: 1rem;
-            margin: 15px 0;
-            text-align: center;
-        }
-        /* flex table */
-        table.flex-table{
-            display: flex;
-            flex-direction: row;
-            height: 100%;
-            margin-bottom: 100px;
-            margin:0 auto;
-            /* border-top:1px solid black; */
-        }
-        
-
-        table.flex-table thead{ 
-            flex: 1 0 30%;
-            background:#f3f6f9;
-        }
-
-        table.flex-table tbody{
-            flex: 1 1 70%;
-        }
-
-        .flex-table thead tr,.flex-table tbody tr{
-            height: 5em;
-            display: flex;
-            align-items: center;
-            flex-flow: row wrap;
-            border-bottom: 1px solid #dedbdb;
-        }
-        table.flex-table tr{  
-            justify-content: center;
-        } 
-
-        table.flex-table  th {
-            width:150px;
-            font-weight: 100;
-            letter-spacing: 1px;
-        }
-        table.flex-table td{
-            word-break: break-all;
-            /* border-bottom: 1px solid #f3f6f9; */
-            /* min-width: 400px; */
-            padding-left: 20px;
-        }
+      
        
     </style>
 </head>
@@ -70,38 +22,16 @@
     <div class="headerPage"></div>
 
         <div class="top_page">
-        <div class="process2">
-                <a href="./project_shopcart_step1.html">
-                    <div>
-                        <p>STEP1</p>
-                        <p>填寫配送資訊</p>
-                    </div>  
-                </a>
-                <a href="./project_shopcart_step2.html">
-                    <div>
-                        <p>STEP2</p>
-                        <p>確認資訊</p>
-                    </div>
-                </a>
-
-                <a href="./project_shopcart_step3.html">
-                    <div>
-                        <p>STEP3</p>
-                        <p>完成訂單</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="process3">
-                <div></div>
-                <span></span>
-                <div></div>
-                <span></span>
-                <div></div>
-            </div>
+        <ul class="process3">
+            <li><a href="./project_shopcart_step1.html">1</a></li>
+            <span></span>
+            <li><a href="./project_shopcart_step2.html">2</a></li>
+            <span></span>
+            <li><a href="./project_shopcart_step3.html">3</a></li>
+        </ul>
 
 
-           <div class="order_detail">訂單資料</div>
+            <div class="order_detail">訂單資料</div>
 
             <table class="flex-table"  id="customers">
                 <thead>
@@ -127,11 +57,11 @@
 
             <form id="myForm">
                 <table class="TB_SHOPCART">
-                    <caption>訂購明細</caption>
+                    <caption class="order_detail">訂購明細</caption>
                     <thead>
                         <tr>
                             <th>商品</th>
-                            <th>価格</th>
+                            <th></th>
                             <th>数量</th>
                             <th>小計</th> 
                         </tr>
@@ -151,7 +81,7 @@
     <script>
     $(document).ready(function () {
         $(".headerPage").load("project_header.html"); 
-        $(".process span:nth-child(3)").css("background-color","grey")
+        // $(".process span:nth-child(3)").css("background-color","grey")
         process_color();
 
         $.ajax({

@@ -19,81 +19,68 @@
     <div class="headerPage"></div>
     
         <div class="top_page">
-            <div class="process2">
-                <a href="./project_shopcart_step1.html">
-                    <div>
-                        <p>STEP1</p>
-                        <p>填寫配送資訊</p>
-                    </div>  
-                </a>
-                <a href="./project_shopcart_step2.html">
-                    <div>
-                        <p>STEP2</p>
-                        <p>確認資訊</p>
-                    </div>
-                </a>
 
-                <a href="./project_shopcart_step3.html">
-                    <div>
-                        <p>STEP3</p>
-                        <p>完成訂單</p>
-                    </div>
-                </a>
-            </div>
+            <!-- <div class="process3">
+                <div><a href="./project_shopcart_step1.html">1</a></div>
+                <span></span>
+                <div><a href="./project_shopcart_step2.html">2</a></div>
+                <span></span>
+                <div><a href="./project_shopcart_step3.html">3</a></div>
+            </div> -->
 
-            <div class="process3">
-                <div></div>
-                <span></span>
-                <div></div>
-                <span></span>
-                <div></div>
-            </div>
-  
+        <ul class="process3">
+            <li><a href="./project_shopcart_step1.html">1</a></li>
+            <span></span>
+            <li><a href="./project_shopcart_step2.html">2</a></li>
+            <span></span>
+            <li><a href="./project_shopcart_step3.html">3</a></li>
+        </ul>
 
         <div class="col2_item">
             <form id="form_checkout1" action="#">
-                <label class="user2">
+                <label class="userdata">
                 <i class="step1_member far fa-user"></i>
                 <input type="text" placeholder="名前" name="recip_name"  id="recip_name" required>
                 </label>
 
-                <label class="user2">
+                <label class="userdata">
                 <i class="step1_member far fa-address-card"></i>
                 <input type="text" placeholder="住所" name="recip_street"   id="recip_street" required>
                 </label>
 
-                <label class="user2 recip_city">
+                <label class="userdata recip_city">
                 <i class="step1_member  far fa-address-book"></i>
                 <input type="text" placeholder="city" name="recip_city"   id="recip_city" required>
                 <input type="mobile" placeholder="state" name="recip_state"   id="recip_state" required>
                 </label>
 
-                <label class="user2">
+                <label class="userdata">
                 <i class="step1_member fas fa-mobile-alt"></i>
                 <input type="mobile" placeholder="電話番号" name="recip_mobile"   id="recip_mobile" required>
                 </label>
 
-                <label class="user2">
+                <label class="userdata">
                 <i class="step1_member far fa-envelope"></i>
                 <input type="mail" placeholder="mail" name="recip_mail"   id="recip_mail" required>
                 </label>
 
-                <label class="user2">
+                <label class="userdata">
                 <i class="step1_member far fa-edit"></i>
                 <input type="text" placeholder="備註" name="recip_ps"   id="recip_ps" >
                 </label>  
                 
-                <button id="login_btn">儲存連絡人資訊</button>
+                <!-- <button id="login_btn">儲存連絡人資訊</button> -->
+                <button id="btn_Show">送出訂單</button>
             </form>
         </div>
 <!-- TB_COLLAPSE -->
         <div class="div_shopcar_detail">
             <table class="TB_SHOPCART">
-                <caption>商品資訊</caption>
+                <caption class="order_detail">購買明細</caption>
                 <thead>
                     <tr>
                         <th>商品</th>
-                        <th>価格</th>
+                        <th></th>
                         <th>数量</th>
                         <th>小計</th>
                     </tr>
@@ -107,7 +94,7 @@
             </div>
 
         </div>
-        <button id="btn_Show" class='btn_type' type="button">下一步</button>
+        <!-- <button id="btn_Show" class='btn_type' type="button">下一步</button> -->
 
         </div>
     </div>
@@ -119,10 +106,10 @@
 $(document).ready(function () {
     $(".headerPage").load("project_header.html"); 
 
-    $(".process span").click(function(){  
-        var index = $(".process span").index(this);
-        $(".process span").eq(index).addClass("select");
-    });
+    // $(".process span").click(function(){  
+    //     var index = $(".process span").index(this);
+    //     $(".process span").eq(index).addClass("select");
+    // });
 
     process_color();
 
@@ -218,11 +205,14 @@ function checkAlIInput() {
         var data = JSON.parse(localStorage.getItem("cart"));
         console.log(data)
         var total = 0;
+        var total_amount = 0;
         $.each(data, function (i, val) {
             console.log(i)
             console.log(val.name)
             console.log(data[i].name) 
             console.log("amout:"+data[i].amount + "price:"+data[i].price + "xx"+data[i].amount *  data[i].price) 
+            total_amount += data[i].amount;
+            console.log(total_amount)
             total += data[i].amount *  data[i].price;
         
             $(".TB_SHOPCART tbody")
@@ -245,8 +235,8 @@ function checkAlIInput() {
         
         $("#car_total").text(number_format(total));
 
-        var tr_len = $('table.TB_SHOPCART tbody tr').length
-        console.log("tr_len" + tr_len);
+        // var tr_len = $('table.TB_SHOPCART tbody tr').length
+        // console.log("tr_len" + tr_len);
         
         var ss_total=0;
         $('.TB_SHOPCART td[id^=fname]').each(function () {

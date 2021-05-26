@@ -357,12 +357,20 @@ $(document).on('click', '.typebutton', function(e) {
                     break; 
                 }
 
-                $("#page-" + p).append("<div class='search_div'>" +
-                    "<figure class='search_items'><img class='kv_image' src='./images/cloversky/" + data[max_num - 1].id + "_1.jpg'>" +
-                    "</figure>" +
-                    "<p class='list_item_name'>" + data[max_num - 1].title + "</p>" +
-                    "<p class='list_item_price'>" + data[max_num - 1].price + "</p >" +
-                    "</a></div> ")
+                // $("#page-" + p).append("<div class='search_div'>" +
+                //     "<figure class='search_items'><img class='kv_image' src='./images/cloversky/" + data[max_num - 1].id + "_1.jpg'>" +
+                //     "</figure>" +
+                //     "<p class='list_item_name'>" + data[max_num - 1].title + "</p>" +
+                //     "<p class='list_item_price'>" + data[max_num - 1].price + "</p >" +
+                //     "</a></div> ")
+
+         $("#page-" + p).append(`
+    <div class='search_div'> 
+        <figure class='search_items'><img class='kv_image' src='./images/cloversky/${data[max_num - 1].id}_1.jpg'>
+        </figure>
+            <p class='list_item_name'>${data[max_num - 1].title}</p>
+            <p class='list_item_price'>$${ number_format(data[max_num - 1].price)}</p >
+        </a></div>`)
 
                 $(".search_div").click(function () {
                     var index = $(".search_div").index(this);

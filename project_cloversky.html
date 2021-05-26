@@ -189,7 +189,6 @@ h2.title1.active::after {
 </style>
 </head>
 <body>
-    <!-- <div> -->
     <nav class="headerPage"></nav>
     <!-- svg animation section -->
     <section class="bgimg">
@@ -1380,8 +1379,11 @@ h2.title1.active::after {
         </div>
 
         <div class="newimgs"></div>
+        <div class="newimgs_side">
 
-        <a target="_blank" href="./project_cloversky_allitems.html" class="explore-button">Explore</a>
+        </div>
+
+        <a href="./project_cloversky_allitems.html" class="explore-button">view more  <i class="fas fa-arrow-right"></i></a>
         <!-- <a class="get_more" href="./project_cloversky_allitems.html">read more</a> -->
     </section>
 
@@ -1533,12 +1535,12 @@ h2.title1.active::after {
     // gsap.from(".newimgs", { opacity: 0, y: 100, delay:5,duration: 1});
     // gsap.from(".flex-layout", { opacity: 0, y: 100, delay:8,duration: 1});
 
-    // logo path
-    const logo = document.querySelectorAll("#svg_bgpaths path");
-    console.log(logo);
-    for (let i=0; i<logo.length; i++){
-        console.log(`Letter ${i} is ${logo[i].getTotalLength()}`)
-    }
+    //calculate total logo path
+    // const logo = document.querySelectorAll("#svg_bgpaths path");
+    // console.log(logo);
+    // for (let i=0; i<logo.length; i++){
+    //     console.log(`Letter ${i} is ${logo[i].getTotalLength()}`)
+    // }
 
     // one page style
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
@@ -1566,8 +1568,6 @@ h2.title1.active::after {
     $.ajax({
         type: "GET",
         url:dataurl,
-        // url: allurl + '/reirasys_api/shopitems.php',
-        // url: 'https://reiracode.github.io/ajax/allitems.json',
         dataType: 'json',             
         success: function (data) {               
             // var datass = data.items;
@@ -1576,24 +1576,140 @@ h2.title1.active::after {
             console.log(data.items)
             myResponse.sort((ele1,elem2)=> Math.random() - Math.random())
             for (p = 0; p< 8; p++){
-                //  console.log(myResponse[p].id)
-                //   <img data-original='./images/cloversky/${myResponse[p].id}_1.jpg' class="lazy" alt="">
-                $('.newimgs').append(`
-                        <figure class="list_img">
-                            <img src='./images/cloversky/${myResponse[p].id}_1.jpg' alt="">
-                            <figcaption>
+                $('.newimgs').append(
+                    `<figure class="list_img">
+                        <img src='./images/cloversky/${myResponse[p].id}_1.jpg' alt="" data-pno=${myResponse[p].id}>
+                        <figcaption>
                             <p>${myResponse[p].title}</p>
                             <p>${myResponse[p].price}</p>
-                        <a href="./project_cloversky_searchitems.html?item_id=${myResponse[p].id}"></a>
-                            </figcaption>		
-                        </figure>   
-                `);
+                            <p><i class="fas fa-search"></i><p>
+                        </figcaption>		
+                    </figure>`);
             }
         }
     });
 
+$('.newimgs').on('click', '.list_img, .newimgs_side', function (e) {
+    $('.newimgs').addClass('left_mode');
+    var this_index = $(".list_img").index(this);
+    console.log(this_index);   
+    // scroll to top
+    var $this = $(this);
+    var position = $this.offset().top;
+    var leftx = $this.offset().left;
+    var scrollY = $(window).scrollTop();
+    var windowHeight = $(window).height();
+    if (scrollY > position - windowHeight - windowHeight/5){
+        $('html, body').animate({
+                scrollTop: (position - 85)
+        }, 2000);
+    }
+
+    var id = $(this).find('img').attr("data-pno");
+    
+    console.log($this)
+    // 只執行一次而已，如果已有class，未執行
+    if ($(".newimgs_side").hasClass('active')){
+        console.log($this)
+        console.log($(this).find('img'))
+        $(".newimgs_side").find('img').removeClass('active')
+        .delay(100)
+            .queue(function(){
+                console.log($this)
+                console.log($(this))
+                $(".newimgs_side").find('img').attr("src","./images/cloversky/"+id+"_1.jpg")
+                .addClass('active').dequeue();
+            })
+    }else{
+        $(".newimgs_side").addClass('active')
+        .find('img').attr("src","./images/cloversky/"+id+"_1.jpg")
+    }
+    
+    $('.newimgs_side').html(` 
+        <button class="modal_close">
+            <span></span>
+            <span></span>
+        </button>
+        <figure class="list_img1">
+            <img src="./images/cloversky/${myResponse[this_index].id}_1.jpg" alt=""  class="active">
+        </figure>
+        <p class='product_title'>${myResponse[this_index].title}</p>
+        <p class='card-text'>$${myResponse[this_index].price}</p>
+        <button class="btn_type  btn-100 add_car" data-price=${myResponse[this_index].price} data-id=${myResponse[this_index].id}>
+        <i class="fas fa-shopping-cart"></i> Add to Cart
+        </button>
+        <li>CLASS：${myResponse[this_index].class}</li>
+        <li>SIZE：${myResponse[this_index].size}</li>
+        <li>COLOR：${myResponse[this_index].color}</li>
+        <li>Material：${myResponse[this_index].material}</li>
+    `
+    );
+
+        $('.modal_close').click(function(){
+            $(".newimgs_side").removeClass('active')
+            $(".newimgs").removeClass('left_mode')
+        })
+
+
+
+        // 加入購物車
+$(".add_car").click(function () {
+
+    // var cart = [];
+    // if (localStorage.getItem("cart")) {
+    //     cart = JSON.parse(localStorage.getItem("cart"));
+    // }
+    var cart =JSON.parse(localStorage.getItem("cart")) || [];
+    let newItem = {
+        name: $(".product_title").text(),
+        price:$(this).data("price"),
+        amount: 1,
+        item_no: $(this).data("id")
+    };
+    console.log(newItem)
+    // // 如果沒   0==>1 有效果      空的==>1 沒效果
+    // !cart= null  first 0->1
+    var this_new = newItem.name;
+    console.log("this_new" + this_new)
+    // var data = JSON.parse(localStorage.getItem("cart"));
+    console.log(cart)
+    var result2 = $.map(cart, function (item, index) {
+        return item.name
+    }).indexOf(this_new);
+
+    console.log("this_new"+this_new)
+    console.log("result2:"+result2)
+
+    if (result2 >= 0 ) {
+        alert("已訂購量，請修改購物車")
+        window.location.href = "project_shopcart.html";            
+    } else {
+        cart.push(newItem);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        //  setCart();
+        var data1 = JSON.parse(localStorage.getItem("cart"));
+        console.log(data1)
+  
+        $('.shopart_amount').css("display", "block")
+        $('.shopart_amount')
+        .text(data1.length)
+        .addClass("cart-run");
+
+    }
+    
+
+});
+
+
+})
+
+            
+ 
+
+
     // 手機時 remove hover 屬性
     $('.newimgs').on('touchstart', '.list_img', function (e) {
+        $('.newimgs').index
         // var link = $(this); //preselect the link
         // if (link.hasClass('hover')) {
         //     return true;
@@ -1670,6 +1786,11 @@ h2.title1.active::after {
         }
         window.location.href = "project_cloversky_searchItem.html?search=" + keystring ;
     }
+
+
+
+
+
 
 </script> 
 </body>
