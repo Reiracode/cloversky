@@ -287,7 +287,7 @@ function checkAlIInput() {
                                 let obj = response.err;
                                 for(const property in obj) {
                                     console.log(`obj[${property}] = ${obj[property]}`);
-                                     $(`input[name='${property}']`)
+                                    $(`input[name='${property}']`)
                                     .css('background','pink')
                                     .val($(`input[name='${property}']`).val()+`${obj[property]}`)
                                 }
